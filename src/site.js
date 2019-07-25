@@ -4,7 +4,7 @@ require('dotenv').config();
 // -----------------------------------------------------------
 // Variables
 // -----------------------------------------------------------
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 3002
       ,express = require('express')
       ,app = express()
       ,apiAdmin = express.Router()
