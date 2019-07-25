@@ -8247,7 +8247,6 @@ h3 + .post-minimal-1 {
 .jumbotron-2 {
 	padding: 40px 0 50px;
 	background: #608ace;
-	/* height: 200px !important; */
 }
 
 .jumbotron-2 .link-2 {
@@ -8660,12 +8659,12 @@ div .profile-group-aside {
 	position: relative;
 	overflow: hidden;
 	min-height: 100vh;
-	/* opacity: 0; */
+	opacity: 0;
 }
 
-/* [data-x-mode] .page {
+[data-x-mode] .page {
 	opacity: 1;
-} */
+}
 
 .page-header {
 	position: relative;

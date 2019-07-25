@@ -19,31 +19,27 @@ block page
   //-     a.button.button-sm.button-primary.call-me-popup(href='#call-me-popup') Обратный звонок
 
   //- News Popup
-  //- #news-popup.text-center.mfp-hide.text-white
-    h3(style="color: white;") Уважаемые клиенты!
+  #news-popup.text-center.mfp-hide.text-white
+    div(style="color: white;")
+      h3(style="color: white;") Уважаемые клиенты!
+      br
+      span Обращаем ваше внимание, что с 29 июля 2019 года оплатить услуги Центра с использованием банковских карт возможно только с 10:00 до 19:00 по будням.
+      br
+      span Спасибо за понимание и сотрудничество.
+      //- img(src="/images/centr-sdelok/new-enter.jpeg" style="border-radius: 5px;")
+  //- ВАЖНАЯ ИНФОРМАЦИЯ!!!
+  section.section-sm.text-center(style="padding: 10px; color: red;") 
+    strong Уважаемые клиенты!
     br
-    span(style="color: white;") По техническим причинам, телефон (812) 337-5-337 не работает.
+    strong Мы перехали. Вход в Центр сделок осуществляется с Итальянской улицы (вход в БЦ "Офисный дом на Итальянской, 2")
     br
-    span(style="color: white;") Записаться на сделку или задать интересующий вопрос вы можете по электронной почте
+    strong Нотариальная контора работает на прежнем месте, на этаже выше (бывший офис АН "Мой Город")
     br
-    span(style="color: white;") 
-      a(href="mailto:info@centr-sdelok.ru") info@centr-sdelok.ru
-    br
-    span(style="color: white;") Следите за объявлениями. Приносим свои извинения за возможные неудобства.
-    //- img(src="/images/centr-sdelok/new-enter.jpeg" style="border-radius: 5px;")
-
-  section.section-sm.text-center(style="padding: 10px; color: red;")
-    //- strong Уважаемые клиенты!
-    //- br
-    //- strong Мы перехали. Вход в Центр сделок осуществляется с Итальянской улицы (вход в БЦ "Офисный дом на Итальянской, 2")
-    //- br
-    //- strong Нотариальная контора работает на прежнем месте, на этаже выше (бывший офис АН "Мой Город")
-    //- br
   // FScreen
-  section.section.jumbotron-2.bg-accent.bg-primary-lighten(style="padding: 10px 0;")
-    .container(style="height: 200px;")
+  section.section.jumbotron-2.bg-accent.bg-primary-lighten
+    .container
       .jumbotron-2-inner
-        .owl-carousel.wow(
+        //- .owl-carousel.wow(
           data-nav='false'
           data-loop='true'
           data-autoplay='true'
@@ -55,7 +51,7 @@ block page
           div(style="background-color: black; text-align: center;") Слайд 3
           div(style="background-color: black; text-align: center;") Слайд 4
 
-        //- .jumbotron-2-main
+        .jumbotron-2-main
           p.heading-7.wow.fadeIn Центр сделок с недвижимостью
           h2.wow.fadeIn(data-wow-delay='.05s') Проведи расчеты по сделкам с недвижимостью
           ul.list-marked-3
@@ -64,7 +60,7 @@ block page
             li.wow.fadeIn(data-wow-delay='.2s') За 1 день
             li.wow.fadeIn(data-wow-delay='.25s') «Под ключ»
           a.link-2.wow.fadeIn(data-wow-delay='.25s' href='#section-1' data-waypoint-to='#section-1') Подробнее...
-        //- .jumbotron-2-slider
+        .jumbotron-2-slider
           // Owl Carousel
           .owl-carousel.wow.fadeIn(
           data-items='1'
@@ -187,28 +183,28 @@ block page
         .col-sm-6.col-md-4.isotope-item
           span.product-modern
             .product-modern-media
-              figure.product-modern-figure: img(src='images/centr-sdelok/slider/1-1.jpg').product-modern-image
+              figure.product-modern-figure: img(src='images/centr-sdelok/slider/1.jpg').product-modern-image
               .product-modern-overlay
             //- .product-modern-caption
               h5.product-modern-title 401 Biscayne Boulevard, Miami
         .col-sm-6.col-md-4.isotope-item
           span.product-modern
             .product-modern-media
-              figure.product-modern-figure: img(src='images/centr-sdelok/slider/1-2.jpg').product-modern-image
+              figure.product-modern-figure: img(src='images/centr-sdelok/slider/2.jpg').product-modern-image
               .product-modern-overlay
             //- .product-modern-caption
               h5.product-modern-title 401 Biscayne Boulevard, Miami
         .col-sm-6.col-md-4.isotope-item
           span.product-modern
             .product-modern-media
-              figure.product-modern-figure: img(src='images/centr-sdelok/slider/1-3.jpg').product-modern-image
+              figure.product-modern-figure: img(src='images/centr-sdelok/slider/3.jpg').product-modern-image
               .product-modern-overlay
             //- .product-modern-caption
               h5.product-modern-title 401 Biscayne Boulevard, Miami
         .col-sm-6.col-md-4.isotope-item
           span.product-modern
             .product-modern-media
-              figure.product-modern-figure: img(src='images/centr-sdelok/slider/1-4.jpg').product-modern-image
+              figure.product-modern-figure: img(src='images/centr-sdelok/slider/4.jpg').product-modern-image
               .product-modern-overlay
             //- .product-modern-caption
               h5.product-modern-title 401 Biscayne Boulevard, Miami
@@ -222,11 +218,11 @@ block page
         .col-sm-6.col-md-4.isotope-item
           span.product-modern
             .product-modern-media
-              figure.product-modern-figure: img(src='images/centr-sdelok/slider/1-5.jpg').product-modern-image
+              figure.product-modern-figure: img(src='images/centr-sdelok/slider/5.jpg').product-modern-image
               .product-modern-overlay
             //- .product-modern-caption
               h5.product-modern-title 401 Biscayne Boulevard, Miami
-        .col-sm-6.col-md-4.isotope-item
+        //- .col-sm-6.col-md-4.isotope-item
           span.product-modern
             .product-modern-media
               figure.product-modern-figure: img(src='images/centr-sdelok/slider/1-6.jpg').product-modern-image
@@ -240,7 +236,7 @@ block page
   include ../sections/_footer-classic
   //- include ../sections/_footer-modern
 
-  //- script.
+  script.
     document.addEventListener('DOMContentLoaded', () => {
       $.magnificPopup.open({
         items: {

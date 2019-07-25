@@ -15,7 +15,7 @@
     isDesktop = $html.hasClass("desktop"),
     isIE = userAgent.indexOf("msie") !== -1 ? parseInt(userAgent.split("msie")[1], 10) : userAgent.indexOf("trident") !== -1 ? 11 : userAgent.indexOf("edge") !== -1 ? 12 : false,
     isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
-    windowReady = true,
+    windowReady = false,
     isNoviBuilder = false,
     pageTransitionDuration = 300,
 
@@ -94,29 +94,29 @@
   // Initialize scripts that require a loaded page
   $window.on('load', function () {
     // Page loader & Page transition
-    // if (plugins.preloader.length && !isNoviBuilder) {
-    //   pageTransition({
-    //     target: document.querySelector('.page'),
-    //     delay: 0,
-    //     duration: pageTransitionDuration,
-    //     classIn: 'fadeIn',
-    //     classOut: 'fadeOut',
-    //     classActive: 'animated',
-    //     conditions: function (event, link) {
-    //       return !/(\#|callto:|tel:|mailto:|:\/\/)/.test(link)
-    //         && !event.currentTarget.hasAttribute('data-lightgallery');
-    //     },
-    //     onTransitionStart: function (options) {
-    //       setTimeout(function () {
-    //         plugins.preloader.removeClass('loaded');
-    //       }, options.duration * .75);
-    //     },
-    //     onReady: function () {
-    //       plugins.preloader.addClass('loaded');
-    //       windowReady = true;
-    //     }
-    //   });
-    // }
+    if (plugins.preloader.length && !isNoviBuilder) {
+      pageTransition({
+        target: document.querySelector('.page'),
+        delay: 0,
+        duration: pageTransitionDuration,
+        classIn: 'fadeIn',
+        classOut: 'fadeOut',
+        classActive: 'animated',
+        conditions: function (event, link) {
+          return !/(\#|callto:|tel:|mailto:|:\/\/)/.test(link)
+            && !event.currentTarget.hasAttribute('data-lightgallery');
+        },
+        onTransitionStart: function (options) {
+          setTimeout(function () {
+            plugins.preloader.removeClass('loaded');
+          }, options.duration * .75);
+        },
+        onReady: function () {
+          plugins.preloader.addClass('loaded');
+          windowReady = true;
+        }
+      });
+    }
 
     // Material Parallax
     if (plugins.materialParallax.length) {
