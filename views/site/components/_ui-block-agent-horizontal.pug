@@ -1,0 +1,13 @@
+mixin block-agent-horizontal(obj)
+	// Block Agent
+	article.block-agent-horizontal
+		.block-agent-horizontal-image
+			+jpg(obj.img)
+			
+		.block-agent-horizontal-body
+			h3.block-agent-horizontal-title: a(href='agent-single-page.html')=obj.title
+			p.block-agent-horizontal-text=obj.text
+			.block-agent-horizontal-divider
+			.block-agent-horizontal-link
+				span.icon.mdi.mdi-phone
+				a(href='tel:#') + 123 098 890 76 56

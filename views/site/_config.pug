@@ -1,0 +1,81 @@
+-
+	var
+		html_class = "wide wow-animation",
+		fonts = "//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900%7CRoboto:300,400,500,700,900",
+		subscribeFormCounter = 0,
+		brand = {
+			name: 'ООО «Навиус»',
+			default: { normal: 'logo-default-121x61', retina: 'logo-default-242x122' },
+			inverse: { normal: 'logo-inverse-121x61', retina: 'logo-inverse-242x122' },
+			inverse2: { normal: 'logo-inverse-2-121x61', retina: 'logo-inverse-2-242x122' }
+		},
+		links = {
+			post: 'blog-post.html',
+			getTemplate:'#get-template',
+			rekviziti: 'https://drive.google.com/open?id=1mxJAz21SAjQrcbX1uYm5uDIB5t0sK3WB',
+			docTemplates: '/docs',
+			prezentCentr: 'https://drive.google.com/open?id=1INI6WMdGQbNVixMevy9i6z-zD5okmrx-',
+			prezentNavius: 'https://goo.gl/g3tC6s',
+			packs: 'https://drive.google.com/open?id=1jK4z3DOvzw_Kjg0N-csANrc_cDj1dAUm',
+			price: 'https://drive.google.com/open?id=1w6BV9ojX0uiaxo8TWTMHNlazl5rFf5LW',
+			priceNotary: 'https://drive.google.com/open?id=18tMAiCbJd06K3ViOtuUWwTi2nhdUWpzc',
+			userAgreement: 'https://drive.google.com/open?id=16q4udb_t_SqUZONccy13ejvvujmwIcIz'
+		},
+		colors = {
+			primary: '#6b9dee',
+			secondary: '#4b9ef1'
+		},
+		menu = [ 
+			{
+				title: 'Главная',
+				category: 'home',  
+				link: '/'
+			},
+			{
+				title: 'Услуги',
+				category: 'services',
+				link: '/services'
+			},
+			{
+				title: 'Семинары',
+				category: 'events',
+				link: '/events'
+			},
+			{
+				title: 'Информация',
+				category: 'info',
+				link: '#',
+				dropdown: [
+					{
+						title: 'О компании',
+						category: 'about',
+						link: '/about'
+					},
+					{
+						title: 'Новости',
+						category: 'news',
+						link: '/news'
+					},
+					{
+						title: 'Блог',
+						category: 'blog',
+						link: '/blog'
+					},
+					{
+						title: 'Вакансии',
+						category: 'career',
+						link: '/career'
+					}
+				]
+			},
+			{
+				title: 'Акции',
+				category: 'promo',
+				link: '/promo'
+			},
+			{
+				title: 'Контакты',
+				category: 'contacts',
+				link: '/contacts'
+			}
+		];

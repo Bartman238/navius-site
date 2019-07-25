@@ -1,0 +1,107 @@
+// Pre footer section
+section.section.section-sm.bg-gray-31.context-dark
+	.container
+		.row.row-40.justify-content-lg-between
+			.col-md-6.col-lg-4.col-xl-3
+				h3.heading-square.font-weight-sbold(data-item='.heading-square-item')
+					span.heading-square-item
+					| Документы
+				a.button.button-sm.button-default-outline.fadeIn(data-wow-delay='.4s' href=links.rekviziti target='_blank') Реквизиты
+				//- a.button.button-sm.button-default-outline.fadeIn(data-wow-delay='.4s' href=links.docTemplates style='margin-top: 10px;') Шаблоны документов
+				a.button.button-sm.button-default-outline.fadeIn(data-wow-delay='.4s' href=links.prezentCentr target='_blank' style='margin-top: 10px;') Презентация Центра
+				a.button.button-sm.button-default-outline.fadeIn(data-wow-delay='.4s' href=links.prezentNavius target='_blank' style='margin-top: 10px;') Презентация Navius
+			.col-md-6.col-lg-4.col-xl-3.col-bordered
+				h3.heading-square.font-weight-sbold(data-item='.heading-square-item')
+					span.heading-square-item
+					| Контакты
+				.link-with-icon.heading-4.text-spacing-150.font-sec(data-item='.icon')
+					span.icon.icon-1.mdi.mdi-phone
+					a(href='tel:' + siteVars.global.tel) #{siteVars.global.tel}
+
+				.link-with-icon.text-spacing-100(data-item='.icon')
+					span.icon.icon-2.mdi.mdi-email-outline
+					a(href='mailto:' + siteVars.global.infoEmail) #{siteVars.global.infoEmail}
+
+				.link-with-icon.text-spacing-100(data-item='.icon')
+					span.icon.icon-2.mdi.mdi-clock
+					span Центр: #{siteVars.global.workHours}
+					br
+					span Сейфинг: #{siteVars.global.safingWorkHours}
+				
+				.link-with-icon.text-spacing-100(data-item='.icon')
+					span.icon.icon-3.mdi.mdi-map-marker
+					span #{siteVars.global.fullAddress}
+			
+			.col-lg-4
+				h3.heading-square.font-weight-sbold(data-item='.heading-square-item')
+					span.heading-square-item
+					| Подписка
+				p.rd-mailform-label Оформите подписку на новости Центра
+				form.rd-form.rd-mailform#subscribe-form(data-form-output="form-output-global")
+					.form-wrap
+						input.form-input(id="subscribe-form-email" type="email" name="email" data-constraints="@Email @Required")
+						label.form-label(for="subscribe-form-email") Ваш e-mail
+					.form-wrap
+						.recaptcha#recaptcha-footer(data-sitekey='6Lc8t30UAAAAAL4ngQMStrVcGhqDWjkp5X3ZuBh8' data-widget-id='recaptcha-footer')
+					.form-button(style='margin-top: 0;')
+						button.button.button-default-outline.button-square(onclick='subscribe()') Подписаться
+				ul.list-inline-1
+					if (siteVars.global.fbLink)
+						li: a.icon.fa-facebook(href=siteVars.global.fbLink target='_blank')
+					if (siteVars.global.vkLink)
+						li: a.icon.fa-vk(href=siteVars.global.vkLink target='_blank')
+					if (siteVars.global.instLink)
+						li: a.icon.fa-instagram(href=siteVars.global.instLink target='_blank')
+
+// Page footer
+footer.section.footer-classic.context-dark.bg-gray-21
+	.container
+		.row.row-10.justify-content-sm-between
+			.col-sm-6
+				+rights
+			.col-sm-6.text-sm-right
+				.right-1
+					a(href=links.userAgreement target='_blank')
+						span Пользовательское соглашение
+						//- span.icon.mdi.mdi-plus
+						//- | Submit Property
+						
+script.
+	"use strict";
+	let subscribe = () => {
+		let form = $("#subscribe-form")
+				,data = { 'g-recaptcha-response': grecaptcha.getResponse($("#recaptcha-footer").attr('data-widget-id')) }
+				,email = $('#subscribe-form-email').val()
+				,isAllValid = grecaptcha.getResponse($("#recaptcha-footer").attr('data-widget-id')) && email;
+
+		if (isAllValid) {
+			$.ajax({
+				type: 'POST',
+				url: '/api/check-recaptcha',
+				data: data,
+				complete (res) {
+					if (res.success) {
+						$.ajax({
+							type: 'POST',
+							url: '/api/create-subscriber',
+							data: { email },
+							complete (res) {
+								if (res.responseJSON && res.responseJSON.success) {
+									showSnack('success', 'Спасибо за подписку!');
+									form[0].reset();
+									grecaptcha.reset();
+								} else if (res.responseJSON && res.responseJSON.double) showSnack('error', 'У вас уже есть подписка');
+								else showSnack('error', 'Что-то пошло не так');
+							}
+						});
+					} else showSnack('error', 'Проверка не пройдена');
+				}
+			});
+		} else showSnack('error', 'Все поля обязательны');
+	};
+	$(document).ready(() => { 
+		let form = $("#subscribe-form");
+		form.on('submit', (e) => {
+			e.preventDefault();
+		});
+	});

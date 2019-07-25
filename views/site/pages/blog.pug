@@ -1,0 +1,39 @@
+extends  ../_skeleton
+
+//- Includes
+//- include ../components/_ui-posts
+	
+block variables
+	- var activeCategory = 'info'
+	- var pageName = 'Блог'
+
+block page
+	include ../sections/_header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'centr-sdelok/main-top1.jpg',
+		data: '45'
+	})
+
+	// Section Blog
+	#app
+		section.section.section-md.bg-gray-12
+			.container
+				.row.row-40.row-lg-60
+					.col-md-6.col-xl-4(v-for='(post, i) in posts' :key='i' v-if='posts.length > 0')
+						post(:post='post')
+		section.section.section-xs.bg-gray-12.text-center
+			.container
+				.group-middle
+					button.button.button-icon.button-icon-left.button-default-outline(ref='loadMoreBtn' @click='getPosts')
+						span.icon.mdi.mdi-cached
+						| &nbsp;Показать еще
+	
+	include ../sections/_footer-classic
+
+	script(src='js/plugins/nprogress.js')
+	script(src='js/plugins/moment-with-locales.js')
+	script(src="https://unpkg.com/axios/dist/axios.min.js")
+	script(src='js/vue/blog.js')

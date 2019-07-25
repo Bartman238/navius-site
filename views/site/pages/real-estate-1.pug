@@ -1,0 +1,493 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-card
+include ../components/_ui-box-modern
+include ../components/_ui-product-classic
+include ../components/_ui-box-category
+include ../components/_ui-posts
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Real Estate 1'
+
+block page
+	// Page Header
+	include ../sections/_header-classic
+
+	// FScreen
+	section.section
+		.range
+			.cell-xl-6_lg.box-1-cell.height-fill.context-dark
+				.box-1-bg-shape
+					img(src='images/bg-shape-1.svg' alt='' role='presentation').box-1-bg-image
+
+				.cell-inner.box-1-outer: .box-1
+					h2 Find Your Property
+					form.rd-form
+						.row.row-x-20.row-20
+							.col-sm-6.col-lg-12.col-xl-6
+								.form-wrap.form-wrap-validation
+									select.form-input.select-filter(
+									name='search-property-location'
+									data-style='modern'
+									data-class='select-dropdown-context-dark'
+									data-placeholder='Choose Location'
+									data-minimum-results-for-search='Infinity'
+									data-constraints='@Required')
+										option(label='placeholder')
+										option(value='2') Alaska
+										option(value='3') Arizona
+										option(value='4') Arkansas
+										option(value='5') California
+										option(value='6') Colorado
+										option(value='7') Connecticut
+										option(value='8') Delaware
+										option(value='9') Florida
+									span.select-arrow
+							.col-sm-6
+								.form-wrap.form-wrap-validation
+									select.form-input.select-filter(
+									name='search-property-type'
+									data-style='modern'
+									data-class='select-dropdown-context-dark'
+									data-placeholder='Property Type'
+									data-minimum-results-for-search='Infinity'
+									data-constraints='@Required')
+										option(label='placeholder')
+										option(value='2') Apartment
+										option(value='3') House
+										option(value='4') Lot
+									span.select-arrow
+							.col-sm-4.col-lg-6.col-xl-4
+								.form-wrap.form-wrap-validation
+									select.form-input.select-filter(
+									name='search-property-status'
+									data-style='modern'
+									data-class='select-dropdown-context-dark'
+									data-placeholder='Property Status'
+									data-minimum-results-for-search='Infinity'
+									data-constraints='@Required')
+										option(label='placeholder')
+										option(value='2') For Sale
+										option(value='3') For Rent
+									span.select-arrow
+							.col-sm-4.col-lg-6.col-xl-4
+								.form-wrap.form-wrap-validation
+									select.form-input.select-filter(
+									name='search-property-bathrooms'
+									data-style='modern'
+									data-class='select-dropdown-context-dark'
+									data-placeholder='Min Baths'
+									data-minimum-results-for-search='Infinity'
+									data-constraints='@Required')
+										option(label='placeholder')
+										option(value='1') 1
+										option(value='2') 2
+										option(value='3') 3
+										option(value='4') 4
+										option(value='5') 5
+										option(value='6') 6
+										option(value='7') 7
+										option(value='8') 8
+										option(value='9') 9
+							.col-sm-4.col-lg-6.col-xl-4
+								.form-wrap.form-wrap-validation
+									select.form-input.select-filter(
+									name='search-property-bedrooms'
+									data-style='modern'
+									data-class='select-dropdown-context-dark'
+									data-placeholder='Min Beds'
+									data-minimum-results-for-search='Infinity'
+									data-constraints='@Required')
+										option(label='placeholder')
+										option(value='1') 1
+										option(value='2') 2
+										option(value='3') 3
+										option(value='4') 4
+										option(value='5') 5
+										option(value='6') 6
+										option(value='7') 7
+										option(value='8') 8
+										option(value='9') 9
+
+						.rd-range-outer
+							p.rd-range-caption Price Range ($)
+							// RD Range
+							.rd-range(
+							data-min='50' data-max='10000'
+							data-start='[50, 10000]'
+							data-step='10'
+							data-tooltip='true'
+							data-min-diff='100')
+
+						.rd-range-outer
+							p.rd-range-caption Area (Sq Ft)
+							// RD Range
+							.rd-range(
+							data-min='70' data-max='20000'
+							data-start='[70, 20000]'
+							data-step='10'
+							data-tooltip='true'
+							data-min-diff='100')
+
+						.layout-5
+							.layout-5-item.layout-5-item_primary
+								.panel-3#panel-3
+									.panel-3-header(data-multitoggle='#panel-3')
+										.panel-3-toggle
+										p.panel-3-title Look for certain features
+									.panel-3-content: .panel-3-content-inner
+										ul.list-inline.list-inline-sm
+											li
+												label.checkbox-inline
+													input(name='checkbox-1' value='checkbox-1' type='checkbox')
+													| Central Heating
+											li
+												label.checkbox-inline
+													input(name='checkbox-2' value='checkbox-2' type='checkbox')
+													| Home Theater
+											li
+												label.checkbox-inline
+													input(name='checkbox-3' value='checkbox-3' type='checkbox')
+													| Lawn
+											li
+												label.checkbox-inline
+													input(name='checkbox-4' value='checkbox-4' type='checkbox')
+													| Wi-Fi
+											li
+												label.checkbox-inline
+													input(name='checkbox-5' value='checkbox-5' type='checkbox')
+													| Gym
+							.layout-5-item: a.button.button-secondary-outline(href='search-results-2.html' style='min-width: 150px;') Search
+							
+			.cell-xl-6_sm.height-fill
+				.box-2
+					// Owl Carousel
+					.owl-carousel(
+					data-items='1'
+					data-sm-items='2'
+					data-lg-items='1'
+					data-xl-items='2'
+					data-dots='false'
+					data-nav='false'
+					data-nav-custom='#owl-outer-nav'
+					data-loop='true'
+					data-margin='30'
+					data-autoplay='true'
+					data-autoplay-speed='3500'
+					data-stage-padding='0'
+					data-mouse-drag='false')
+						a.product-corporate.context-dark(href='single-property.html' style='background-image: url(images/real-estate-1-1-474x577.jpg);'): .product-corporate-inner
+							.product-corporate-caption
+								h3.product-corporate-title 401 Biscayne Boulevard, Miami
+								h4.product-corporate-info 3 bedrooms, $240\day
+						a.product-corporate.context-dark(href='single-property.html' style='background-image: url(images/real-estate-1-2-474x577.jpg);'): .product-corporate-inner
+							.product-corporate-caption
+								h3.product-corporate-title 3895 NW 107th Ave, Doral
+								h4.product-corporate-info 2 bedrooms, $130\day
+						a.product-corporate.context-dark(href='single-property.html' style='background-image: url(images/real-estate-1-3-474x577.jpg);'): .product-corporate-inner
+							.product-corporate-caption
+								h3.product-corporate-title 3782 Broadway St, San Francisco
+								h4.product-corporate-info 2 bedrooms, $290\day
+						a.product-corporate.context-dark(href='single-property.html' style='background-image: url(images/real-estate-1-4-474x577.jpg);'): .product-corporate-inner
+							.product-corporate-caption
+								h3.product-corporate-title 9021 Charter Oak Ln, San Diego
+								h4.product-corporate-info 1 bedroom, $210\day
+
+					.box-2-footer: .box-2-footer-inner
+						h3 Recent Properties
+						#owl-outer-nav.owl-outer-nav
+							button.owl-arrow.owl-arrow-prev
+								span.icon.fl-budicons-free-left161
+								span prev
+							button.owl-arrow.owl-arrow-next
+								span next
+								span.icon.fl-budicons-free-right163
+
+	// Icon List
+	section.section.section-lg.bg-default
+		.container
+			.row.row-30
+				.col-md-6.col-lg-4
+					+box-modern({
+						icon: 'fl-bigmug-line-big104',
+						title: 'Various Locations',
+						text: 'We have lots of properties in various locations available for purchase.'
+					})
+				.col-md-6.col-lg-4
+					+box-modern({
+						icon: 'fl-bigmug-line-wallet26',
+						title: 'No Commission',
+						text: 'Opportunity to acquire a quality apartment for rent without having to pay any commission.'
+					})
+				.col-md-6.col-lg-4
+					+box-modern({
+						icon: 'fl-bigmug-line-search74',
+						title: 'View Apartments',
+						text: 'View apartment listings with photos, HD videos, virtual tours, 3D floor plans etc.'
+					})
+
+	// Featured Properties
+	section.section.section-lg.bg-gray-12
+		.container
+			.layout-4
+				h2.heading-decoration-1: span.heading-inner Featured Properties
+				.layout-4-item
+					ul.list-inline-bordered.heading-7
+						li: a(href='#') For Rent
+						li: a(href='#') For Sale
+
+			.row.row-50
+				.col-md-6.col-lg-4
+					+product-classic({
+						images: [
+							'featured-properties-01-480x287',
+							'featured-properties-02-480x287',
+							'featured-properties-03-480x287',
+							'featured-properties-04-480x287'],
+						price: '$5000\\mo',
+						title: '401 Biscayne Boulevard, Miami',
+						sq: '480',
+						bathrooms: '2',
+						bedrooms: '2',
+						garage: '1'
+					})
+				.col-md-6.col-lg-4
+					+product-classic({
+						images: [
+							'featured-properties-05-480x287',
+							'featured-properties-06-480x287',
+							'featured-properties-07-480x287',
+							'featured-properties-08-480x287'],
+						price: '$2500\\mo',
+						title: '923 Folsom St, San Francisco',
+						sq: '535',
+						bathrooms: '2',
+						bedrooms: '3',
+						garage: '1'
+					})
+				.col-md-6.col-lg-4
+					+product-classic({
+						images: [
+							'featured-properties-09-480x287',
+							'featured-properties-10-480x287',
+							'featured-properties-11-480x287',
+							'featured-properties-12-480x287'],
+						price: '$5000\\mo',
+						title: '623 Willow Rd, Dallas',
+						sq: '530',
+						bathrooms: '2',
+						bedrooms: '2',
+						garage: '2'
+					})
+				.col-md-6.col-lg-4
+					+product-classic({
+						images: [
+							'featured-properties-13-480x287',
+							'featured-properties-14-480x287',
+							'featured-properties-15-480x287',
+							'featured-properties-16-480x287'],
+						price: '$9340\\mo',
+						title: '225 Maywood Dr, San Francisco',
+						sq: '430',
+						bathrooms: '1',
+						bedrooms: '1',
+						garage: '1'
+					})
+				.col-md-6.col-lg-4
+					+product-classic({
+						images: [
+							'featured-properties-17-480x287',
+							'featured-properties-18-480x287',
+							'featured-properties-19-480x287',
+							'featured-properties-20-480x287'],
+						price: '$5000\\mo',
+						title: '2888 Bush St, San Francisco',
+						sq: '570',
+						bathrooms: '3',
+						bedrooms: '2',
+						garage: '1'
+					})
+				.col-md-6.col-lg-4
+					+product-classic({
+						images: [
+							'featured-properties-21-480x287',
+							'featured-properties-22-480x287',
+							'featured-properties-23-480x287',
+							'featured-properties-24-480x287'],
+						price: '$4563\\mo',
+						title: '275 Lake Ave, Chicago',
+						sq: '630',
+						bathrooms: '2',
+						bedrooms: '3',
+						garage: '2'
+					})
+				.col-12.text-center
+					a.button.button-primary(href='properties-grid.html') View all properties
+
+	// Counters
+	+parallax({
+		img: 'images/bg-02-1920x916.jpg'
+	}).section-lg.context-dark.text-center.bg-darkblue-2_1
+		.container
+			.row.row-30
+				.col-6.col-md-3
+					// Box counter
+					article.box-counter
+						.box-counter-main
+							span 860
+						p.box-counter-title Properties on Map
+
+				.col-6.col-md-3
+					// Box counter
+					article.box-counter
+						.box-counter-main
+							.counter 29
+						p.box-counter-title Professional Agents
+
+				.col-6.col-md-3
+					// Box counter
+					article.box-counter
+						.box-counter-main
+							.counter 10
+							span k
+						p.box-counter-title Happy Clients
+
+				.col-6.col-md-3
+					// Box counter
+					article.box-counter
+						.box-counter-main
+							.counter 15
+						p.box-counter-title New Apartments Daily
+
+	// Categories
+	section.section.section-lg.bg-default
+		.container
+			h2.heading-decoration-1: span.heading-inner Categories
+			.row.row-30
+				.col-md-6.col-lg-7
+					+box-category({
+						img: 'categories-1-670x307',
+						title: 'Studio Apartments',
+						subtitle: '8 Properties'
+					})
+				.col-md-6.col-lg-5
+					+box-category({
+						img: 'categories-2-469x307',
+						title: 'Swimming Pool',
+						subtitle: '8 Properties'
+					})
+				.col-md-6.col-lg-4
+					+box-category({
+						img: 'categories-3-370x307',
+						title: 'Luxury Houses',
+						subtitle: '8 Properties'
+					})
+				.col-md-6.col-lg-4
+					+box-category({
+						img: 'categories-4-370x307',
+						title: 'Extra Bedroom',
+						subtitle: '8 Properties'
+					})
+				.col-md-6.col-lg-4
+					+box-category({
+						img: 'categories-5-370x307',
+						title: 'Cozy Houses',
+						subtitle: '8 Properties'
+					})
+
+
+	// What People Say
+	section.section.section-lg.bg-gray-12
+		.container
+			h2.heading-decoration-1: span.heading-inner What People Say
+		.container.container-wide
+			// Owl Carousel
+			.owl-carousel(
+			data-items='1'
+			data-md-items='2'
+			data-lg-items='3'
+			data-xl-items='4'
+			data-dots='true'
+			data-nav='false'
+			data-stage-padding='0'
+			data-loop='false'
+			data-margin='30'
+			data-mouse-drag='false')
+				article.quote-modern: .quote-modern-inner
+					time.quote-modern-time(datetime='2018') March 15, 2018
+					.quote-modern-main
+						p Your property managers have been active in their response to repairs and always patient with our frustrations. You have always found us wonderful tenants.
+					.quote-modern-meta-outer
+						+jpg('testimonials-1-57x57').quote-modern-avatar
+						.quote-modern-meta
+							h4.quote-modern-cite Karen Sanders
+							p.quote-modern-position Pharmacist
+				article.quote-modern: .quote-modern-inner
+					time.quote-modern-time(datetime='2018') March 15, 2018
+					.quote-modern-main
+						p We recently rented an apartment through your site, and have been looked after by James Thompson. He provided us with utmost support on every property issue.
+					.quote-modern-meta-outer
+						+jpg('testimonials-2-57x57').quote-modern-avatar
+						.quote-modern-meta
+							h4.quote-modern-cite Walter Williams
+							p.quote-modern-position Lifeguard
+				article.quote-modern: .quote-modern-inner
+					time.quote-modern-time(datetime='2018') March 15, 2018
+					.quote-modern-main
+						p I have always found your team to be extremely prompt and professional with all dealings I have had with them. You always keep me updated on the progress.
+					.quote-modern-meta-outer
+						+jpg('testimonials-3-57x57').quote-modern-avatar
+						.quote-modern-meta
+							h4.quote-modern-cite Kate Anderson
+							p.quote-modern-position Decorator
+				article.quote-modern: .quote-modern-inner
+					time.quote-modern-time(datetime='2018') March 15, 2018
+					.quote-modern-main
+						p Your advice and support from our initial meeting through liaising with current tenants and a polished marketing program all contributed to a great sale process, thanks!
+					.quote-modern-meta-outer
+						+jpg('testimonials-4-57x57').quote-modern-avatar
+						.quote-modern-meta
+							h4.quote-modern-cite Peter Smith
+							p.quote-modern-position Historian
+
+	// Agents
+	section.section.section-lg.bg-default
+		.container
+			h2.heading-decoration-1: span.heading-inner Our Agents
+			include ../includes/_row-agents
+
+	// FAQ
+	section.section.section-lg.bg-default
+		.container
+			include ../includes/_box-info
+
+	// Latest Blog Posts
+	section.section.section-lg.bg-gray-12
+		.container
+			h2.heading-decoration-1: span.heading-inner Latest Blog Posts
+			.row.row-40.row-lg-60
+				.col-md-6.col-xl-4
+					+post-default({
+						image: 'blog-01-736x540',
+						title: 'Special Unveiling of 568 N. Tigertail Road',
+						text: 'Our Principal and Partner, Samuel McMillan, recently celebrated the unveiling of 568 N. Tigertail Road, a newly-constructed estate'
+					})
+				.col-md-6.col-xl-4
+					+post-default({
+						image: 'blog-02-736x540',
+						title: 'Turks and Caicos Villa to be Sold for Record $7.6M',
+						text: 'The Agency is pleased to announce the sale of 24 Cherokee Road for $7.625 million—the highest-priced residential sale in Turks and'
+					})
+				.col-md-6.col-xl-4
+					+post-default({
+						image: 'blog-03-736x540',
+						title: 'How We Build a Better LA for Fifth Year in a Row',
+						text: 'Last week, we partnered with Habitat for Humanity of Greater Los Angeles (Habitat LA) for the fifth year in a row for a build day '
+					})
+
+	include ../sections/_section-partners
+
+	// Page Footer
+	include ../sections/_footer-classic

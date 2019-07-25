@@ -1,0 +1,71 @@
+extends  ../_skeleton
+
+//- Includes
+//- include ../components/_ui-box-events
+include ../components/_ui-repeat-event-popup
+
+block variables
+	- var activeCategory = 'events'
+	- var pageName = 'Семинары'
+
+block page
+	include ../sections/_header-classic
+	
+	// Repeat Event popup
+	+repeat-event-popup()
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'centr-sdelok/main-top1.jpg',
+		data: '45'
+	})
+
+	#app
+		section.section.section-xs.bg-gray-12.text-center
+			.container
+				.row
+					.col-sm
+					.col-sm-6
+						a.button.button-sm.button-icon.button-icon-left.button-default-outline.repeat-event-popup(href="#repeat-event-popup")
+							span.icon.mdi.mdi-refresh
+							| &nbsp;Хочу повтор семинара
+					.col-sm
+
+		//- .divider-section.bg-gray-20
+
+		section.section.section-md.bg-gray-12(style="padding-top: 20px;")
+			.container
+				h2.heading-decoration-1: span.heading-inner {{ nextMonthName }}
+				div(v-if='nextChunks.length !== 0' style='margin-top: 40px;')
+					.row(v-for='(chunk, i) in nextChunks' :key='i')
+						.col-sm-4(v-for='evt in chunk' :key='evt._id')
+							event(:event='evt')
+				div.text-center(v-else style='margin-top: 40px;')
+					h4 Список семинаров на согласовании
+
+		section.section.section-md.bg-gray-12
+			.container
+				h2.heading-decoration-1: span.heading-inner {{ currMonthName }}
+				div(v-if='currChunks.length !== 0' style='margin-top: 40px;')
+					.row(v-for='(chunk, i) in currChunks' :key='i')
+						.col-sm-4(v-for='evt in chunk' :key='evt._id')
+							event(:event='evt')
+				div.text-center(v-else style='margin-top: 40px;')
+					h4 Список семинаров на согласовании
+
+		section.section.section-md.bg-gray-12(v-if='prevChunks.length !== 0')
+			.container
+				h2.heading-decoration-1: span.heading-inner {{ prevMonthName }}
+				div(style='margin-top: 40px;')
+					.row(v-for='(chunk, i) in prevChunks' :key='i')
+						.col-sm-4(v-for='evt in chunk' :key='evt._id')
+							event(:event='evt')
+
+	// Page Footer
+	include ../sections/_footer-classic
+
+	script(src='js/plugins/nprogress.js')
+	script(src='js/plugins/moment-with-locales.js')
+	script(src="https://unpkg.com/axios/dist/axios.min.js")
+	script(src="js/vue/events.js")

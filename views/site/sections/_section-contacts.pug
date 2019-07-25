@@ -1,0 +1,29 @@
+section.section.section-lg.bg-gray-12
+	.container
+		.layout-bordered
+			.layout-bordered-aside: .layout-bordered-aside-inner
+				div#map
+				h2 Наши контакты
+				p По всем вопросам обращайтесь по телефону или e-mail, а лучше приходите к нам в офис!
+				.layout-bordered-aside-group
+					dl.list-terms-1
+						dt Телефон:
+						dd
+							span.icon.mdi-phone.mdi
+							a.list-terms-1-link-big(href='tel:' + siteVars.global.tel) #{siteVars.global.tel}
+					dl.list-terms-1
+						dt E-mail:
+						dd
+							span.icon.mdi.mdi-email-outline
+							a(href='mailto:' + siteVars.global.infoEmail) #{siteVars.global.infoEmail}
+					dl.list-terms-1
+						dt Главный офис:
+						dd
+							span.icon.mdi.mdi-map-marker
+							span(style='color: black;') #{siteVars.global.fullAddress}
+
+			.layout-bordered-main
+				.layout-bordered-main-inner
+					iframe(src="https://yandex.ru/map-widget/v1/?um=constructor%3A19701f78af175c8ff6c259610b8b8e50c9aecf0ff2a4fbadc8290cab174bfe42&amp;source=constructor" width="600" height="500" frameborder="0")
+					//- iframe(src="https://yandex.ru/map-widget/v1/?um=constructor%3A19701f78af175c8ff6c259610b8b8e50c9aecf0ff2a4fbadc8290cab174bfe42&amp;source=constructor" width="524" height="417" frameborder="0")
+					//- iframe(src="https://google.com/maps/embed/v1/place?key=AIzaSyBhTkDTSHJG5N-tpgiCzdew6MaCanFYfh4&callback=initMap" frameborder="0" width="100%" height="450")

@@ -1,0 +1,190 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-block-agent-horizontal
+include ../components/_ui-product-classic
+	
+block variables
+	- var activeCategory = 'properties'
+	- var pageName = 'Properties Grid'
+
+block page
+	include ../sections/_header-classic
+		
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'breadcrumbs-bg-06-1922x427',
+		data: '37'
+	})
+	
+	section.section.section-md.bg-gray-12
+		.container
+			.row.row-50
+				.col-lg-7.col-xl-8
+					.row.row-30
+						.col-12
+							ul.block-info-1
+								li
+									.form-wrap-group-1
+										.form-wrap
+											select.form-input.select-filter(
+											data-style='modern' 
+											data-placeholder='Publication Date'
+											data-minimum-results-for-search='Infinity'
+											data-constraints='@Required')
+												option(label='placeholder')
+												option(value='2') Monday
+												option(value='3') Tuesday
+												option(value='4') Wednesday
+												option(value='5') Thursday
+												option(value='6') Friday
+												option(value='7') Saturday
+												option(value='8') Sunday
+										.form-wrap
+											select.form-input.select-filter(
+											data-style='modern' 
+											data-placeholder='Price Low to High'
+											data-minimum-results-for-search='Infinity'
+											data-constraints='@Required')
+												option(label='placeholder')
+												option(value='1') Price Low to High
+												option(value='2') Price High to Low
+												option(value='3') Most Popular
+												option(value='4') Top Rated
+												option(value='5') Best Sellers
+								li
+									ul.list-layout
+										li: a.icon.icon-2.fa-reorder(href='properties-list.html')
+										li: a.icon.icon-2.mdi.mdi-view-grid.active(href='#')
+										
+						.col-12
+							.row.row-50
+								.col-md-6.col-lg-12.col-xl-6
+									+product-classic({
+										images: [
+											'featured-properties-01-480x287',
+											'featured-properties-02-480x287',
+											'featured-properties-03-480x287',
+											'featured-properties-04-480x287'],
+										price: '$5000\\mo',
+										title: '401 Biscayne Boulevard, Miami',
+										sq: '480',
+										bathrooms: '2',
+										bedrooms: '2',
+										garage: '1'
+									})
+								.col-md-6.col-lg-12.col-xl-6
+									+product-classic({
+										images: [
+											'featured-properties-05-480x287',
+											'featured-properties-06-480x287',
+											'featured-properties-07-480x287',
+											'featured-properties-08-480x287'],
+										price: '$2500\\mo',
+										title: '923 Folsom St, San Francisco',
+										sq: '535',
+										bathrooms: '2',
+										bedrooms: '3',
+										garage: '1'
+									})
+								.col-md-6.col-lg-12.col-xl-6
+									+product-classic({
+										images: [
+											'featured-properties-09-480x287',
+											'featured-properties-10-480x287',
+											'featured-properties-11-480x287',
+											'featured-properties-12-480x287'],
+										price: '$5000\\mo',
+										title: '623 Willow Rd, Dallas',
+										sq: '530',
+										bathrooms: '2',
+										bedrooms: '2',
+										garage: '2'
+									})
+								.col-md-6.col-lg-12.col-xl-6
+									+product-classic({
+										images: [
+											'featured-properties-13-480x287',
+											'featured-properties-14-480x287',
+											'featured-properties-15-480x287',
+											'featured-properties-16-480x287'],
+										price: '$9340\\mo',
+										title: '225 Maywood Dr, San Francisco',
+										sq: '430',
+										bathrooms: '1',
+										bedrooms: '1',
+										garage: '1'
+									})
+								.col-md-6.col-lg-12.col-xl-6
+									+product-classic({
+										images: [
+											'featured-properties-17-480x287',
+											'featured-properties-18-480x287',
+											'featured-properties-19-480x287',
+											'featured-properties-20-480x287'],
+										price: '$5000\\mo',
+										title: '2888 Bush St, San Francisco',
+										sq: '570',
+										bathrooms: '3',
+										bedrooms: '2',
+										garage: '1'
+									})
+								.col-md-6.col-lg-12.col-xl-6
+									+product-classic({
+										images: [
+											'featured-properties-21-480x287',
+											'featured-properties-22-480x287',
+											'featured-properties-23-480x287',
+											'featured-properties-24-480x287'],
+										price: '$4563\\mo',
+										title: '275 Lake Ave, Chicago',
+										sq: '630',
+										bathrooms: '2',
+										bedrooms: '3',
+										garage: '2'
+									})
+								.col-md-6.col-lg-12.col-xl-6
+									+product-classic({
+										images: [
+											'featured-properties-25-480x287',
+											'featured-properties-26-480x287',
+											'featured-properties-27-480x287',
+											'featured-properties-28-480x287'],
+										price: '$5985\\mo',
+										title: '9021 Charter Oak Ln, San Diego',
+										sq: '485',
+										bathrooms: '3',
+										bedrooms: '2',
+										garage: '2'
+									})
+								.col-md-6.col-lg-12.col-xl-6
+									+product-classic({
+										images: [
+											'featured-properties-29-480x287',
+											'featured-properties-30-480x287',
+											'featured-properties-31-480x287',
+											'featured-properties-32-480x287'],
+										price: '$3045\\mo',
+										title: '3782 Broadway St, San Francisco',
+										sq: '564',
+										bathrooms: '2',
+										bedrooms: '1',
+										garage: '1'
+									})
+						.col-12
+							ul.pagination-custom
+								li: a.active(href='#') 1
+								li: a(href='#') 2
+								
+				.col-lg-5.col-xl-4
+					// include ../components/_agent-sidebar-right
+					.row.row-50
+						.col-md-6.col-lg-12
+							include ../includes/_sidebar-block-1
+						.col-md-6.col-lg-12
+							include ../includes/_sidebar-block-2
+						.col-md-6.col-lg-12
+							include ../includes/_sidebar-block-3
+
+	include ../sections/_footer-classic

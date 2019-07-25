@@ -1,0 +1,124 @@
+extends  ../_skeleton
+
+//- Includes
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Testimonials'
+
+block page
+	include ../sections/_header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'breadcrumbs-bg-06-1922x427',
+		data: '38'
+	})
+
+	// What People Say #1
+	section.section.section-lg.bg-gray-12
+		.container
+			h2.heading-decoration-1: span.heading-inner What People Say #1
+			// Owl Carousel
+			.owl-carousel.owl-carousel-spacing.mt-35.mt-lg-60(
+			data-items='1'
+			data-md-items='2'
+			data-lg-items='3'
+			data-dots='true'
+			data-nav='false'
+			data-stage-padding='0'
+			data-loop='false'
+			data-margin='30'
+			data-mouse-drag='false')
+				blockquote.quote-light
+					+quote-mark.quote-light-mark
+					.quote-light-header
+						+jpg('testimonials-1-57x57').quote-light-avatar
+						.quote-light-meta
+							h4.quote-light-cite Karen Sanders
+							p.quote-light-position Pharmacist
+					.quote-light-main
+						p Your property managers have been active in their response to repairs and always patient with our frustrations. You have always found us wonderful tenants.
+
+				blockquote.quote-light
+					+quote-mark.quote-light-mark
+					.quote-light-header
+						+jpg('testimonials-2-57x57').quote-light-avatar
+						.quote-light-meta
+							h4.quote-light-cite Walter Williams
+							p.quote-light-position Lifeguard
+					.quote-light-main
+						p We recently rented an apartment through your site, and have been looked after by James Thompson. He provided us with utmost support on every property issue.
+
+				blockquote.quote-light
+					+quote-mark.quote-light-mark
+					.quote-light-header
+						+jpg('testimonials-3-57x57').quote-light-avatar
+						.quote-light-meta
+							h4.quote-light-cite Kate Anderson
+							p.quote-light-position Decorator
+					.quote-light-main
+						p I have always found your team to be extremely prompt and professional with all dealings I have had with them. You always keep me updated on the progress.
+
+				blockquote.quote-light
+					+quote-mark.quote-light-mark
+					.quote-light-header
+						+jpg('testimonials-4-57x57').quote-light-avatar
+						.quote-light-meta
+							h4.quote-light-cite Peter Smith
+							p.quote-light-position Historian
+					.quote-light-main
+						p Your advice and support from our initial meeting through liaising with current tenants and a polished marketing program all contributed to a great sale process.
+
+				blockquote.quote-light
+					+quote-mark.quote-light-mark
+					.quote-light-header
+						+jpg('testimonials-5-57x57').quote-light-avatar
+						.quote-light-meta
+							h4.quote-light-cite Alice Lewis
+							p.quote-light-position Office Manager
+					.quote-light-main
+						p You were quick to understand my needs and steer me in the right direction. The professionalism and warmth of your team made the process less stressful.
+
+				blockquote.quote-light
+					+quote-mark.quote-light-mark
+					.quote-light-header
+						+jpg('testimonials-6-57x57').quote-light-avatar
+						.quote-light-meta
+							h4.quote-light-cite Dennis Brooks
+							p.quote-light-position Entrepreneur
+					.quote-light-main
+						p Working with your team is a great experience. Expert guidance; great customer care; awesome marketing! Thank you for the great team effort!
+
+	// What People Say #1
+	section.section.section-lg.bg-gray-12
+		.container
+			h2.heading-decoration-1: span.heading-inner What People Say #2
+			.row.row-30.justify-content-center.justify-content-md-start.mt-lg-60
+				.col-sm-10.col-md-6
+					// Quote Modern
+					article.quote-modern: .quote-modern-inner
+						time.quote-modern-time(datetime='2018') March 15, 2018
+						.quote-modern-main
+							p I have always found your team to be extremely prompt and professional with all dealings I have had with them. You always keep me updated on the progress.
+						.quote-modern-meta-outer
+							+jpg('testimonials-3-57x57').quote-modern-avatar
+							.quote-modern-meta
+								h4.quote-modern-cite Kate Anderson
+								p.quote-modern-position Decorator
+				.col-sm-10.col-md-6
+					// Quote Modern
+					article.quote-modern: .quote-modern-inner
+						time.quote-modern-time(datetime='2018') March 15, 2018
+						.quote-modern-main
+							p We recently rented an apartment through your site, and have been looked after by James Thompson. He provided us with utmost support on every property issue.
+						.quote-modern-meta-outer
+							+jpg('testimonials-4-57x57').quote-modern-avatar
+							.quote-modern-meta
+								h4.quote-modern-cite Walter Williams
+								p.quote-modern-position Lifeguard
+
+
+	// Page Footer
+	include ../sections/_footer-classic

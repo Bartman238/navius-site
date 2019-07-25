@@ -1,0 +1,80 @@
+extends  ../_skeleton
+
+//- Includes
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Gallery Grid'
+
+block page
+	include ../sections/_header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'breadcrumbs-bg-06-1922x427',
+		data: '38'
+	})
+	
+	section.section.section-md.bg-gray-12.oh.text-center
+		.container.isotope-wrap
+			// Isotope Filters
+			.isotope-filters.isotope-filters-line
+				ul.isotope-filters-list#isotope-filters
+					li: a.active(data-isotope-filter='*' href='#') All
+					li: a(data-isotope-filter='for-sale' href='#') For Sale
+					li: a(data-isotope-filter='for-rent' href='#') For Rent
+
+			// Isotope Content
+			.isotope.row.row-50(data-isotope-layout='fitRows')
+				.col-sm-6.col-md-4.isotope-item(data-filter='for-sale')
+					// Product Modern
+					a.product-modern(href='single-property.html')
+						.product-modern-media
+							figure.product-modern-figure: +jpg('gallery-grid-1-370x230').product-modern-image
+							.product-modern-overlay
+						.product-modern-caption
+							h5.product-modern-title 401 Biscayne Boulevard, Miami
+				.col-sm-6.col-md-4.isotope-item(data-filter='for-sale')
+					// Product Modern
+					a.product-modern(href='single-property.html')
+						.product-modern-media
+							figure.product-modern-figure: +jpg('gallery-grid-2-370x230').product-modern-image
+							.product-modern-overlay
+						.product-modern-caption
+							h5.product-modern-title 923 Folsom St, San Francisco
+				.col-sm-6.col-md-4.isotope-item(data-filter='for-rent')
+					// Product Modern
+					a.product-modern(href='single-property.html')
+						.product-modern-media
+							figure.product-modern-figure: +jpg('gallery-grid-3-370x230').product-modern-image
+							.product-modern-overlay
+						.product-modern-caption
+							h5.product-modern-title 225 Maywood Dr, San Francisco
+				.col-sm-6.col-md-4.isotope-item(data-filter='for-sale')
+					// Product Modern
+					a.product-modern(href='single-property.html')
+						.product-modern-media
+							figure.product-modern-figure: +jpg('gallery-grid-4-370x230').product-modern-image
+							.product-modern-overlay
+						.product-modern-caption
+							h5.product-modern-title 623 Willow Rd, Dallas
+				.col-sm-6.col-md-4.isotope-item(data-filter='for-rent')
+					// Product Modern
+					a.product-modern(href='single-property.html')
+						.product-modern-media
+							figure.product-modern-figure: +jpg('gallery-grid-5-370x230').product-modern-image
+							.product-modern-overlay
+						.product-modern-caption
+							h5.product-modern-title 182 3rd St, Seattle
+				.col-sm-6.col-md-4.isotope-item(data-filter='for-rent')
+					// Product Modern
+					a.product-modern(href='single-property.html')
+						.product-modern-media
+							figure.product-modern-figure: +jpg('gallery-grid-6-370x230').product-modern-image
+							.product-modern-overlay
+						.product-modern-caption
+							h5.product-modern-title 35 Pond St, New York
+
+	// Page Footer
+	include ../sections/_footer-classic

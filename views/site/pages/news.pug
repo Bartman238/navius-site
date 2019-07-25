@@ -1,0 +1,45 @@
+extends  ../_skeleton
+
+//- Includes
+
+block variables
+	- var activeCategory = 'info'
+	- var pageName = 'Новости'
+
+block page
+	include ../sections/_header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'centr-sdelok/main-top1.jpg',
+		data: '45'
+	})
+	
+	#app
+		section.section.section-md.bg-gray-12.text-center
+			.container
+				.row
+					.col-sm-8
+						item(v-for="(item, i) in news" :item="item" :style="i != 0 ? 'margin-top: 20px;' : ''")
+						br
+						.group-middle
+							button.button.button-icon.button-icon-left.button-default-outline(ref='loadMoreBtn' @click='getNews')
+								span.icon.mdi.mdi-cached
+								| &nbsp;Показать еще
+					.col-sm-4
+						article.box-info-custom-1: .box-info-custom-1-inner.bg-accent
+							.box-info-custom-1-main
+								h3.box-info-custom-1-title Вы агент?
+								p У нас проходят семинары специально для вас!
+								p Посмотрите актуальный список
+							.box-info-custom-1-aside
+								a.button.button-secondary(href='/events') Семинары
+
+	// Page Footer
+	include ../sections/_footer-classic
+
+	script(src='js/plugins/nprogress.js')
+	script(src='js/plugins/moment-with-locales.js')
+	script(src="https://unpkg.com/axios/dist/axios.min.js")
+	script(src='js/vue/news.js')

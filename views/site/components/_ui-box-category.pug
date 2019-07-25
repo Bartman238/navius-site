@@ -1,0 +1,9 @@
+mixin box-category(obj)
+	// Box Category
+	article.box-category-outer
+		a.box-category.context-dark(href='search-results.html')&attributes(attributes)
+			.box-category-image-outer(style='background-image: url(/images/' + obj.img + '.jpg);')
+			.box-category-caption
+				.box-category-caption-inner
+					h3.box-category-title=obj.title
+					p.box-category-subtitle=obj.subtitle

@@ -1,0 +1,201 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-box-minimal
+include ../components/_ui-box-modern
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Typography'
+
+block page 
+	// Page Header
+	include ../sections/_header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'breadcrumbs-bg-01-1922x291'
+	})
+
+	// Base typography 
+	section.section.section-lg.bg-default
+		.container
+			.row.row-50.flex-md-row-reverse
+				.col-md-4
+					.ml-md-minus-20
+						h1 H1 Heading
+						.mt-10
+							h2.text-spacing-40 H2 Heading
+						.mt-15
+							h3 H3 Heading
+						.mt-20
+							h4 H4 Heading
+						.mt-20
+							h5.text-spacing-0 H5 Heading
+						.mt-15
+							h6.text-spacing-0 H6 Heading
+
+				.col-md-8
+					.pdr-md-30
+						h1 H1 Heading
+						p.text-gray-1.mt-30 Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.
+						.mt-40.mt-md-60
+							h2 H2 Heading
+							p.text-gray-1.mt-md-30 Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.
+						.mt-40.mt-md-70
+							h3 H3 Heading
+							p.text-gray-1.mt-md-30 Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.
+						.mt-40.mt-md-70
+							h4 H4 Heading
+							p.text-gray-1 Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.
+						.mt-40.mt-md-70
+							h5 H5 Heading
+							p.text-gray-1 Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.
+						.mt-40.mt-md-70
+							h6 H6 Heading
+							p.text-gray-1 Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.
+
+	// Blockquote
+	section.section.section-lg.bg-default
+		.container
+			.row.row-50
+				.col-lg-10.col-xl-8
+					h3 Blockquote
+					// Quote Creative
+					article.quote-creative
+						.quote-creative-left
+							+png('quote-demo-01-35x29')
+						.quote-creative-body
+							.quote-creative-text: p.q Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.
+							p.heading-4.quote-creative-cite — Dennis Williams
+
+	// HTML Text Elements
+	section.section.section-lg.bg-default
+		.container
+			.row
+				.col-lg-10.col-xl-8
+					h3 HTML Text Elements
+					p.text-block.text-gray-1
+						span.font-weight-bold Bold text
+						mark This is a highlighted text
+						span.text-strike This is a strickethrough text
+						span.text-underline This is an underlined text.
+						span Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for
+						a.link-demo(href='#') Link
+						a.link-hover(href='#') Hover link
+						a.link-press(href='#') Press link
+						span With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.
+						span.tooltip-custom(data-toggle='tooltip' data-placement='top' title='Default text') Tooltips
+
+	// Unordered List
+	section.section.section-lg.bg-default
+		.container
+			.row.row-50
+				.col-xl-8
+					h3 Unordered List
+					.mt-35
+						p.text-gray-1 We specialize in a variety of services. Our aim is to deliver the top level of customer service based on your requests.
+						ul.list-marked.text-gray-1
+							li Consulting
+							li Customer Service
+							li Innovation
+							li Management
+							li Ethics
+						p.text-gray-1 We hope that with our services you will receive the most personalized help in purchasing any kind of products you are looking for.
+
+	// Ordered List
+	section.section.section-lg.bg-default
+		.container
+			.row.row-50
+				.col-xl-8
+					h3 Ordered List
+					.mt-35
+						p.text-gray-1 We specialize in a variety of services. Our aim is to deliver the top level of customer service based on your requests.
+						ol.list-ordered.text-gray-1
+							li: span.d-inline-block Consulting
+							li: span.d-inline-block Customer Service
+							li: span.d-inline-block Innovation
+							li: span.d-inline-block Management
+							li: span.d-inline-block Ethics
+						p.text-gray-1 We hope that with our services you will receive the most personalized help in purchasing any kind of products you are looking for.
+
+	// Icon List
+	section.section.section-lg.bg-default
+		.container
+			h3 Icon List
+			.row.row-30
+				.col-md-6.col-lg-4
+					+box-modern({
+						icon: 'fl-bigmug-line-big104',
+						title: 'Various Locations',
+						text: 'We have lots of properties in various locations available for purchase.'
+					})
+				.col-md-6.col-lg-4
+					+box-modern({
+						icon: 'fl-bigmug-line-wallet26',
+						title: 'No Commission',
+						text: 'Opportunity to acquire a quality apartment for rent without having to pay any commission.'
+					})
+				.col-md-6.col-lg-4
+					+box-modern({
+						icon: 'fl-bigmug-line-search74',
+						title: 'View Apartments',
+						text: 'View apartment listings with photos, HD videos, virtual tours, 3D floor plans etc.'
+					})
+
+			.row.row-30
+				.col-sm-10.col-md-6.col-lg-4.col-xl-3
+					+box-minimal({
+						icon: 'fl-bigmug-line-big104',
+						title: 'Various Locations',
+						text: 'We have lots of properties in various locations.'
+					})
+				.col-sm-10.col-md-6.col-lg-4.col-xl-3
+					+box-minimal({
+						icon: 'fl-bigmug-line-wallet26',
+						title: 'No Commission',
+						text: 'Opportunity to acquire apartment for mortgage.'
+					})
+				.col-sm-10.col-md-6.col-lg-4.col-xl-3
+					+box-minimal({
+						icon: 'fl-bigmug-line-lock64 icon-1',
+						title: 'Privacy and Security',
+						text: 'We guarantee full privacy and security to all our clients.'
+					})
+				.col-sm-10.col-md-6.col-lg-4.col-xl-3
+					+box-minimal({
+						icon: 'fl-bigmug-line-search74 icon-2',
+						title: 'View Apartments',
+						text: 'View apartment listings with photos, HD videos etc.'
+					})
+
+	// Image Centered
+	section.section.section-lg.bg-default
+		.container
+			h3 Image Centered
+			.row: .col-lg-10.col-xl-8
+				figure.figure-light
+					+jpg('typography-1-770x485').img-centered
+					figcaption
+						p Reliable services from an award-winning company
+				p.text-gray-1 Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.
+
+	// Image
+	section.section.section-lg.bg-default
+		.container: .row: .col-lg-10.col-xl-8
+			h3 Image Left
+			.row.row-30
+				.col-md-6: +jpg('typography-1-770x485').pdr-0.pdr-md-15
+				.col-md-6: p.text-gray-1 Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.
+
+	// Image Right
+	section.section.section-lg.bg-default
+		.container: .row: .col-lg-10.col-xl-8
+			h3 Image Right
+			.row.row-30.flex-md-row-reverse
+				.col-md-6: +jpg('typography-1-770x485').pdl-0.pdl-md-15
+				.col-md-6: p.text-gray-1 Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.
+
+	// Page Footer
+	include ../sections/_footer-classic

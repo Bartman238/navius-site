@@ -1,0 +1,152 @@
+extends layouts/_layout.pug
+
+block variables
+	- var activePage = 'promo'
+	- var activeGroup = 'promo'
+
+block title
+	title Редактирование акции - Админка ЦСН
+
+block content
+	input#upload(type="file" hidden)
+	.app-title
+		div
+			h1
+				i.fa.fa-pencil-alt
+				|  Редактировать акцию
+
+		ul.app-breadcrumb.breadcrumb
+			li.breadcrumb-item
+				i.fa.fa-home.fa-lg
+			li.breadcrumb-item
+				a(href='/wtf/promo') Акции
+			li.breadcrumb-item
+				a(href='#') Редактировать акцию
+	#app
+		.row.text-right
+			.col-lg-12
+				button.btn.btn-primary.icon-btn.pull-right(@click="showEdit = true" :hidden="showEdit")
+					i.fa.fa-edit
+					| Редактировать
+				button.btn.btn-success.icon-btn(@click="modifyPromo" :hidden="!showEdit" v-if="!loading") 
+					i.fa.fa-check
+					| Сохранить
+				button.btn.btn-success.icon-btn(disabled v-else) 
+					i.fa.fa-circle-notch.fa-spin
+					| Сохраняю...
+				button.btn.btn-danger.icon-btn.pull-right(@click="deletePromo" :hidden="!showEdit" style="margin-left: 5px;")
+					i.fa.fa-trash
+					| УДАЛИТЬ
+		
+		.row(:hidden="showEdit" style='margin-top: 20px;')
+			.col-lg-4
+				.tile
+					.tile-title
+						h4.title Информация
+						hr
+					.tile-content
+						h6 Заголовок
+						p {{ title }}
+
+						h6 Действует до
+						p {{ toDate }}
+						
+						h6 Обложка
+						img(
+							:src='"/" + image.path' 
+							width='100%' 
+							height='150' 
+							style='border-radius: 5px; object-fit: cover;'
+							v-if="image.path")
+		.row(:hidden="showEdit" style='margin-top: 20px;')
+			.col-lg-12
+				.tile
+					.tile-title
+						h4.title Описание
+						hr
+					.tile-content
+						p(v-html="description")
+		.row(:hidden="showEdit" style='margin-top: 20px;')
+			.col-sm-12
+				.tile
+					.tile-title
+						h4.title Условия
+						hr
+					.tile-content
+						p(v-html="conditions")
+
+		.row(:hidden="!showEdit" style='margin-top: 20px;')
+			.col-lg-4
+				.tile
+					.tile-title
+						h4.title Информация
+						hr
+					.tile-content
+						h6 Заголовок
+						.input-group.input-group-sm
+							input.form-control#title(type='text' v-model="title" maxlength="100")
+
+						br
+						h6 Дествует до
+						.input-group.input-group-sm
+							input.form-control#toDate(type='text')
+							.input-group-append
+								.input-group-text
+									i.fa.fa-calendar
+						br
+						h6 Обложка
+						.bs-component(v-if="showProgress")
+							.progress.mb-2
+								.progress-bar.progress-bar-striped.progress-bar-animated(
+									role='progressbar', 
+									:aria-valuenow="uploadProgress", 
+									aria-valuemin='0', 
+									aria-valuemax='100', 
+									:style='"width: " + uploadProgress + "%"')
+						.input-group
+							input.form-control-file(type='file' @change="processImage" v-if="!image.path && !showProgress")
+						br
+						div
+							.post-img-container(v-if="image.path")
+								img(
+									:src='"/" + image.path' 
+									width='100%' 
+									height='150' 
+									style='border-radius: 5px; object-fit: cover;')
+								.post-img-middle(@click="image = {}")
+									.post-img-text
+										i.fa.fa-times.fa-2x(style='color: white;')
+		.row(:hidden="!showEdit")
+			.col-lg-8
+				.tile
+					.tile-title
+						h4.title Описание
+						hr
+					.tile-content
+						vue-tinymce.form-control(v-model="description" :options="tinymceOptions")
+		.row(:hidden="!showEdit")
+			.col-lg-12
+				.tile
+					.tile-title
+						h4.title Условия
+						hr
+					.tile-content
+						vue-tinymce.form-control(v-model="conditions" :options="tinymceOptions")
+
+block specific-js
+	script(src='https://unpkg.com/axios/dist/axios.min.js')
+	script(src='/js/admin-js/plugins/tinymce/tinymce.min.js')
+	script(src='/js/admin-js/plugins/bootstrap-datepicker.min.js')
+	script(src='/js/admin-js/plugins/bootstrap-datepicker.ru.js')
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-maxlength/1.7.0/bootstrap-maxlength.min.js')
+	script(src='/js/admin-js/plugins/sweetalert.min.js')
+	script(src='/js/admin-js/vue/edit-promo.js')
+	script.
+		$(document).ready(() => {
+			$('#title').maxlength({
+				alwaysShow: false,
+				threshold: 90,
+				separator: '/',
+				validate: true
+			});
+		});

@@ -1,0 +1,61 @@
+.block-info.bg-default
+	h3 Mortgage Calculator
+	form.rd-mailform.form-select(
+	data-form-output='form-output-global'
+	data-form-type='contact'
+	method='post'
+	action='bat/rd-mailform.php')
+		.form-wrap
+			input#contact-1-name.form-input(type='text' name='name' data-constraints='@Required')
+			label.form-label(for='contact-1-name') Home Value
+		.form-wrap.form-wrap-validation
+			select.form-input.select-filter(
+			data-style='modern'
+			data-placeholder='Loan Amount'
+			data-minimum-results-for-search='Infinity'
+			data-constraints='@Required')
+				option(label='placeholder')
+				option(value='2') 50000
+				option(value='3') 100000
+				option(value='4') 200000
+				option(value='5') 500000
+				option(value='6') 1000000
+				option(value='7') 1500000
+		.form-wrap.form-wrap-validation
+			select.form-input.select-filter(
+			data-style='modern'
+			data-placeholder='Term (Years)'
+			data-minimum-results-for-search='Infinity'
+			data-constraints='@Required')
+				option(label='placeholder')
+				option(value='2') 10
+				option(value='3') 15
+				option(value='4') 20
+				option(value='5') 25
+				option(value='6') 30
+				option(value='7') 40
+		.form-wrap.form-wrap-validation
+			select.form-input.select-filter(
+			data-style='modern'
+			data-placeholder='Interest Rate in %'
+			data-minimum-results-for-search='Infinity'
+			data-constraints='@Required')
+				option(label='placeholder')
+				option(value='2') 0.1%
+				option(value='3') 0.3%
+				option(value='4') 0.5%
+				option(value='5') 0.7%
+				option(value='6') 0.9%
+				option(value='7') 1%
+		ul.form-wrap-list
+			li Financed Amount:
+				=' '
+				span 0
+			li Mortgage Payments:
+				=' '
+				span 0
+			li Annual Cost of Loan:
+				=' '
+				span 0
+		.form-button
+			button.button.button-block.button-secondary(type='submit') Calculate

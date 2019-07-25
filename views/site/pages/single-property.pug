@@ -1,0 +1,278 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-card
+include ../components/_ui-product-classic
+
+block variables
+	- var activeCategory = 'properties'
+	- var pageName = 'Single Property'
+
+block page
+	include ../sections/_header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'breadcrumbs-bg-06-1922x427',
+		pageName: '401 Biscayne Boulevard, Miami',
+		data: '37'
+	})
+
+	section.section.section-md.bg-gray-12
+		.container
+			.row.row-50
+				.col-lg-7.col-xl-8
+					// Slick Carousel
+					.slick-slider-1
+						.slick-slider-price $5000\mo
+						.slick-slider.carousel-parent#parent-carousel(
+						data-arrows='true'
+						data-loop='true'
+						data-dots='false'
+						data-swipe='true'
+						data-fade='true'
+						data-items='1'
+						data-child='#child-carousel'
+						data-for='#child-carousel')
+							.item: +jpg('single-property-1-763x443')
+							.item: +jpg('single-property-2-763x443')
+							.item: +jpg('single-property-3-763x443')
+							.item: +jpg('single-property-4-763x443')
+							.item: +jpg('single-property-5-763x443')
+							.item: +jpg('single-property-6-763x443')
+
+						.slick-slider.carousel-child#child-carousel(
+						data-arrows='true'
+						data-loop='true'
+						data-dots='false'
+						data-swipe='true'
+						data-items='1'
+						data-sm-items='3'
+						data-md-items='4'
+						data-lg-items='4'
+						data-xl-items='5'
+						data-slide-to-scroll='1'
+						data-for='#parent-carousel')
+							div: .slick-slide-inner(style='background-image: url(images/single-property-1-763x443.jpg);')
+							div: .slick-slide-inner(style='background-image: url(images/single-property-2-763x443.jpg);')
+							div: .slick-slide-inner(style='background-image: url(images/single-property-3-763x443.jpg);')
+							div: .slick-slide-inner(style='background-image: url(images/single-property-4-763x443.jpg);')
+							div: .slick-slide-inner(style='background-image: url(images/single-property-5-763x443.jpg);')
+							div: .slick-slide-inner(style='background-image: url(images/single-property-6-763x443.jpg);')
+
+					.features-block: .features-block-inner
+						.features-block-item
+							ul.features-block-list
+								li
+									span.icon.hotel-icon-10
+									span 2 Bathrooms
+								li
+									span.icon.hotel-icon-05
+									span 2 Bedrooms
+								li
+									span.icon.mdi.mdi-vector-square
+									span 480 Sq Ft
+								li
+									span.icon.hotel-icon-26
+									span 1 Garage
+						.features-block-item
+							a.link.link-1(href='#')
+								span.icon.mdi.mdi-heart-outline
+								| Add to Favorites
+
+					p Choose this property if you are looking for a modern house near the ocean shore. With 2 bathrooms and 2 bedrooms as well as a single garage, it is a perfect option for a small family.
+					p This home has been completely renovated within the past year and features amazing views and sunsets of the local lake, solid wood cabinets (and loads of them), granite counters with colored glass backsplash,  sliding glass doors across the entire family room allowing beautiful views of the lake etc. Its affordable price serves as a great bonus for a family looking for an opportunity to save money on Miami real estate.
+
+					// Bootstrap collapse
+					#accordion1.card-group-custom.card-group-corporate(
+					role='tablist'
+					aria-multiselectable='false')
+						+card({
+							show: true,
+							parentId: 'accordion1',
+							number: '1',
+							header: 'Address'
+						}).card-corporate
+							.layout-1
+								dl.list-terms-inline
+									dt Address:
+									dd Biscayne Blvd
+								dl.list-terms-inline
+									dt State/County:
+									dd Florida
+								dl.list-terms-inline
+									dt City:
+									dd Miami
+								dl.list-terms-inline
+									dt Zip:
+									dd 8322
+								dl.list-terms-inline
+									dt Country:
+									dd United States
+								dl.list-terms-inline
+									dt Area:
+									dd Lake Worth
+
+					// Bootstrap collapse
+					#accordion2.card-group-custom.card-group-corporate(
+					role='tablist'
+					aria-multiselectable='false')
+						+card({
+							show: true,
+							parentId: 'accordion2',
+							number: '1',
+							header: 'Features'
+						}).card-corporate
+							ul.list-marked-2.layout-2
+								li 2 Stories
+								li Basketball Court
+								li Lawn
+								li Gym
+								li Fireplace
+								li Sprinklers
+								li Private Space
+								li Balcony
+								li Laundry
+								li Ocean View
+
+					// Bootstrap collapse
+					#accordion3.card-group-custom.card-group-corporate(
+					role='tablist'
+					aria-multiselectable='false')
+						+card({
+							show: true,
+							parentId: 'accordion3',
+							number: '1',
+							header: 'Floor Plan'
+						}).card-corporate
+							a(href='images/single-property-1-570x447.png' data-lightgallery='item').d-block.text-center
+								+png('single-property-1-570x447')
+
+					.block-group-item
+						h3 Property Map
+						.google-map-container.mt-20(
+						data-center='9870 St Vincent Place, Glasgow, DC 45 Fr 45.'
+						data-icon='images/gmap_marker_mini.png'
+						data-icon-active='images/gmap_marker_mini_active.png'
+						data-styles='[{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}]'
+						data-zoom='14')
+							.google-map.google-map-1
+							ul.google-map-markers
+								li(
+								data-location='9870 St Vincent Place, Glasgow'
+								data-description='9870 St Vincent Place, Glasgow, DC 45 Fr 45.')
+
+					// Post Share and Links
+					.blog-post-solo-footer.mt-20
+						.blog-post-solo-footer-left
+							ul.blog-post-solo-footer-list
+								li
+									span.icon.mdi.mdi-clock
+									a(href='#') February 10, 2018
+						.blog-post-solo-footer-right
+							ul.blog-post-solo-footer-list-1
+								li: span Share this post
+								li
+									ul.list-inline-1
+										li: a.icon.link-default.fa-facebook(href='#')
+										li: a.icon.link-default.fa-twitter(href='#')
+										li: a.icon.link-default.fa-google-plus(href='#')
+										li: a.icon.link-default.fa-pinterest-p(href='#')
+
+					.mt-35.mt-md-50.mt-lg-60
+						article.block-person
+							.block-person-left
+								+jpg('agent-page-01-650x756')
+							.block-person-body
+								h3.block-person-title Sam Wilson
+								p.block-person-cite Real Estate Broker
+								ul.block-person-list
+									li
+										.block-person-link
+											span.icon.mdi.mdi-phone
+											a(href='tel:#') + 123 098 890 76 56
+									li
+										.block-person-link
+											span.icon.mdi.mdi-email-outline
+											a.text-spacing-50(href='mailto:#') info@demolink.org
+									li
+										ul.list-inline-1
+											li: a.icon.fa-facebook(href='#')
+											li: a.icon.fa-twitter(href='#')
+											li: a.icon.fa-google-plus(href='#')
+											li: a.icon.fa-pinterest-p(href='#')
+								p Being a full time real estate broker for over 15 years has given Sam the opportunity to work with the most wonderful clients.
+								a.button.button-primary(href='contact-us.html') Get in Touch
+
+					.block-group-item
+						h3 Similar Properties
+						.row.row-50.mt-10
+							.col-md-6.col-lg-12.col-xl-6
+								+product-classic({
+									images: [
+										'featured-properties-01-480x287',
+										'featured-properties-02-480x287',
+										'featured-properties-03-480x287',
+										'featured-properties-04-480x287'],
+									price: '$5000\\mo',
+									title: '401 Biscayne Boulevard, Miami',
+									sq: '480',
+									bathrooms: '2',
+									bedrooms: '2',
+									garage: '1'
+								})
+
+							.col-md-6.col-lg-12.col-xl-6
+								+product-classic({
+									images: [
+										'featured-properties-05-480x287',
+										'featured-properties-06-480x287',
+										'featured-properties-07-480x287',
+										'featured-properties-08-480x287'],
+									price: '$2500\\mo',
+									title: '15 Apartments Of Type B',
+									sq: '430',
+									bathrooms: '2',
+									bedrooms: '2',
+									garage: '1'
+								})
+
+				.col-lg-5.col-xl-4
+					.row.row-50
+						.col-md-6.col-lg-12
+							include ../includes/_sidebar-block-1
+						.col-md-6.col-lg-12
+							article.block-callboard
+								.block-callboard-body
+									h3.block-callboard-title Request a Showing
+									// RD Mailform
+									form.rd-form.rd-mailform(
+									data-form-output='form-output-global'
+									data-form-type='contact'
+									method='post'
+									action='bat/rd-mailform.php')
+										.row.row-20
+											.col-12
+												.form-wrap
+													input#contact-name.form-input(type='text' name='name' data-constraints='@Required')
+													label.form-label(for='contact-name') Your Name
+											.col-12
+												.form-wrap
+													input#contact-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+													label.form-label(for='contact-email') E-mail
+											.col-12
+												.form-wrap
+													input#contact-phone.form-input(type='text' name='phone' data-constraints='@PhoneNumber')
+													label.form-label(for='contact-phone') Phone
+											.col-12
+												.form-wrap
+													label.form-label(for='contact-message') Message
+													textarea#contact-message.form-input(name='message' data-constraints='@Required')
+											.col-12
+												button.button.button-block.button-secondary(type='submit') Send message
+
+						.col-md-6.col-lg-12
+							include ../includes/_sidebar-block-3
+
+	include ../sections/_footer-classic

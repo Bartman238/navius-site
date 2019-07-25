@@ -1,0 +1,119 @@
+extends ../layouts/_layout.pug
+
+block variables
+	- var activePage = 'global-settings'
+	- var activeGroup = 'settings'
+
+block title
+	title Настройки сайта - Админка ЦСН
+
+block content
+	.app-title
+		div
+			h1
+				i.fa.fa-cogs
+				|  Общие настройки
+
+		ul.app-breadcrumb.breadcrumb
+			li.breadcrumb-item
+				i.fa.fa-home.fa-lg
+			li.breadcrumb-item
+				a(href='#') Настройки сайта
+			li.breadcrumb-item
+				a(href='#') Общие настройки
+	#app
+		.row.text-right
+			.col-lg-12
+				button.btn.btn-success.icon-btn(@click="saveGlobalSettings" v-if="!loading") 
+					i.fa.fa-check
+					| Сохранить
+				button.btn.btn-success.icon-btn(@click="saveGlobalSettings" disabled v-else) 
+					i.fa.fa-circle-notch.fa-spin
+					| Сохранить
+					
+		.row(style='margin-top: 20px;')
+			.col-md-12
+				.tile
+					.tile-body
+						center
+							h5 Глобальные настройки
+						hr
+						.row
+							.col-sm-4
+								h6 Телефон
+								.input-group.input-group-sm
+									input.form-control(type='text' v-model="global.tel")
+								br
+								h6 Адрес (полный)
+								.input-group.input-group-sm
+									input.form-control(type='text' v-model="global.fullAddress")
+								br
+								h6 Адрес (сокращенный)
+								.input-group.input-group-sm
+									input.form-control(type='text' v-model="global.shortAddress")
+							.col-sm-4
+								h6 Рабочее время Центра
+								.input-group.input-group-sm
+									input.form-control(type='text' v-model="global.workHours")
+								br
+								h6 Общий email
+								.input-group.input-group-sm
+									input.form-control(type='text' v-model="global.infoEmail")
+								br
+								h6 Email для форм (обратный звонок и т.п.)
+								.input-group.input-group-sm
+									input.form-control(type='text' v-model="global.managerEmail")
+							.col-sm-4
+								h6 Рабочее время хранилища
+								.input-group.input-group-sm
+									input.form-control(type='text' v-model="global.safingWorkHours")
+
+						center(style="margin-top: 20px;")
+							h5 Ссылки на соц. сети
+						hr
+						.row
+							.col-sm-4
+								h6 Facebook
+								.input-group.input-group-sm
+									input.form-control(type='text' v-model="global.fbLink")
+							.col-sm-4
+								h6 ВКонтакте
+								.input-group.input-group-sm
+									input.form-control(type='text' v-model="global.vkLink")
+							.col-sm-4
+								h6 Instagram
+								.input-group.input-group-sm
+									input.form-control(type='text' v-model="global.instLink")
+
+block specific-js			
+	script(src="https://unpkg.com/axios/dist/axios.min.js")
+	script.
+		let app = new Vue({
+			el: '#app',
+			data: {
+				global: {},
+				loading: false
+			},
+			methods: {
+				getSettings () {
+					axios.get('/wtf/api/get-settings?type=global')
+						.then(res => { this.global = res.data.global; })
+						.catch(err => { showSnack('danger', err.toString()); })
+				},
+				saveGlobalSettings () {
+					this.loading = true;
+					axios.post('/wtf/api/set-settings', { global: this.global })
+					.then(res => {
+						this.loading = false;
+						showSnack('success', 'Настройки успешно сохранены!')
+					})
+					.catch(err => {
+						this.loading = false;
+						showSnack('danger', err.toString());
+					})
+				}
+			},
+			mounted () {
+				this.getSettings();
+			}
+		});

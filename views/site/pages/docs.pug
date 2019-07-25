@@ -1,0 +1,39 @@
+extends  ../_skeleton
+
+//- Includes
+
+block variables
+	- var activeCategory = 'docs'
+	- var pageName = 'Шаблоны документов'
+
+block page
+	include ../sections/_header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'centr-sdelok/main-top1.jpg',
+		data: '45'
+	})
+	
+	section.section.section-md.bg-default.text-center
+		.container
+			.table-custom-responsive
+				table.table-custom.table-custom-primary
+					thead
+						tr
+							th.text-center(width='80%') Название
+							th.text-center Скачать
+
+					tbody
+							each doc in docs
+								tr
+									td #{doc.name} 
+									td.text-center 
+										a(href=doc.link target='_blank') 
+											span.icon.fas.fa-download.fa-2x &nbsp;
+
+
+
+	// Page Footer
+	include ../sections/_footer-classic

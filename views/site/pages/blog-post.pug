@@ -1,0 +1,334 @@
+extends  ../_skeleton
+
+//- Includes
+
+block variables
+	- var activeCategory = 'info'
+	- var pageName = post.title
+
+block page
+	// Page Header
+	include ../sections/_header-classic
+
+	+breadcrumbs({
+		pageName : post.title,
+		category: activeCategory,
+		path: [pageName],
+		bgImage: post.image ? '../' + post.image.path : 'centr-sdelok/main-top1.jpg'
+	})
+
+	// Blog post 
+	section.section.section-md.bg-default
+		.container
+			.row.justify-content-lg-center
+				.col-lg-8
+					article.blog-post-solo
+						//- +jpg('blog-post-01-770x440')
+						//- img(src=`images/${post.image.path}` alt='' class=className)&attributes(attributes)
+						//- h2(style='margin-bottom: 20px;') #{post.title}
+						// Post Quote
+						.quote-minimal
+							.quote-minimal-img
+								+png('quote-big-55x47')
+							.quote-minimal-text
+								h5 #{post.description}
+						.blog-post-solo-part(style='color: black;')
+							p !{post.content}
+						
+						// Post Share and Links
+						.blog-post-solo-footer
+							.blog-post-solo-footer-left
+								ul.blog-post-solo-footer-list
+									li
+										span.icon.mdi.mdi-clock
+										span &nbsp;#{moment(post.cdate).format('LL')}
+									//- li
+									//- 	span.icon.mdi.mdi-thumb-up-outline
+									//- 	a(href='#') 23
+									//- li
+									//- 	span.icon.mdi.mdi-message-outline
+									//- 	a(href='#') 6
+							//- .blog-post-solo-footer-right
+							//- 	ul.blog-post-solo-footer-list-1
+							//- 		li: span Share this post
+							//- 		li: a.icon.icon-circle.icon-rounded.icon-5.fa-facebook(href='#')
+							//- 		li: a.icon.icon-circle.icon-rounded.icon-4.fa-google-plus(href='#')
+							//- 		li: a.icon.icon-circle.icon-rounded.icon-6.fa-twitter(href='#')
+							//- 		li: a.icon.icon-circle.icon-rounded.icon-6.fa-pinterest-p(href='#')
+						// Recent Posts
+						//- .post-simple-group
+						//- 	.post-simple-group-title: h6 Recent Posts
+						//- 	.post-simple-group-divider
+						//- 	.row.row-30
+						//- 		.col-sm-6
+						//- 			article.post-simple
+						//- 				.post-simple-img: +jpg('blog-post-03-736x540')
+						//- 				.post-simple-body
+						//- 					.post-simple-title: h4: a(href='#') Turks and Caicos Villa to be Sold for Record $7.6M
+						//- 					.post-simple-time
+						//- 						span.icon.mdi.mdi-clock
+						//- 						a(href='#').time March 15, 2018
+						//- 		.col-sm-6
+						//- 			article.post-simple
+						//- 				.post-simple-img: +jpg('blog-post-04-736x540')
+						//- 				.post-simple-body
+						//- 					.post-simple-title: h4: a(href='#') How We Build a Better LA for Fifth Year in a Row
+						//- 					.post-simple-time
+						//- 						span.icon.mdi.mdi-clock
+						//- 						a(href='#').time March 15, 2018
+
+						// Post Comment
+						//- .post-comment-group
+						//- 	.post-comment-group-title: h6 3 comments
+						//- 	.post-comment-group-divider
+						//- 	article.post-comment
+						//- 		.post-comment-left
+						//- 			+jpg('blog-post-comment-01-65x66', 'img-round')
+						//- 		.post-comment-main
+						//- 			.post-comment-title
+						//- 				h5 Edward
+						//- 				span.post-comment-title-time 3 days ago
+						//- 			.post-comment-text: p Thank you for this wonderful and informative post! I was present at this event and I admired the event organization as well as interior and exterior of the building. I think this property can be a wonderful option for those who want to live in a quiet neighbourhood while enjoying the wonderful scenery of the surrounding area. I am also looking forward to read your future posts on other local properties.
+						//- 			ul.post-comment-list
+						//- 				li
+						//- 					a(href='#')
+						//- 						span.icon.mdi.mdi-thumb-up-outline
+						//- 						span 32
+						//- 				li
+						//- 					a(href='#')
+						//- 						span.icon.mdi.mdi-comment-outline(style='position: relative; top: 2px')
+						//- 						span Reply
+						//- 			article.post-comment
+						//- 				.post-comment-left
+						//- 					+jpg('blog-post-comment-02-60x62', 'img-round')
+						//- 				.post-comment-main
+						//- 					.post-comment-title
+						//- 						h5 Nina
+						//- 						span.post-comment-title-time 1 day ago
+						//- 					.post-comment-text: p You are absolutely right! I also think that Real Estate is one of the most innovative and quickly developing brokerage companies in the USA, and their articles may serve as a guide for beginners in this business.
+						//- 					ul.post-comment-list
+						//- 						li
+						//- 							a(href='#')
+						//- 								span.icon.mdi.mdi-thumb-up-outline
+						//- 								span 32
+						//- 						li
+						//- 							a(href='#')
+						//- 								span.icon.mdi.mdi-comment-outline(style='position: relative; top: 2px')
+						//- 								span Reply
+						//- 	article.post-comment
+						//- 		.post-comment-left
+						//- 			+jpg('blog-post-comment-03-65x66').img-round
+						//- 		.post-comment-main
+						//- 			.post-comment-title
+						//- 				h5 John
+						//- 				span.post-comment-title-time 3 days ago
+						//- 			.post-comment-text: p This article is definitely one of my favorites from you. I always admire your authors’ talent when it comes to describing small VIP events aimed to present your properties in the best light. Somehow you manage to succeed in every aspect of your business and that’s what amazes me. Thank you for additional information about the property mentioned in the article, I will consider purchasing it as soon as possible.
+						//- 			ul.post-comment-list
+						//- 				li
+						//- 					a(href='#')
+						//- 						span.icon.mdi.mdi-thumb-up-outline
+						//- 						span 32
+						//- 				li
+						//- 					a(href='#')
+						//- 						span.icon.mdi.mdi-comment-outline(style='position: relative; top: 2px')
+						//- 						span Reply
+						//- 	article.post-comment
+						//- 		.post-comment-left
+						//- 			+jpg('blog-post-comment-04-65x66').img-round
+						//- 		.post-comment-main
+						//- 			.post-comment-title
+						//- 				h5 Miranda
+						//- 			form.rd-form.rd-mailform(
+						//- 			data-form-output='form-output-global'
+						//- 			data-form-type='contact'
+						//- 			method='post'
+						//- 			action='bat/rd-mailform.php')
+						//- 				.form-wrap
+						//- 					label.form-label(for='comment-message') Your comment
+						//- 					textarea#comment-message.form-input(name='message' data-constraints='@Required')
+						//- 				button.button.button-primary(type='submit') Submit
+
+
+				// Post SideBar
+				.col-lg-4
+					.pdl-xl-40
+						.row.row-60
+							//- .col-md-6.col-lg-12
+							//- 	// RD Search
+							//- 	form.form-lg.rd-search.rd-search-classic
+							//- 		.form-wrap
+							//- 			label.form-label(for='rd-search-form-input') Поиск статьи...
+							//- 			input.form-input(id='rd-search-form-input' type='text' name='s' autocomplete='off')
+							//- 		button.rd-search-submit(type='submit') 
+							
+							.col-md-6.col-lg-12
+								.block-info-2
+									.block-info-2-title
+										h3(style='margin-top: 20px;') В нашем блоге
+									each post in randomPosts
+										a.post-minimal-1(href='blog-post?id=' + post._id)
+											.post-minimal-1-left
+												if (post.image)
+													img.blog-img-cover(width='212' height='208' src='/' + post.image.path)
+												else
+													img.blog-img-cover(width='212' height='208' src='images/centr-sdelok/main-top1.jpg')
+											.post-minimal-1-body
+												.post-minimal-1-title: span #{post.title}
+
+							.col-md-6.col-lg-12
+								article.box-info-custom-1: .box-info-custom-1-inner.bg-accent
+									.box-info-custom-1-main
+										h3.box-info-custom-1-title Есть вопросы?
+										p Свяжитесь с нами любым удобным для вас способом!
+									.box-info-custom-1-aside
+										a.button.button-secondary(href='/contacts') Контакты
+							//- .block-info-2
+							//- .block-info-2-title
+							//- 			h3 Categories
+							//- 		ul.list-quadrate
+							//- 			li
+							//- 				a(href='#')
+							//- 					span.list-quadrate-text Comfort
+							//- 					span.list-quadrate-count 12
+							//- 			li
+							//- 				a(href='#')
+							//- 					span.list-quadrate-text Luxury
+							//- 					span.list-quadrate-count 10
+							//- 			li
+							//- 				a(href='#')
+							//- 					span.list-quadrate-text Market Updates
+							//- 					span.list-quadrate-count 11
+							//- 			li
+							//- 				a(href='#')
+							//- 					span.list-quadrate-text Sales
+							//- 					span.list-quadrate-count 14
+
+							//- .col-md-6.col-lg-12
+							//- 	.block-info-2
+							//- 		.block-info-2-title
+							//- 			h6 Find Your Property
+							//- 		form.rd-mailform.form-select(
+							//- 		data-form-output='form-output-global'
+							//- 		data-form-type='contact'
+							//- 		method='post'
+							//- 		action='bat/rd-mailform.php')
+							//- 			.form-wrap.form-wrap-validation
+							//- 				select.form-input.select-filter(
+							//- 				data-class='select-classic'
+							//- 				data-style='modern'
+							//- 				data-placeholder='Choose Location'
+							//- 				data-minimum-results-for-search='Infinity'
+							//- 				data-constraints='@Required')
+							//- 					option(label='placeholder')
+							//- 					option(value='2') Alaska
+							//- 					option(value='3') Arizona
+							//- 					option(value='4') Arkansas
+							//- 					option(value='5') California
+							//- 					option(value='6') Colorado
+							//- 					option(value='7') Connecticut
+							//- 					option(value='8') Delaware
+							//- 					option(value='9') Florida
+							//- 				span.select-arrow
+							//- 			.form-wrap.form-wrap-validation
+							//- 				select.form-input.select-filter(
+							//- 				data-class='select-classic'
+							//- 				data-style='modern'
+							//- 				data-placeholder='Property Status'
+							//- 				data-minimum-results-for-search='Infinity'
+							//- 				data-constraints='@Required')
+							//- 					option(label='placeholder')
+							//- 					option(value='2') Low
+							//- 					option(value='3') Middle
+							//- 					option(value='4') Primary
+							//- 				span.select-arrow
+							//- 			.form-wrap.form-wrap-validation
+							//- 				select.form-input.select-filter(
+							//- 				data-class='select-classic'
+							//- 				data-style='modern'
+							//- 				data-placeholder='Property Type'
+							//- 				data-minimum-results-for-search='Infinity'
+							//- 				data-constraints='@Required')
+							//- 					option(label='placeholder')
+							//- 					option(value='2') Low
+							//- 					option(value='3') Middle
+							//- 					option(value='4') Primary
+							//- 				span.select-arrow
+							//- 			.form-wrap-group
+							//- 				.form-wrap.form-wrap-validation
+							//- 					select.form-input.select-filter(
+							//- 					data-class='select-classic'
+							//- 					data-style='modern'
+							//- 					data-placeholder='Min Price, $'
+							//- 					data-minimum-results-for-search='Infinity'
+							//- 					data-constraints='@Required')
+							//- 						option(label='placeholder')
+							//- 						option(value='2') 100
+							//- 						option(value='3') 200
+							//- 						option(value='4') 300
+							//- 					span.select-arrow
+							//- 				.form-wrap.form-wrap-validation
+							//- 					select.form-input.select-filter(
+							//- 					data-class='select-classic'
+							//- 					data-style='modern'
+							//- 					data-placeholder='Max Price, $'
+							//- 					data-minimum-results-for-search='Infinity'
+							//- 					data-constraints='@Required')
+							//- 						option(label='placeholder')
+							//- 						option(value='2') 1000
+							//- 						option(value='3') 2000
+							//- 						option(value='4') 3000
+							//- 					span.select-arrow
+							//- 			.form-wrap-group
+							//- 				.form-wrap.form-wrap-validation
+							//- 					select.form-input.select-filter(
+							//- 					data-class='select-classic'
+							//- 					data-style='modern'
+							//- 					data-placeholder='Min Area, Sq Ft'
+							//- 					data-minimum-results-for-search='Infinity'
+							//- 					data-constraints='@Required')
+							//- 						option(label='placeholder')
+							//- 						option(value='2') 100
+							//- 						option(value='3') 200
+							//- 						option(value='4') 300
+							//- 					span.select-arrow
+							//- 				.form-wrap.form-wrap-validation
+							//- 					select.form-input.select-filter(
+							//- 					data-class='select-classic'
+							//- 					data-style='modern'
+							//- 					data-placeholder='Max Area, Sq Ft'
+							//- 					data-minimum-results-for-search='Infinity'
+							//- 					data-constraints='@Required')
+							//- 						option(label='placeholder')
+							//- 						option(value='2') 1000
+							//- 						option(value='3') 2000
+							//- 						option(value='4') 3000
+							//- 					span.select-arrow
+							//- 			.form-wrap-group
+							//- 				.form-wrap.form-wrap-validation
+							//- 					select.form-input.select-filter(
+							//- 					data-class='select-classic'
+							//- 					data-style='modern'
+							//- 					data-placeholder='Min Resint'
+							//- 					data-minimum-results-for-search='Infinity'
+							//- 					data-constraints='@Required')
+							//- 						option(label='placeholder')
+							//- 						option(value='2') 100
+							//- 						option(value='3') 200
+							//- 						option(value='4') 300
+							//- 					span.select-arrow
+							//- 				.form-wrap.form-wrap-validation
+							//- 					select.form-input.select-filter(
+							//- 					data-class='select-classic'
+							//- 					data-style='modern'
+							//- 					data-placeholder='Max Resint'
+							//- 					data-minimum-results-for-search='Infinity'
+							//- 					data-constraints='@Required')
+							//- 						option(label='placeholder')
+							//- 						option(value='2') 1000
+							//- 						option(value='3') 2000
+							//- 						option(value='4') 3000
+							//- 					span.select-arrow
+							//- 			.form-button
+							//- 				button.button.button-block.button-secondary(type='submit') Search
+	// Page Footer
+	include ../sections/_footer-classic

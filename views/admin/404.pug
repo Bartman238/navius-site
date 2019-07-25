@@ -1,0 +1,16 @@
+extends layouts/_layout.pug
+
+block variables
+	- var activePage = '404'
+	- var activeGroup = 'none'
+
+block title
+	title Ошибка 404 - Админка ЦСН
+
+block content
+	.page-error.tile
+		h1
+			i.fa.fa-exclamation-circle
+			|  404: Страница не найдена
+		p Такой страницы нет :(
+		p: a.btn.btn-primary(href="javascript:window.history.back();") Назад

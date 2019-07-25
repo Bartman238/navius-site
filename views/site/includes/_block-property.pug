@@ -1,0 +1,151 @@
+article.block-property.bg-default
+	.layout-3
+		h3 Find Your Property
+		.layout-3-item
+			ul.list-inline-bordered.heading-7
+				li
+					label
+						input(name='input-group-radio' value='radio-1' type='radio' checked)
+						span For Rent
+				li
+					label
+						input(name='input-group-radio' value='radio-2' type='radio')
+						span For sale
+
+	form.rd-mailform.form-property.mt-30(
+	data-form-output='form-output-global'
+	data-form-type='contact'
+	method='post'
+	action='bat/rd-mailform.php')
+		.form-wrap.form-wrap-validation
+			select.form-input.select-filter(
+			data-style='modern'
+			data-placeholder='Choose Location'
+			data-minimum-results-for-search='Infinity'
+			data-constraints='@Required')
+				option(label='placeholder')
+				option(value='2') USA
+				option(value='3') Brazil
+				option(value='4') Germany
+				option(value='5') Poland
+		.form-wrap.form-wrap-validation
+			select.form-input.select-filter(
+			data-style='modern'
+			data-placeholder='Property Type'
+			data-minimum-results-for-search='Infinity'
+			data-constraints='@Required')
+				option(label='placeholder')
+				option(value='2') 1
+				option(value='3') 2
+				option(value='4') 3
+				option(value='5') 4
+				option(value='6') 5
+				option(value='7') 6
+		.form-wrap.form-wrap-validation
+			select.form-input.select-filter(
+			data-style='modern'
+			data-placeholder='Min Beds'
+			data-minimum-results-for-search='Infinity'
+			data-constraints='@Required')
+				option(label='placeholder')
+				option(value='2') 1
+				option(value='3') 2
+				option(value='4') 3
+				option(value='5') 4
+				option(value='6') 5
+				option(value='7') 6
+		.form-wrap.form-wrap-validation
+			select.form-input.select-filter(
+			data-style='modern'
+			data-placeholder='Min Baths'
+			data-minimum-results-for-search='Infinity'
+			data-constraints='@Required')
+				option(label='placeholder')
+				option(value='2') 1
+				option(value='3') 2
+				option(value='4') 3
+				option(value='5') 4
+				option(value='6') 5
+				option(value='7') 6
+
+		.form-wrap.form-wrap-validation
+			select.form-input.select-filter(
+			data-style='modern'
+			data-placeholder='Min Price, $'
+			data-minimum-results-for-search='Infinity'
+			data-constraints='@Required')
+				option(label='placeholder')
+				option(value='2') 1
+				option(value='3') 2
+				option(value='4') 3
+				option(value='5') 4
+				option(value='6') 5
+				option(value='7') 6
+		.form-wrap.form-wrap-validation
+			select.form-input.select-filter(
+			data-style='modern'
+			data-placeholder='Max Price, $'
+			data-minimum-results-for-search='Infinity'
+			data-constraints='@Required')
+				option(label='placeholder')
+				option(value='2') 1
+				option(value='3') 2
+				option(value='4') 3
+				option(value='5') 4
+				option(value='6') 5
+				option(value='7') 6
+		.form-wrap.form-wrap-validation
+			select.form-input.select-filter(
+			data-style='modern'
+			data-placeholder='Min Area, Sq Ft'
+			data-minimum-results-for-search='Infinity'
+			data-constraints='@Required')
+				option(label='placeholder')
+				option(value='2') 1
+				option(value='3') 2
+				option(value='4') 3
+				option(value='5') 4
+				option(value='6') 5
+				option(value='7') 6
+		.form-wrap.form-wrap-validation
+			select.form-input.select-filter(
+			data-style='modern'
+			data-placeholder='Max Area, Sq Ft'
+			data-minimum-results-for-search='Infinity'
+			data-constraints='@Required')
+				option(label='placeholder')
+				option(value='2') 1
+				option(value='3') 2
+				option(value='4') 3
+				option(value='5') 4
+				option(value='6') 5
+				option(value='7') 6
+		.form-button
+			button.button.button-block.button-secondary(type='submit') Search
+
+	.panel-1
+		button.panel-1-toggle(data-multitoggle='#features')
+			span.panel-1-toggle-icon
+			span Look for certain features
+		.panel-1-content#features
+			ul.list-inline.list-inline-sm
+				li
+					label.checkbox-inline
+						input(name='checkbox-1' value='checkbox-1' type='checkbox')
+						| Central Heating
+				li
+					label.checkbox-inline
+						input(name='checkbox-2' value='checkbox-2' type='checkbox')
+						| Home Theater
+				li
+					label.checkbox-inline
+						input(name='checkbox-3' value='checkbox-3' type='checkbox')
+						| Lawn
+				li
+					label.checkbox-inline
+						input(name='checkbox-4' value='checkbox-4' type='checkbox')
+						| Wi-Fi
+				li
+					label.checkbox-inline
+						input(name='checkbox-5' value='checkbox-5' type='checkbox')
+						| Gym

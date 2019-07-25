@@ -1,0 +1,154 @@
+extends  ../_skeleton
+
+//- Includes
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Forms'
+
+block page 
+	// Page Header
+	include ../sections/_header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'breadcrumbs-bg-01-1922x291'
+	})
+
+	// Forms
+	section.section.section-xl.bg-default.text-center
+		.container
+			h2 Forms
+			.mt-20.mw-580.block-center
+				h4.text-default With forms you can get almost any kind of information from your visitors, who will definitely appreciate this attractive element.
+					
+			.row.justify-content-md-center.mt-lg-50
+				.col-md-9.col-lg-8.col-xl-6
+					.mw-510.block-center
+						h3.font-weight-medium Login form
+						.group-sm.group-sm-justify.group-middle.buttons-group
+							div
+								a.button.button-facebook.button-icon.button-icon-left.button-round(href='#')
+									span.icon.fa.fa-facebook
+									| Facebook
+							div
+								a.button.button-twitter.button-icon.button-icon-left.button-round(href='#')
+									span.icon.fa.fa-twitter
+									| Twitter
+							div
+								a.button.button-google.button-icon.button-icon-left.button-round(href='#')
+									span.icon.fa.fa-google-plus
+									| Google+
+						.text-decoration-lines
+							span.text-decoration-lines-content or
+						// RD Mailform
+						form.rd-form.rd-mailform.rd-form-centered
+							.form-wrap
+								input#login-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+								label.form-label(for='login-email') E-mail
+							.form-wrap
+								input#login-password.form-input(type='password' name='password' data-constraints='@Required')
+								label.form-label(for='login-password') Password
+							button.button.button-block.button-primary(type='submit' style='letter-spacing: .12em') Enter
+
+	include ../sections/_section-newsletter
+
+	section.section.section-md.bg-default.text-center
+		.container: .row.justify-content-md-center: .col-md-9.col-lg-8.col-xl-7
+			h2 MailChimp
+			p.mw-540.block-center Sign up to our newsletter and be the first to know about latest news, special offers, events, and discounts.
+			// Mailchimp
+			form.rd-form.mailchimp-mailform.rd-form-inline(data-form-output='form-output-global' action='https://templatemonster.us15.list-manage.com/subscribe/post?u=ba5bb362073a413f48e4a7b90&id=8dc95d9dec' method='post')
+				.form-wrap
+					label.form-label(for='mailchimp-email') Enter your e-mail
+					input#mailchimp-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+				.form-button
+					button.button.button-secondary(type='submit') Subscribe
+					
+
+	section.section.section-lg.bg-gray-12.text-center
+		.container: .row.justify-content-md-center: .col-md-9.col-lg-8.col-xl-7
+			h2 Campaign Monitor
+			p.mw-540.block-center Sign up to our newsletter and be the first to know about latest news, special offers, events, and discounts.
+			// Campaign Monitor
+			form.rd-form.campaign-mailform.rd-form-inline(data-form-output='form-output-global' action='https://templatermonster.createsend.com/t/j/s/zjjikd/' method='post')
+				.form-wrap
+					label.form-label(for='campaign-email') Enter your e-mail
+					input#campaign-email.form-input(type='email' name='cm-zjjikd-zjjikd' data-constraints='@Email @Required')
+				.form-button
+					button.button.button-secondary(type='submit') Subscribe
+
+	// Contact us
+	section.section.section-lg.bg-default.text-center
+		.container
+			.row.justify-content-md-center
+				.col-md-9.col-lg-7.col-xl-5
+					h3.font-weight-medium Contact us
+					// RD Mailform
+					form.rd-form.rd-mailform(
+					data-form-output='form-output-global'
+					data-form-type='contact'
+					method='post'
+					action='bat/rd-mailform.php')
+						.row.row-20
+							.col-12
+								.form-wrap
+									input#contact-name.form-input(type='text' name='name' data-constraints='@Required')
+									label.form-label(for='contact-name') Your Name
+							.col-12
+								.form-wrap
+									input#contact-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+									label.form-label(for='contact-email') E-mail
+							.col-12
+								.form-wrap
+									input#contact-phone.form-input(type='text' name='phone' data-constraints='@PhoneNumber')
+									label.form-label(for='contact-phone') Phone
+							.col-12
+								.form-wrap
+									label.form-label(for='contact-message') Message
+									textarea#contact-message.form-input(name='message' data-constraints='@Required')
+							.col-12
+								button.button.button-secondary(type='submit') Send message
+
+	.divider-section
+
+	// Contact Us
+	section.section.section-md.bg-default.text-center
+		.container
+			.row.justify-content-md-center
+				.col-md-9.col-lg-7.col-xl-5
+					h3 Contact Us (with reCAPTCHA)
+					// RD Mailform
+					form.rd-form.rd-mailform(
+					data-form-output='form-output-global'
+					data-form-type='contact'
+					method='post'
+					action='bat/rd-mailform.php')
+						.row.row-20
+							.col-12
+								.form-wrap
+									input#contact-name-re.form-input(type='text' name='name' data-constraints='@Required')
+									label.form-label(for='contact-name-re') Your Name
+							.col-12
+								.form-wrap
+									input#contact-email-re.form-input(type='email' name='email' data-constraints='@Email @Required')
+									label.form-label(for='contact-email-re') E-mail
+							.col-12
+								.form-wrap
+									input#contact-phone-re.form-input(type='text' name='phone' data-constraints='@PhoneNumber')
+									label.form-label(for='contact-phone-re') Phone
+							.col-12
+								.form-wrap
+									label.form-label(for='contact-message-re') Message
+									textarea#contact-message-re.form-input(name='message' data-constraints='@Required')
+							.col-12
+								.form-wrap.form-validation-left
+									// Google captcha
+									.recaptcha#captcha1(data-sitekey='6Lc8t30UAAAAAL4ngQMStrVcGhqDWjkp5X3ZuBh8')
+							.col-12
+								button.button.button-secondary(type='submit') Send message
+								
+
+	// Page Footer
+	include ../sections/_footer-classic

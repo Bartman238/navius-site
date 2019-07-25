@@ -1,0 +1,78 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-box-events
+
+block variables
+	- var activeCategory = 'events'
+	- var pageName = 'Семинары'
+
+block page
+	include ../sections/_header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'centr-sdelok/main-top1.jpg',
+		data: '45'
+	})
+
+	section.section.section-md.bg-gray-12
+		.container
+			h2.heading-decoration-1: span.heading-inner #{currMonthName}
+			if (currChunks.length)
+				each chunk in currChunks
+					.row
+						each evt in chunk
+							.col-md-4
+								+box-events({
+									timepadId: evt.timepadId,
+									time: evt.time,
+									title: evt.title,
+									content: evt.content,
+									price: evt.price,
+									free: evt.free
+								})
+			else
+				p.text-center Список семинаров на согласовании<br> Оставьте ваш email и мы сообщим вам о новых семинарах
+				.row
+					.col-lg-4
+					.col-lg-4
+						center
+							form.rd-form(
+								data-form-output='form-output-global'
+								data-form-type='subscribe')
+									.form-wrap
+										input#subscribe-form-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+										label.form-label(for='subscribe-form-email') Ваша почта
+									center
+										.form-button
+											span.button.button-secondary Держите меня в курсе
+					.col-lg-4
+				
+
+			//- hr(style='margin: 30px 0 30px 0;')
+			h2.heading-decoration-1: span.heading-inner(style='margin: 40px 0 30px 0;') #{prevMonthName}
+			each chunk in prevChunks
+				.row
+					each evt in chunk
+						.col-md-4
+							+box-events({
+								id: evt._id,
+                time: evt.time,
+                title: evt.title,
+								content: evt.content,
+								price: evt.price,
+								free: evt.free
+              })
+
+	.divider-section.bg-gray-20
+
+	section.section.section-xs.bg-gray-12.text-center
+		.container
+			a.button.button-lg.button-icon.button-icon-left.button-default-outline(href=links.price target='_blank')
+				span.icon.mdi.mdi-refresh
+				| &nbsp;Хочу повтор семинара
+
+	// Page Footer
+	include ../sections/_footer-classic

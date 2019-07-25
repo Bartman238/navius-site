@@ -1,0 +1,41 @@
+extends  ../_skeleton
+
+include ../components/_ui-posts
+
+//- Includes
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'В разработке'
+
+block page
+	section.section.one-page.one-page-animate.context-dark(style='background-image: url(images/spb-panorama.jpg)')
+		.one-page-header
+			+logo
+			
+		.one-page-main
+			.container
+				.row.justify-content-center
+					.col-xl-9
+						h2 Личный кабинет будет доступен через
+						.DateCountdown(
+						data-type='until'
+						data-date='2019-05-31 06:00:00'
+						data-format='wdhms' 
+						data-color=colors.secondary 
+						data-bg='rgba(245, 245, 245, 1)'
+						data-width='0.01')
+						//- h4 Оставьте свой email для того чтобы быть в курсе последних новостей
+						//- .mw-675.block-center
+						//- 	form.rd-form.rd-mailform.rd-form-inline(
+						//- 	data-form-output='form-output-global'
+						//- 	data-form-type='subscribe'
+						//- 	method='post'
+						//- 	action='bat/rd-mailform.php')
+						//- 		.form-wrap
+						//- 			input#subscribe-form-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+						//- 			label.form-label(for='subscribe-form-email') Ваша почта
+						//- 		.form-button
+						//- 			button.button.button-secondary(type='submit') Подписаться
+									
+		.one-page-footer
+			+rights

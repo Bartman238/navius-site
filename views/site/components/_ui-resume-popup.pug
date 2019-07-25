@@ -1,0 +1,55 @@
+mixin resume-popup(obj)
+  #app
+    article.box-info.box-info-2.mfp-hide#resume-popup
+      .box-info-main.context-dark(style='border-radius: 5px;'): .box-info-main-inner
+        center
+          h3 Хотите работать с нами?
+          h4 Отправьте резюме с помощью формы ниже
+        form.rd-form#resume-form(
+        data-form-output='form-output-global')
+          .row.row-20
+            .col-12
+              .form-wrap
+                input#resume-hidden(hidden)
+                input#resume-name.form-input(type='text' name='name' v-model='name' data-constraints='@Required' autocomplete='off')
+                label.form-label(for='resume-name') Ваше имя
+            .col-12
+              .form-wrap
+                input#resume-tel.form-input(type='tel' name='tel' v-model.lazy='tel' data-constraints='@Required' autocomplete='off')
+                label.form-label(for='resume-tel') 8 (___) ___-__-__
+            .col-12
+              center
+                resume(@attached='attach')
+            .col-12
+              .form-wrap
+                center
+                  .recaptcha#recaptcha-resume(data-sitekey='6Lc8t30UAAAAAL4ngQMStrVcGhqDWjkp5X3ZuBh8' data-widget-id='recaptcha-resume')
+            .col-12
+              center(v-if='uploadProgress === 0')
+                button.button.button-sm.button-secondary(@click='sendResume') Отправить
+              center(v-else)
+                h4 Загружено {{ uploadProgress }} %
+
+  // Javascript
+  script(src='js/vue/resume-popup.js')
+  script(src='js/plugins/nprogress.js')
+  script(src="https://unpkg.com/axios/dist/axios.min.js")
+  script.
+    $(document).ready(() => {
+      let form = $("#resume-form");
+      form.on('submit', (e) => {
+        e.preventDefault();
+      });
+      $('#resume-tel').mask('8 (000) 000-00-00');
+      $('.resume-popup').magnificPopup({
+        type: 'inline',
+        preloader: false,
+        focus: '#resume-hidden',
+        callbacks: {
+          beforeOpen () {
+            if ($(window).width() < 700) this.st.focus = false;
+            else this.st.focus = '#resume-hidden';
+          }
+        }
+      });
+    });

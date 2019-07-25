@@ -1,0 +1,120 @@
+extends layouts/_layout.pug
+
+block variables
+	- var activePage = 'blog'
+	- var activeGroup = 'blog'
+
+block title
+	title Блог - Админка ЦСН
+
+block content
+	.app-title
+		div
+			h1
+				i.fa.fa-book
+				|  Блог
+
+		ul.app-breadcrumb.breadcrumb
+			li.breadcrumb-item
+				i.fa.fa-home.fa-lg
+			li.breadcrumb-item
+				a(href='#') Блог
+
+	#app
+		a.btn.btn-success.btn-lg.btn-block(href='/wtf/blog/add-post')
+			i.fa.fa-plus
+			| Добавить статью
+
+		.row(style='margin-top: 20px;')
+			.col-md-12
+				.tile
+					.overlay(v-if="loading")
+						.m-loader.mr-4.
+							<svg class="m-circular" viewBox="25 25 50 50">
+								<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"/>
+							</svg>
+						h3.l-text Загрузка
+					.tile-body
+						table.table.table-sm.table-hover(style='font-size: 12px;')
+							thead
+								tr.text-center
+									th Обложка
+									th Дата создания
+									th Название
+									th Описание
+							tbody
+								tr(v-for="post in posts" @click="editPostPage(post._id)" style='cursor: pointer')
+									td 
+										img(:src="'/' + post.image.path" width='100' height='50' style='object-fit: cover;')
+									td.text-center(style='width: 125px;') {{ post.cdate | date }}
+									td
+										strong {{ post.title }}
+									td(style='width: 45%;') {{ post.description | truncate }}
+						hr
+						paginate.pull-right(v-model="currPage"
+							:page-count="pageCount" 
+							container-class='pagination' 
+							page-class='page-item' 
+							page-link-class='page-link'
+							prev-class='page-item'
+							prev-link-class='page-link'
+							next-class='page-item'
+							next-link-class='page-link'
+							prev-text='«'
+							next-text='»'
+							:click-handler="changePage")
+
+block specific-js
+	script(src="https://unpkg.com/axios/dist/axios.min.js")
+	script(src='/js/plugins/moment-with-locales.js')
+	script(src='https://unpkg.com/vuejs-paginate@latest')
+
+	script.
+		Vue.component('paginate', VuejsPaginate);
+		Vue.filter('date', function (value) {
+			return moment(value).locale('ru').format('LL');
+		});
+		Vue.filter('time', function (value) {
+			return moment(value).locale('ru').format('HH:mm');
+		});
+		Vue.filter('truncate', function (value) {
+			let length = 100;
+			return value.length > length ? value.substring(0, length) + '...' : value;
+		});
+		let app = new Vue({
+			el: '#app',
+			data:{
+				loading: false,
+				posts: [],
+				currPage: 1,
+				perPage: 10,
+				pageCount: 1
+			},
+			methods: {
+				getPosts (offset) {
+					this.loading = true;
+					axios.get(`/api/get-posts?type=all&offset=${+offset}&amount=${this.perPage}`)
+					.then(res => {
+						this.posts = [];
+						this.pageCount = Math.ceil(res.data.total / this.perPage);
+						res.data.posts.forEach(post => {
+							this.posts.push(post);
+						});
+						this.loading = false;
+					})
+					.catch(err => { showSnack('danger', err.toString()); })
+				},
+				editPostPage (id) {
+					window.location.href = `/wtf/blog/edit-post?id=${id}`;
+				},
+				changePage (pageNum) {
+					let offset = (pageNum * this.perPage) - this.perPage;
+					
+					this.currPage = pageNum;
+					this.getPosts(offset);
+				}
+			},
+			mounted () {
+				this.getPosts(0);
+			}
+		});

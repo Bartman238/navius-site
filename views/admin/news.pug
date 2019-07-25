@@ -1,0 +1,122 @@
+extends layouts/_layout.pug
+
+block variables
+	- var activePage = 'news'
+	- var activeGroup = 'news'
+
+block title
+	title Новости - Админка ЦСН
+
+block content
+	.app-title
+		div
+			h1
+				i.fa.fa-newspaper
+				|  Новости
+
+		ul.app-breadcrumb.breadcrumb
+			li.breadcrumb-item
+				i.fa.fa-home.fa-lg
+			li.breadcrumb-item
+				a(href='#') Новости
+
+	#app
+		a.btn.btn-success.btn-lg.btn-block(href='/wtf/news/add-news')
+			i.fa.fa-plus
+			| Добавить новость
+
+		.row(style='margin-top: 20px;')
+			.col-md-12
+				.tile
+					.overlay(v-if="loading")
+						.m-loader.mr-4.
+							<svg class="m-circular" viewBox="25 25 50 50">
+								<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"/>
+							</svg>
+						h3.l-text Загрузка
+					.tile-body
+						table.table.table-sm.table-hover(style='font-size: 12px;')
+							thead
+								tr.text-center
+									th Обложка
+									th Дата создания
+									th Название
+									th Описание
+									th: i.fa.fa-eye
+							tbody
+								tr(v-for="item in news" @click="editNewsPage(item._id)" style='cursor: pointer')
+									td 
+										img(:src="'/' + item.image.path" width='100' height='50' style='object-fit: cover;')
+									td.text-center(style='width: 125px;') {{ item.cdate | date }}
+									td
+										strong {{ item.title }}
+									td(style='width: 40%;') {{ item.description | truncate }}
+									td.text-center {{ item.views }}
+						hr
+						paginate.pull-right(v-model="currPage"
+							:page-count="pageCount" 
+							container-class='pagination' 
+							page-class='page-item' 
+							page-link-class='page-link'
+							prev-class='page-item'
+							prev-link-class='page-link'
+							next-class='page-item'
+							next-link-class='page-link'
+							prev-text='«'
+							next-text='»'
+							:click-handler="changePage")
+
+block specific-js
+	script(src="https://unpkg.com/axios/dist/axios.min.js")
+	script(src='/js/plugins/moment-with-locales.js')
+	script(src='https://unpkg.com/vuejs-paginate@latest')
+
+	script.
+		Vue.component('paginate', VuejsPaginate);
+		Vue.filter('date', function (value) {
+			return moment(value).locale('ru').format('LL');
+		});
+		Vue.filter('time', function (value) {
+			return moment(value).locale('ru').format('HH:mm');
+		});
+		Vue.filter('truncate', function (value) {
+			let length = 100;
+			return value.length > length ? value.substring(0, length) + '...' : value;
+		});
+		let app = new Vue({
+			el: '#app',
+			data:{
+				loading: false,
+				news: [],
+				currPage: 1,
+				perPage: 10,
+				pageCount: 1
+			},
+			methods: {
+				getNews (offset) {
+					this.loading = true;
+					axios.get(`/api/get-news?type=all&offset=${+offset}&amount=${this.perPage}`)
+					.then(res => {
+						this.news = [];
+						this.pageCount = Math.ceil(res.data.total / this.perPage);
+						res.data.news.forEach(item => {
+							this.news.push(item);
+						});
+						this.loading = false;
+					})
+					.catch(err => { showSnack('danger', err.toString()); })
+				},
+				editNewsPage (id) {
+					window.location.href = `/wtf/news/edit-news?id=${id}`;
+				},
+				changePage (pageNum) {
+					let offset = (pageNum * this.perPage) - this.perPage;
+					
+					this.currPage = pageNum;
+					this.getNews(offset);
+				}
+			},
+			mounted () {
+				this.getNews(0);
+			}
+		});

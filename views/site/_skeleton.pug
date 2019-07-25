@@ -1,0 +1,101 @@
+include _elements
+include _config
+include ./components/_ui-call-me-popup
+
+block variables
+
+doctype html
+html(lang='ru' class=html_class)
+  head
+    block title
+      title= pageName 
+
+    meta(name='format-detection' content='telephone=no')
+    meta(name='viewport' content='width=device-width, height=device-height, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(charset='utf-8')
+
+    link(rel='icon' href='images/favicon.ico' type='image/x-icon')
+ 
+    // Stylesheets
+    link(rel='stylesheet' type='text/css' href=fonts)
+    link(rel='stylesheet' href='/css/bootstrap.css')
+    link(rel='stylesheet' href='/css/style.css') 
+    link(rel='stylesheet' href='/css/crutch.css') 
+    link(rel='stylesheet' href='/css/fonts.css')
+    link(rel='stylesheet' href='/css/magnific-popup.css')
+    link(rel='stylesheet' href='/css/nprogress.css')
+
+    style .ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}
+    
+    script(src='/js/core.min.js')
+    //- script(src='js/vue/vue.js')
+    script(src="https://cdn.polyfill.io/v2/polyfill.min.js")
+    script(src='/js/vue/vue.min.js')
+    
+    //- Yandex metrika
+    script.
+      !function(e,t,a){(t[a]=t[a]||[]).push(function(){try{t.yaCounter45860217=new Ya.Metrika({id:45860217,clickmap:!0,trackLinks:!0,accurateTrackBounce:!0,webvisor:!0})}catch(e){}});var c=e.getElementsByTagName("script")[0],n=e.createElement("script"),r=function(){c.parentNode.insertBefore(n,c)};n.type="text/javascript",n.async=!0,n.src="https://mc.yandex.ru/metrika/watch.js","[object Opera]"==t.opera?e.addEventListener("DOMContentLoaded",r,!1):r()}(document,window,"yandex_metrika_callbacks");
+    noscript
+      <div><img src="https://mc.yandex.ru/watch/45860217" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    //- Facebook Pixel
+    //- script.
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '653605381767607');fbq('track', 'PageView');
+    //- noscript
+      img(height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=123917994994212&ev=PageView&noscript=1")
+    script.
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '2421973684610157');fbq('track', 'PageView');
+    noscript
+      img(height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2421973684610157&ev=PageView&noscript=1")
+    //- VK Pixel
+    script.
+      (window.Image ? (new Image()) : document.createElement('img')).src = 'https://vk.com/rtrg?p=VK-RTRG-178505-9G6Do';
+    //- Calltouch
+    script.
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M4WRH35');
+    noscript
+      iframe(src="https://www.googletagmanager.com/ns.html?id=GTM-M4WRH35" height="0" width="0" style="display:none;visibility:hidden")
+    //- Google analytics
+    script(async src="https://www.googletagmanager.com/gtag/js?id=UA-106001360-1")
+    script.
+      window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-106001360-1');
+
+  body
+    div.ie-panel
+      a(href='http://windows.microsoft.com/en-US/internet-explorer/')
+        img(src='/images/ie8-panel/warning_bar_0000_us.jpg', height=42, width=820, alt='You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today.')
+
+    .preloader.loaded
+      .banter-loader 
+        .banter-loader__box 
+        .banter-loader__box 
+        .banter-loader__box
+        .banter-loader__box
+        .banter-loader__box
+        .banter-loader__box
+        .banter-loader__box
+        .banter-loader__box
+        .banter-loader__box
+
+
+    .page
+      block page
+
+    // Call Me popup
+    +call-me-popup()
+
+    // Global Mailform Output 
+    #form-output-global.snackbars
+
+    
+
+    // Javascript
+    script(src='/js/script.js')
+    // Magnific Popup1
+    script(src='/js/plugins/jquery.magnific-popup.min.js')
+    // Input mask
+    script(src='/js/plugins/jquery.mask.min.js')
+    // Jivosite
+    script(src='/js/plugins/jivosite.js')
+    // My crutches =)
+    script(src='/js/crutch.js')

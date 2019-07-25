@@ -1,0 +1,87 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Buttons'
+
+block page 
+	// Page Header
+	include ../sections/_header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'breadcrumbs-bg-01-1922x291'
+	})
+
+	// Button Sizes
+	section.section.section-md.bg-default.text-center
+		.container
+			h2 Buttons
+			.mt-20.mw-500.block-center
+				span.heading-4.text-default Easily insert buttons and call-to-actions in any page, use amazing custom options to spice up your pages.
+			.mt-75.mt-lg-110
+				h4.font-weight-medium Button Sizes
+				.mt-10
+					p 4 different sizes: super, large, default and small.
+					.group-xl.group-middle.buttons-group
+						.button.button-xl.button-primary Super Size
+						.button.button-lg.button-primary Large size
+						.button.button-primary Default size
+						.button.button-sm.button-primary Small size
+
+	.divider-section.bg-gray-16
+
+	// Button Shapes
+	section.section.section-md.bg-default.text-center
+		.container
+			h4.font-weight-medium Button Shapes
+			.mt-10
+				p 4 different shapes: default, round, round 2, and circle.
+				.mt-40
+					.group-xl.group-middle.buttons-group
+						.button.button-primary(style='min-width: 180px') Default
+						.button.button-primary.button-round-1(style='min-width: 180px') Round
+						.button.button-primary.button-round-2(style='min-width: 180px') Square
+						.button.button-primary.button-circle(style='min-width: 180px') Circle
+
+	.divider-section.bg-gray-16
+
+	// Buttons with Icons
+	section.section.section-md.bg-default.text-center
+		.container
+			h4.font-weight-medium Buttons with Icons
+			p Buttons are fully integrated with 900+ icons.
+			.mt-40
+				.group-xl.group-middle.buttons-group
+					div
+						.button.button-icon.button-icon-right.button-primary(style='min-width: 210px')
+							span.icon.mdi.mdi-account
+							| right ICON
+					div
+						.button.button-icon.button-icon-left.button-primary(style='min-width: 210px')
+							span.icon.mdi.mdi-account
+							| left ICON
+					div
+						.button.button-icon.button-icon-right.button-default-outline(style='min-width: 210px')
+							span.icon.mdi.mdi-account
+							| right ICON
+					div
+						.button.button-icon.button-icon-left.button-default-outline(style='min-width: 210px')
+							span.icon.mdi.mdi-account
+							| left ICON
+
+	.divider-section.bg-gray-16 
+
+	// Buttons with Shadow
+	section.section.section-md.bg-default.text-center
+		.container
+			h4.font-weight-medium Buttons with Shadow
+			p Enhance your buttons with a shadow effect.
+			.mt-40
+				.group-xl.group-middle.buttons-group
+					.button.button-primary.button-circle.button-shadow(style='min-width: 180px') Shadow
+					.button.button-circle.button-default-outline.button-shadow(style='min-width: 180px') Shadow
+
+	// Page Footer
+	include ../sections/_footer-classic

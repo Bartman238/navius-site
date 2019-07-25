@@ -1,0 +1,531 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-product-classic-horizontal
+include ../components/_ui-box-minimal
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Real Estate 3'
+
+block page
+	// Page Header
+	include ../sections/_header-corporate
+
+	section.section.section-layout-2-top
+		// Slick Carousel
+		article.slick-slider-2
+			.carousel-parent-outer.bg-accent
+				.slick-slider-2-bg
+					img.slick-slider-2-image(src='images/bg-shape-1.svg' alt='')
+
+				.slick-slider.carousel-parent#carousel-parent(
+				data-arrows='false'
+				data-loop='true'
+				data-dots='false'
+				data-swipe='true'
+				data-items='1'
+				data-fade='true'
+				data-autoplay='true'
+				data-child='#child-carousel'
+				data-for='#child-carousel')
+					.item
+						article.product-1
+							p.product-1-title: a(href='single-property.html') 401 Biscayne Boulevard, Miami
+							.product-1-divider
+							p A renovated home available for rent. 2 bedrooms, 2 full baths, living and dining rooms
+							p.product-1-price.heading-4 $5000\mo
+							a.button.button-default-outline(href='contact-us.html') Get in touch
+					.item
+						article.product-1
+							p.product-1-title: a(href='single-property.html') 225 Maywood Dr, San Francisco, CA
+							.product-1-divider
+							p This turnkey split level home offers you plenty of space with 4 bedrooms on the upper floors.
+							p.product-1-price.heading-4 $9340\mo
+							a.button.button-default-outline(href='contact-us.html') Get in touch
+					.item
+						article.product-1
+							p.product-1-title: a(href='single-property.html') 623 Willow Rd, Dallas, #[br.d-none.d-xl-block] TX
+							.product-1-divider
+							p Premier quality spacious family home with hardwood throughout and wood kitchen cabinet.
+							p.product-1-price.heading-4 $2500\mo
+							a.button.button-default-outline(href='contact-us.html') Get in touch
+
+			.slick-slider.carousel-child#child-carousel(
+			data-for='#carousel-parent'
+			data-arrows='false'
+			data-loop='true'
+			data-dots='true'
+			data-swipe='true'
+			data-items='1'
+			data-slide-to-scroll='1')
+				div: .item-inner(style='background-image: url(images/real-estate-3-1-1145x682.jpg);')
+				div: .item-inner(style='background-image: url(images/real-estate-3-2-1145x682.jpg);')
+				div: .item-inner(style='background-image: url(images/real-estate-3-3-1145x682.jpg);')
+
+
+	section.section.section-layout-2-bottom.bg-gray-12
+		.container
+			.section-layout-2-form
+				include ../includes/_block-property
+
+	// Featured Properties
+	section.section.section-lg.bg-gray-12.text-center
+		.container
+			.heading-decoration-3: h2.heading-inner Featured Properties
+			.row.row-30.mt-lg-60
+				.col-lg-10.col-xl-6
+					+product-classic-horizontal({
+						images: [
+							'featured-properties-04-480x287',
+							'featured-properties-14-480x287',
+							'featured-properties-13-480x287',
+							'featured-properties-16-480x287'
+						],
+						price: '$5000\\mo',
+						title: '401 Biscayne Boulevard, Miami',
+						sq: '480',
+						bathrooms: '2',
+						bedrooms: '2',
+						garage: '1'
+					})
+						p Choose this property if you are looking for a modern house near the ocean shore.
+
+				.col-lg-10.col-xl-6
+					+product-classic-horizontal({
+						images: [
+							'featured-properties-15-480x287',
+							'featured-properties-02-480x287',
+							'featured-properties-03-480x287',
+							'featured-properties-13-480x287'
+						],
+						price: '$9340\\mo',
+						title: '225 Maywood Dr, San Francisco',
+						sq: '435',
+						bathrooms: '1',
+						bedrooms: '1',
+						garage: '1'
+					})
+						p The property includes the main house, guest house, play house, and a large swimming pool.
+
+				.col-lg-10.col-xl-6
+					+product-classic-horizontal({
+						images: [
+							'featured-properties-33-480x287',
+							'featured-properties-06-480x287',
+							'featured-properties-07-480x287',
+							'featured-properties-08-480x287'
+						],
+						price: '$2500\\mo',
+						title: '35 Pond St, New York',
+						sq: '430',
+						bathrooms: '2',
+						bedrooms: '3',
+						garage: '1'
+					})
+						p This property is a perfect choice for a young family who are looking for an affordable apartment.
+
+				.col-lg-10.col-xl-6
+					+product-classic-horizontal({
+						images: [
+							'featured-properties-09-480x287',
+							'featured-properties-10-480x287',
+							'featured-properties-11-480x287',
+							'featured-properties-12-480x287'
+						],
+						price: '$5000\\mo',
+						title: '623 Willow Rd, Dallas',
+						sq: '530',
+						bathrooms: '2',
+						bedrooms: '2',
+						garage: '2'
+					})
+						p Brand new house not far from the donwtown offering a great place for family and friends.
+
+				.col-sm-12
+					ul.pagination-custom
+						li: a.active(href='#') 1
+						li: a(href='#') 2
+
+	// Shortly About Us
+	section.section.section-lg.bg-default
+		.container
+			// Box Info
+			article.box-info.box-info-1
+				.box-info-aside
+					.row.row-30.row-flex
+						.col-sm-6
+							+box-minimal({
+								icon: 'fl-bigmug-line-big104',
+								title: 'Various Locations',
+								text: 'We have lots of properties in various locations.'
+							})
+						.col-sm-6
+							+box-minimal({
+								icon: 'fl-bigmug-line-wallet26',
+								title: 'No Commission',
+								text: 'Opportunity to acquire apartment for mortgage.'
+							})
+						.col-sm-6
+							+box-minimal({
+								icon: 'fl-bigmug-line-lock64 icon-1',
+								title: 'Privacy and Security',
+								text: 'We guarantee full privacy and security to all our clients.'
+							})
+						.col-sm-6
+							+box-minimal({
+								icon: 'fl-bigmug-line-search74 icon-2',
+								title: 'View Apartments',
+								text: 'View apartment listings with photos, HD videos etc.'
+							})
+				.box-info-main.context-dark: .box-info-main-inner
+					h2 About Our Company
+					.divider-small
+					// Bootstrap tabs
+					#tabs-1.tabs-custom.tabs-horizontal.tabs-line
+						// Nav tabs
+						ul.nav.nav-tabs
+							li.nav-item(role='presentation'): a.nav-link.active(href='#tabs-1-1' data-toggle='tab') About Us
+							li.nav-item(role='presentation'): a.nav-link(href='#tabs-1-2' data-toggle='tab') Our goal
+							li.nav-item(role='presentation'): a.nav-link(href='#tabs-1-3' data-toggle='tab') Our Mission
+
+						// Tab panes
+						.tab-content
+							div#tabs-1-1.tab-pane.fade.show.active
+								p Real Estate is a full-service, luxury real estate brokerage company representing clients worldwide.
+								p Since its inception, we have redefined the business of real estate, modernizing and advancing the industry by fostering a culture of partnership involving our clients.
+
+							div#tabs-1-2.tab-pane.fade
+								p We have been working since 1999 to be sure you are getting the best real estate service possible.
+								p Real Estate aims to unite real estate brokers to provide their clients and partners with the top-notch level of brokerage services throughout the USA.
+
+							div#tabs-1-3.tab-pane.fade
+								p Our mission is to be the most successful real estate firm in the local states and beyond.
+								p Real Estate incorporates proven, professional state of-the-art techniques specializing in the marketing, listing and selling of new and resale luxury homes.
+					a.button.button-secondary(href='contact-us.html') Get in Touch
+
+	// Categories
+	section.section.section-lg.bg-default.text-center
+		.container.isotope-wrap
+			.heading-decoration-3: h2.heading-inner Categories
+			.isotope.row.row-30(data-isotope-layout='masonry')
+				.col-sm-6.col-lg-4.isotope-item
+					a.box-category-3.context-dark(href='search-results.html'): .box-category-3-inner
+						.box-category-3-image-outer(style='background-image: url(images/real-estate-3-4-369x239.jpg);')
+						.box-category-3-caption: .box-category-3-caption-inner
+							h3.box-category-3-title Studio Apartments
+							h5.box-category-3-subtitle 8 Properties
+
+				.col-sm-6.col-lg-4.isotope-item
+					a.box-category-3.box-category-3-lg.context-dark(href='search-results.html'): .box-category-3-inner
+						.box-category-3-image-outer(style='background-image: url(images/real-estate-3-5-369x382.jpg);')
+						.box-category-3-caption: .box-category-3-caption-inner
+							h3.box-category-3-title Extra Bedroom
+							h5.box-category-3-subtitle 9 Properties
+
+				.col-sm-6.col-lg-4.isotope-item
+					a.box-category-3.context-dark(href='search-results.html'): .box-category-3-inner
+						.box-category-3-image-outer(style='background-image: url(images/real-estate-3-6-369x239.jpg);')
+						.box-category-3-caption: .box-category-3-caption-inner
+							h3.box-category-3-title Cozy Houses
+							h5.box-category-3-subtitle 4 Properties
+
+				.col-sm-6.col-lg-4.isotope-item
+					a.box-category-3.box-category-3-lg.context-dark(href='search-results.html'): .box-category-3-inner
+						.box-category-3-image-outer(style='background-image: url(images/real-estate-3-7-369x382.jpg);')
+						.box-category-3-caption: .box-category-3-caption-inner
+							h3.box-category-3-title Swimming Pool
+							h5.box-category-3-subtitle 7 Properties
+
+				.col-sm-6.col-lg-4.isotope-item
+					a.box-category-3.box-category-3-lg.context-dark(href='search-results.html'): .box-category-3-inner
+						.box-category-3-image-outer(style='background-image: url(images/real-estate-3-9-369x382.jpg);')
+						.box-category-3-caption: .box-category-3-caption-inner
+							h3.box-category-3-title Loft Apartments
+							h5.box-category-3-subtitle 8 Properties
+
+				.col-sm-6.col-lg-4.isotope-item
+					a.box-category-3.context-dark(href='search-results.html'): .box-category-3-inner
+						.box-category-3-image-outer(style='background-image: url(images/real-estate-3-8-369x239.jpg);')
+						.box-category-3-caption: .box-category-3-caption-inner
+							h3.box-category-3-title Luxury Houses
+							h5.box-category-3-subtitle 6 Properties
+
+	// Counters
+	section.section.section-lg.bg-default.text-center
+		.container
+			.row.row-30.row-decoration-1
+				.col-6.col-md-3
+					// Box counter
+					article.box-counter
+						.box-counter-main
+							span 860
+						p.box-counter-title Properties on Map
+
+				.col-6.col-md-3
+					// Box counter
+					article.box-counter
+						.box-counter-main
+							.counter 29
+						p.box-counter-title Professional Agents
+
+				.col-6.col-md-3
+					// Box counter
+					article.box-counter
+						.box-counter-main
+							.counter 10
+							span k
+						p.box-counter-title Happy Clients
+
+				.col-6.col-md-3
+					// Box counter
+					article.box-counter
+						.box-counter-main
+							.counter 15
+						p.box-counter-title New Apartments Daily
+
+				.row-decoration-1-corner.row-decoration-1-corner_top
+				.row-decoration-1-corner.row-decoration-1-corner_bottom
+
+	// Testimonials
+	+parallax({
+		img: 'images/bg-02-1920x916.jpg'
+	}).section-lg.bg-darkblue-1.context-dark.text-center
+		.container
+			.heading-decoration-3: h2.heading-inner Testimonials
+			// Slick Carousel
+			.slick-slider-3
+				.slick-slider.carousel-parent#parent-carousel-2(
+				data-arrows='false'
+				data-loop='false'
+				data-dots='false'
+				data-swipe='true'
+				data-items='1'
+				data-fade='true'
+				data-autoplay='true'
+				data-child='#child-carousel-2'
+				data-for='#child-carousel-2')
+					blockquote.quote-corporate
+						+png('quote-demo-01-35x29').quote-corporate-mark
+						.quote-corporate-text.heading-5
+							p We recently rented an apartment through your site, and have been looked after by James Thompson. He provided us with utmost support on every property issue.
+						cite.quote-corporate-cite Walter Williams, LIFEGUARD
+					blockquote.quote-corporate
+						+png('quote-demo-01-35x29').quote-corporate-mark
+						.quote-corporate-text.heading-5
+							p Your property managers have been active in their response to repairs and always patient with our frustrations. You have always found us wonderful tenants.
+						cite.quote-corporate-cite KAREN SANDERS, PHARMACIST
+					blockquote.quote-corporate
+						+png('quote-demo-01-35x29').quote-corporate-mark
+						.quote-corporate-text.heading-5
+							p Your advice and support from our initial meeting through liaising with current tenants and a polished marketing program all contributed to a great sale process, thanks!
+						cite.quote-corporate-cite PETER SMITH, HISTORIAN
+					blockquote.quote-corporate
+						+png('quote-demo-01-35x29').quote-corporate-mark
+						.quote-corporate-text.heading-5
+							p I have always found your team to be extremely prompt and professional with all dealings I have had with them. You always keep me updated on the progress.
+						cite.quote-corporate-cite KATE ANDERSON, DECORATOR
+
+				.slick-slider.carousel-child#child-carousel-2(
+				data-for='#parent-carousel-2'
+				data-arrows='true'
+				data-loop='true'
+				data-dots='false'
+				data-swipe='true'
+				data-items='1'
+				data-sm-items='3'
+				data-md-items='4'
+				data-lg-items='4'
+				data-xl-items='4'
+				data-slide-to-scroll='1')
+					div: figure.quote-corporate-figure: +jpg('real-estate-3-10-67x67').quote-corporate-image
+					div: figure.quote-corporate-figure: +jpg('real-estate-3-11-67x67').quote-corporate-image
+					div: figure.quote-corporate-figure: +jpg('real-estate-3-12-67x67').quote-corporate-image
+					div: figure.quote-corporate-figure: +jpg('real-estate-3-13-67x67').quote-corporate-image
+
+	// Select Your Agent
+	section.section.section-lg.bg-default.text-center
+		.container
+			.heading-decoration-3: h2.heading-inner Select Your Agent
+			article.profile-group
+				.slick-slider.profile-group-aside.carousel-child#child-carousel-3(
+				data-for='#parent-carousel-3'
+				data-arrows='true'
+				data-loop='true'
+				data-vertical='true'
+				data-dots='false'
+				data-swipe='true'
+				data-items='1'
+				data-xs-items='2'
+				data-sm-items='3'
+				data-md-items='3'
+				data-lg-items='3'
+				data-xl-items='3'
+				data-autoplay='true'
+				data-slide-to-scroll='1')
+					div: article.profile-minimal: .profile-minimal-inner
+						figure.profile-minimal-image-outer(style='background-image: url(images/agent-1-165x148.jpg);')
+						.profile-minimal-main
+							h5 Sam Wilson
+							p Real Estate Broker
+					div: article.profile-minimal: .profile-minimal-inner
+						figure.profile-minimal-image-outer(style='background-image: url(images/agent-2-165x148.jpg);')
+						.profile-minimal-main
+							h5 Mary Peterson
+							p Real Estate Broker
+					div: article.profile-minimal: .profile-minimal-inner
+						figure.profile-minimal-image-outer(style='background-image: url(images/agent-3-165x148.jpg);')
+						.profile-minimal-main
+							h5 Michael Rutter 
+							p Real Estate Broker
+					div: article.profile-minimal: .profile-minimal-inner
+						figure.profile-minimal-image-outer(style='background-image: url(images/agent-4-165x148.jpg);')
+						.profile-minimal-main
+							h5 Janet Richmond
+							p Real Estate Broker
+				.slick-slider.carousel-parent.profile-group-main#parent-carousel-3(
+				data-arrows='true'
+				data-loop='true'
+				data-dots='false'
+				data-swipe='true'
+				data-items='1'
+				data-fade='true'
+				data-autoplay='true'
+				data-child='#child-carousel-3'
+				data-for='#child-carousel-3')
+					div: article.block-person
+						.block-person-left
+							+jpg('agent-1-325x430')
+						.block-person-body
+							h3.block-person-title: a(href='agent-single-page.html') Sam Wilson
+							p.block-person-cite Real Estate Broker
+							ul.block-person-list
+								li
+									.block-person-link
+										span.icon.mdi.mdi-phone
+										a(href='tel:#') + 123 098 890 76 56
+								li
+									.block-person-link
+										span.icon.mdi.mdi-email-outline
+										a.text-spacing-50(href='mailto:#') info@demolink.org
+								li
+									ul.list-inline-1
+										li: a.icon.fa-facebook(href='#')
+										li: a.icon.fa-twitter(href='#')
+										li: a.icon.fa-google-plus(href='#')
+										li: a.icon.fa-pinterest-p(href='#')
+							p Being a full time real estate broker for over 15 years has given Sam the opportunity to work with the most wonderful clients.
+							a.button.button-primary(href='contact-us.html') Get in Touch
+
+					div: article.block-person
+						.block-person-left: +jpg('agent-2-325x430')
+						.block-person-body
+							h3.block-person-title: a(href='agent-single-page.html') Mary Peterson
+							p.block-person-cite Real Estate Broker
+							ul.block-person-list
+								li
+									.block-person-link
+										span.icon.mdi.mdi-phone
+										a(href='tel:#') + 123 098 890 76 56
+								li
+									.block-person-link
+										span.icon.mdi.mdi-email-outline
+										a.text-spacing-50(href='mailto:#') info@demolink.org
+								li
+									ul.list-inline-1
+										li: a.icon.fa-facebook(href='#')
+										li: a.icon.fa-twitter(href='#')
+										li: a.icon.fa-google-plus(href='#')
+										li: a.icon.fa-pinterest-p(href='#')
+							p Mary works to ensure that you will get the service and the professionalism required to achieve your goal when turning to Real Estate.
+							a.button.button-primary(href='contact-us.html') Get in Touch
+
+					div: article.block-person
+						.block-person-left: +jpg('agent-3-325x430')
+						.block-person-body
+							h3.block-person-title: a(href='agent-single-page.html') Michael Rutter
+							p.block-person-cite Real Estate Broker
+							ul.block-person-list
+								li
+									.block-person-link
+										span.icon.mdi.mdi-phone
+										a(href='tel:#') + 123 098 890 76 56
+								li
+									.block-person-link
+										span.icon.mdi.mdi-email-outline
+										a.text-spacing-50(href='mailto:#') info@demolink.org
+								li
+									ul.list-inline-1
+										li: a.icon.fa-facebook(href='#')
+										li: a.icon.fa-twitter(href='#')
+										li: a.icon.fa-google-plus(href='#')
+										li: a.icon.fa-pinterest-p(href='#')
+							p Michael is a real estate broker for nearly 25 years, and he is also the owner and founder of Real Estate. He has a clear vision of his goals.
+							a.button.button-primary(href='contact-us.html') Get in Touch
+					div: article.block-person
+						.block-person-left: +jpg('agent-4-325x430')
+						.block-person-body
+							h3.block-person-title: a(href='agent-single-page.html') Janet Richmond
+							p.block-person-cite Residential Real Estate Broker
+							ul.block-person-list
+								li
+									.block-person-link
+										span.icon.mdi.mdi-phone
+										a(href='tel:#') + 123 098 890 76 56
+								li
+									.block-person-link
+										span.icon.mdi.mdi-email-outline
+										a.text-spacing-50(href='mailto:#') info@demolink.org
+								li
+									ul.list-inline-1
+										li: a.icon.fa-facebook(href='#')
+										li: a.icon.fa-twitter(href='#')
+										li: a.icon.fa-google-plus(href='#')
+										li: a.icon.fa-pinterest-p(href='#')
+							p Janet’s education, skills, knowledge, professionalism and dedication put her in one of the highest level of standards in the industry.
+							a.button.button-primary(href='contact-us.html') Get in Touch
+
+	// Latest Blog Posts
+	section.section.section-lg.bg-gray-12.text-center
+		.container
+			.heading-decoration-3: h2.heading-inner Latest Blog Posts
+			// Owl Carousel
+			.owl-carousel.mt-lg-60(
+			data-items='1'
+			data-lg-items='2'
+			data-dots='true'
+			data-nav='false' 
+			data-stage-padding='0'
+			data-loop='true' 
+			data-margin='30' 
+			data-autoplay='true'
+			data-mouse-drag='false')
+				article.post-corporate
+					a.post-corporate-image-outer(href=links.post): .post-corporate-image(style='background-image: url(images/featured-properties-27-480x287.jpg);')
+					.post-corporate-main
+						p.post-corporate-time March 15, 2018
+						.post-corporate-divider
+						h4.post-corporate-title: a(href=links.post) Special Unveiling of 568 N. Tigertail Road (Available for Purchase)
+						a.post-corporate-link(href=links.post) Read More
+
+				article.post-corporate
+					a.post-corporate-image-outer(href=links.post): .post-corporate-image(style='background-image: url(images/featured-properties-19-480x287.jpg);')
+					.post-corporate-main
+						p.post-corporate-time March 15, 2018
+						.post-corporate-divider
+						h4.post-corporate-title: a(href=links.post) Turks and Caicos Villa to be Sold Soonfor Record $7.6M
+						a.post-corporate-link(href=links.post) Read More
+
+				article.post-corporate
+					a.post-corporate-image-outer(href=links.post): .post-corporate-image(style='background-image: url(images/featured-properties-11-480x287.jpg);')
+					.post-corporate-main
+						p.post-corporate-time March 15, 2018
+						.post-corporate-divider
+						h4.post-corporate-title: a(href=links.post) 9021 Charter Oak Ln, San Diego
+						a.post-corporate-link(href=links.post) Read More
+
+	// Contact Us
+	include ../sections/_section-contacts
+
+	// Page Footer
+	include ../sections/_footer-static

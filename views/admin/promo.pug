@@ -1,0 +1,125 @@
+extends layouts/_layout.pug
+
+block variables
+	- var activePage = 'promo'
+	- var activeGroup = 'promo'
+
+block title
+	title Акции - Админка ЦСН
+
+block content
+	.app-title
+		div
+			h1
+				i.fa.fa-percent
+				|  Акции
+
+		ul.app-breadcrumb.breadcrumb
+			li.breadcrumb-item
+				i.fa.fa-home.fa-lg
+			li.breadcrumb-item
+				a(href='#') Акции
+
+	#app
+		a.btn.btn-success.btn-lg.btn-block(href='/wtf/promo/add-promo')
+			i.fa.fa-plus
+			| Добавить акцию
+
+		.row(style='margin-top: 20px;')
+			.col-md-12
+				.tile
+					.overlay(v-if="loading")
+						.m-loader.mr-4.
+							<svg class="m-circular" viewBox="25 25 50 50">
+								<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"/>
+							</svg>
+						h3.l-text Загрузка
+					.tile-body
+						table.table.table-sm.table-hover(style='font-size: 12px;')
+							thead
+								tr.text-center
+									th Обложка
+									th Дата создания
+									th Заголовок
+									th Описание
+									th Условия
+							tbody
+								tr(v-for="promo in promos" @click="editPromoPage(promo._id)" style='cursor: pointer')
+									td 
+										img(:src="'/' + promo.image.path" width='100' height='50' style='object-fit: cover;')
+									td.text-center(style='width: 125px;') {{ promo.cdate | date }}
+									td
+										strong {{ promo.title }}
+									td {{ stripTags(promo.description) | truncate }}
+									td {{ stripTags(promo.conditions) | truncate }}
+						hr
+						paginate.pull-right(v-model="currPage"
+							:page-count="pageCount" 
+							container-class='pagination' 
+							page-class='page-item' 
+							page-link-class='page-link'
+							prev-class='page-item'
+							prev-link-class='page-link'
+							next-class='page-item'
+							next-link-class='page-link'
+							prev-text='«'
+							next-text='»'
+							:click-handler="changePage")
+
+block specific-js
+	script(src="https://unpkg.com/axios/dist/axios.min.js")
+	script(src='/js/plugins/moment-with-locales.js')
+	script(src='https://unpkg.com/vuejs-paginate@latest')
+
+	script.
+		Vue.component('paginate', VuejsPaginate);
+		Vue.filter('date', function (value) {
+			return moment(value).locale('ru').format('LL');
+		});
+		Vue.filter('time', function (value) {
+			return moment(value).locale('ru').format('HH:mm');
+		});
+		Vue.filter('truncate', function (value) {
+			let length = 100;
+			return value.length > length ? value.substring(0, length) + '...' : value;
+		});
+		let app = new Vue({
+			el: '#app',
+			data:{
+				loading: false,
+				promos: [],
+				currPage: 1,
+				perPage: 10,
+				pageCount: 1
+			},
+			methods: {
+				stripTags (text) {
+					return text.replace(/<[^>]+>/g, '');
+				},
+				getPromos (offset) {
+					this.loading = true;
+					axios.get(`/api/get-promos?type=all&offset=${+offset}&amount=${this.perPage}`)
+					.then(res => {
+						this.promos = [];
+						this.pageCount = Math.ceil(res.data.total / this.perPage);
+						res.data.promos.forEach(promo => {
+							this.promos.push(promo);
+						});
+						this.loading = false;
+					})
+					.catch(err => { showSnack('danger', err.toString()); })
+				},
+				editPromoPage (id) {
+					window.location.href = `/wtf/promo/edit-promo?id=${id}`;
+				},
+				changePage (pageNum) {
+					let offset = (pageNum * this.perPage) - this.perPage;
+					
+					this.currPage = pageNum;
+					this.getPromos(offset);
+				}
+			},
+			mounted () {
+				this.getPromos(0);
+			}
+		});

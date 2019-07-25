@@ -1,0 +1,36 @@
+doctype html
+html(lang="en")
+
+	//- Variables to set active page in sidebar
+	block variables
+		- var activePage = 'dashboard'
+		- var activeGroup = 'none'
+
+	head
+
+		block title
+			title Админка ЦСН
+
+		include ../includes/_head.pug
+
+	body.app.sidebar-mini.rtl
+		#before-load
+			i.fa.fa-spinner.fa-spin
+		// Navbar
+		include ../includes/_header.pug
+
+		// Sidebar menu
+		include ../includes/_sidebar.pug
+
+		main.app-content
+			block content
+
+		//- Javascripts
+		include ../includes/_javascript.pug
+		
+		// Page specific javascripts
+		block specific-js
+		script.
+			document.addEventListener("DOMContentLoaded", function(event) {
+				$('#before-load').find('i').fadeOut().end().delay(400).fadeOut('slow');
+			});

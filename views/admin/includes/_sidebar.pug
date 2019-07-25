@@ -1,0 +1,152 @@
+.app-sidebar__overlay(data-toggle="sidebar")
+aside.app-sidebar
+
+	//- .app-sidebar__user
+		img.app-sidebar__user-avatar(src='https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg', alt='User Image')
+		div
+			p.app-sidebar__user-name John Doe
+			p.app-sidebar__user-designation Frontend Developer
+
+	ul.app-menu
+		//- li
+			a.app-menu__item(href='/wtf' class={'active': activePage == 'dashboard'})
+				i.app-menu__icon.fa.fa-tachometer-alt
+				span.app-menu__label Статистика
+		li
+			a.app-menu__item(href='/wtf/settings/global' class={'active': activePage == 'global-settings'})
+				i.app-menu__icon.fa.fa-cogs
+				span.app-menu__label Настройки сайта
+
+		//- li.treeview(class={'is-expanded': activeGroup == 'settings'})
+			a.app-menu__item(href='#', data-toggle='treeview')
+				i.app-menu__icon.fa.fa-cogs
+				span.app-menu__label Настройки сайта
+				i.treeview-indicator.fa.fa-angle-right
+			ul.treeview-menu
+				li
+					a.treeview-item(href='/wtf/settings/global' class={'active': activePage == 'global-settings'})
+						i.icon.fa.fa-angle-right
+						|  Общие
+				li
+					a.treeview-item(href='/wtf/settings/main' class={'active': activePage == 'main-settings'})
+						i.icon.fa.fa-angle-right
+						|  Главная страница
+				li
+					a.treeview-item(href='/wtf/settings/about' class={'active': activePage == 'about-settings'})
+						i.icon.fa.fa-angle-right
+						|  О нас
+				li
+					a.treeview-item(href='/wtf/settings/career' class={'active': activePage == 'career-settings'})
+						i.icon.fa.fa-angle-right
+						|  Вакансии
+		li
+			a.app-menu__item(href='/wtf/blog' class={'active': activePage == 'blog'})
+				i.app-menu__icon.fa.fa-book
+				span.app-menu__label Блог
+		li
+			a.app-menu__item(href='/wtf/events' class={'active': activePage == 'events'})
+				i.app-menu__icon.far.fa-calendar-alt
+				span.app-menu__label Семинары
+		li
+			a.app-menu__item(href='/wtf/promo' class={'active': activePage == 'promo'})
+				i.app-menu__icon.fa.fa-percent
+				span.app-menu__label Акции
+		li
+			a.app-menu__item(href='/wtf/news' class={'active': activePage == 'news'})
+				i.app-menu__icon.fa.fa-newspaper
+				span.app-menu__label Новости
+		//- li
+			a.app-menu__item(href='/wtf/lk' class={'active': activePage == 'lk'})
+				i.app-menu__icon.far.fa-user
+				span.app-menu__label Личный кабинет
+		li
+			a.app-menu__item(href='/wtf/logs' class={'active': activePage == 'logs'})
+				i.app-menu__icon.fa.fa-exclamation-circle
+				span.app-menu__label Логи
+		//- li
+			a.app-menu__item(href='/wtf/site-settings' class={'active': activePage == 'site-settings'})
+				i.app-menu__icon.fa.fa-cogs
+				span.app-menu__label Настройки сайта
+
+
+		//- li
+			a.app-menu__item(href='charts.html' class={'active': activePage == 'charts'})
+				i.app-menu__icon.fa.fa-pie-chart
+				span.app-menu__label Charts
+
+		//- li.treeview(class={'is-expanded': activeGroup == 'forms'})
+			a.app-menu__item(href='#' data-toggle='treeview')
+				i.app-menu__icon.fa.fa-edit
+				span.app-menu__label Forms
+				i.treeview-indicator.fa.fa-angle-right
+			ul.treeview-menu
+				li
+					a.treeview-item(href='form-components.html' class={'active': activePage == 'form-components'})
+						i.icon.fa.fa-circle-o
+						|  Form Components
+				li
+					a.treeview-item(href='form-custom.html' class={'active': activePage == 'form-custom'})
+						i.icon.fa.fa-circle-o
+						|  Custom Components
+				li
+					a.treeview-item(href='form-samples.html' class={'active': activePage == 'form-samples'})
+						i.icon.fa.fa-circle-o
+						|  Form Samples
+				li
+					a.treeview-item(href='form-notifications.html' class={'active': activePage == 'form-notifications'})
+						i.icon.fa.fa-circle-o
+						|  Form Notifications
+
+		//- li.treeview(class={'is-expanded': activeGroup == 'tables'})
+			a.app-menu__item(href='#' data-toggle='treeview')
+				i.app-menu__icon.fa.fa-th-list
+				span.app-menu__label Tables
+				i.treeview-indicator.fa.fa-angle-right
+			ul.treeview-menu
+				li
+					a.treeview-item(href='table-basic.html' class={'active': activePage == 'basic-table'})
+						i.icon.fa.fa-circle-o
+						|  Basic Tables
+				li
+					a.treeview-item(href='table-data-table.html' class={'active': activePage == 'data-table'})
+						i.icon.fa.fa-circle-o
+						|  Data Tables
+
+		//- li.treeview(class={'is-expanded': activeGroup == 'pages'})
+			a.app-menu__item(href='#' data-toggle='treeview')
+				i.app-menu__icon.fa.fa-file-text
+				span.app-menu__label Pages
+				i.treeview-indicator.fa.fa-angle-right
+			ul.treeview-menu
+				li
+					a.treeview-item(href='blank-page.html' class={'active': activePage == 'blank-page'})
+						i.icon.fa.fa-circle-o
+						|  Blank Page
+				li
+					a.treeview-item(href='page-login.html')
+						i.icon.fa.fa-circle-o
+						|  Login Page
+				li
+					a.treeview-item(href='page-lockscreen.html')
+						i.icon.fa.fa-circle-o
+						|  Lockscreen Page
+				li
+					a.treeview-item(href='page-user.html' class={'active': activePage == 'user-page'})
+						i.icon.fa.fa-circle-o
+						|  User Page
+				li
+					a.treeview-item(href='page-invoice.html' class={'active': activePage == 'invoice-page'})
+						i.icon.fa.fa-circle-o
+						|  Invoice Page
+				li
+					a.treeview-item(href='page-calendar.html' class={'active': activePage == 'calendar-page'})
+						i.icon.fa.fa-circle-o
+						|  Calendar Page
+				li
+					a.treeview-item(href='page-mailbox.html' class={'active': activePage == 'mailbox-page'})
+						i.icon.fa.fa-circle-o
+						|  Mailbox
+				li
+					a.treeview-item(href='page-error.html' class={'active': activePage == 'error-page'})
+						i.icon.fa.fa-circle-o
+						|  Error Page

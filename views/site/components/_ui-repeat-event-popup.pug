@@ -1,0 +1,86 @@
+mixin repeat-event-popup(obj)
+  article.box-info.box-info-2.mfp-hide#repeat-event-popup
+    .box-info-main.context-dark(style='border-radius: 5px;'): .box-info-main-inner
+      center
+        h2 Пропустили семинар?
+        h4 Напишите нам его название и мы постораемся его повторить!
+      form.rd-form#repeat-event-form(
+      data-form-output='form-output-global'
+      data-form-type='repeat-event-form')
+        .row.row-20
+          .col-12
+            .form-wrap
+              input#repeat-event-hidden(hidden)
+              input#repeat-event-name.form-input(type='text' name='name' data-constraints='@Required' autocomplete='off')
+              label.form-label(for='repeat-event-name') Ваше имя
+          .col-12
+            .form-wrap
+              input#repeat-event-tel.form-input(type='tel' name='tel' data-constraints='@Required' autocomplete='off')
+              label.form-label(for='repeat-event-tel') 8 (___) ___-__-__
+          .col-12
+            .form-wrap
+              input#repeat-event-title.form-input(type="text" name='title' data-constraints='@Required')
+              label.form-label(for='repeat-event-title') Название семинара
+          .col-12
+            .form-wrap
+              center
+                .recaptcha#recaptcha-call-me(data-sitekey='6Lc8t30UAAAAAL4ngQMStrVcGhqDWjkp5X3ZuBh8' data-widget-id='recaptcha-repeat-event')
+          .col-12
+            center
+              button.button.button-secondary(onclick='sendRepeatEvent()') Отправить
+
+  // Javascript              
+  script.
+    let sendRepeatEvent = () => {
+      let redata = { 'g-recaptcha-response': grecaptcha.getResponse($("#recaptcha-repeat-event").attr('data-widget-id')) }
+        ,form = $("#repeat-event-form")
+        ,data = { 
+          name: $('#repeat-event-name').val(), 
+          tel: $('#repeat-event-tel').val(),
+          title: $('#repeat-event-title').val()
+        }
+        ,isAllValid = grecaptcha.getResponse($("#recaptcha-repeat-event").attr('data-widget-id')) && data.name && data.tel.length === 17;
+
+      if (isAllValid) {
+        $.ajax({
+          type: 'POST',
+          url: '/api/check-recaptcha',
+          data: redata,
+          complete (res) {
+            if (res.success) {
+              $.ajax({
+                type: 'POST',
+                url: '/api/repeat-event',
+                data,
+                complete (res) {
+                  if (res.responseJSON && res.responseJSON.success) {
+                    form[0].reset();
+                    grecaptcha.reset()
+                    $.magnificPopup.close();
+                    showSnack('success', 'Сообщение отправлено');
+                  } else showSnack('error', 'Что-то пошло не так');
+                }
+              });
+            } else showSnack('error', 'Проверка не пройдена');
+          }
+        });
+      } else showSnack('error', 'Все поля обязательны');
+    };
+    $(document).ready(() => {
+      let form = $("#repeat-event-form");
+      form.on('submit', (e) => {
+        e.preventDefault();
+      });
+      $('#repeat-event-tel').mask('8 (000) 000-00-00');
+      $('.repeat-event-popup').magnificPopup({
+        type: 'inline',
+        preloader: false,
+        focus: '#repeat-event-hidden',
+        callbacks: {
+          beforeOpen () {
+            if ($(window).width() < 700) this.st.focus = false;
+            else this.st.focus = '#repeat-event-hidden';
+          }
+        }
+      });
+    });

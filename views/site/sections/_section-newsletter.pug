@@ -1,0 +1,12 @@
+//- Includes
+include ../components/_ui-inline-subscribe-form
+  
+// Subscribe to Our Newsletter
++parallax({
+  img: 'images/bg-01-1920x653.jpg'
+}).section-lg.context-dark.text-center.bg-darkblue-2
+  .container: .row.justify-content-md-center: .col-md-9.col-lg-8.col-xl-7
+    .divider.divider-secondary
+    h2 Subscribe to Our Newsletter
+    p.mw-540.block-center Sign up to our newsletter and be the first to know about the latest company news, special offers, events, and discounts.
+    +inline-subscribe-form({})

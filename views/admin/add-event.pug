@@ -1,0 +1,101 @@
+extends layouts/_layout.pug
+
+block variables
+	- var activePage = 'events'
+	- var activeGroup = 'events'
+
+block title
+	title Добавить семинар - Админка ЦСН
+
+block content
+	input#upload(type="file" hidden)
+	.app-title
+		div
+			h1
+				i.far.fa-calendar-plus
+				|  Добавить семинар
+
+		ul.app-breadcrumb.breadcrumb
+			li.breadcrumb-item
+				i.fa.fa-home.fa-lg
+			li.breadcrumb-item
+				a(href='/wtf/events') Семинары
+			li.breadcrumb-item
+				a(href='#') Добавить семинар
+	#app
+		.row.text-right
+			.col-lg-12
+				button.btn.btn-success.icon-btn(@click="saveEvent()" :disabled="!isAllValid" v-if="!loading") 
+					i.fa.fa-check
+					| Сохранить
+				button.btn.btn-success.icon-btn(@click="saveGlobalSettings" disabled v-else)
+					i.fa.fa-circle-notch.fa-spin
+					| Сохранить
+
+		.row(style='margin-top: 20px;')
+			.col-lg-4
+				.tile
+					.tile-title
+						h4.title Информация
+						hr
+					.tile-content
+						h6 Название семинара
+						.input-group.input-group-sm
+							input.form-control#title(type='text' v-model="title" maxlength="90")
+						br
+						h6 Дата
+						.input-group.input-group-sm
+							input.form-control#date(type='text')
+							.input-group-append
+								.input-group-text
+									i.fa.fa-calendar
+						br
+						h6 Время
+						.input-group.input-group-sm
+							input.form-control#time(type='text')
+							.input-group-append
+								.input-group-text
+									i.fa.fa-clock
+						br
+						h6 Стоимость
+						.input-group.input-group-sm
+							input.form-control(type='number' v-model="price" v-if='!free')
+							.input-group-append(v-if="!free")
+								.input-group-text
+									i.fa.fa-ruble-sign
+						.animated-checkbox
+							label
+								input(type='checkbox' v-model="free")
+								span.label-text Бесплатный
+						//- br
+						//- h6 Обложка
+						//- .input-group
+						//- 	input.form-control-file(type='file')
+						//- br
+						//- img(src='/images/centr-sdelok/main-top1.jpg' width='200' height='200' style='border-radius: 5px; object-fit: cover;')
+			.col-lg-8
+				.tile
+					.tile-title
+						h4.title Описание
+						hr
+					.tile-content
+						h6 Описание семинара
+						vue-tinymce.form-control(v-model="content" :options="tinymceOptions")
+
+block specific-js
+	script(src='https://unpkg.com/axios/dist/axios.min.js')
+	script(src='/js/admin-js/plugins/tinymce/tinymce.min.js')
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-maxlength/1.7.0/bootstrap-maxlength.min.js')
+	script(src='/js/admin-js/plugins/bootstrap-datepicker.min.js')
+	script(src='/js/admin-js/plugins/bootstrap-datepicker.ru.js')
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js')
+	script(src='/js/admin-js/vue/add-event.js')
+	script.
+		$(document).ready(() => {
+			$('#title').maxlength({
+				alwaysShow: false,
+				threshold: 90,
+				separator: '/',
+				validate: true
+			});
+		});

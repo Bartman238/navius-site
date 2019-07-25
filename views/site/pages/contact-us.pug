@@ -1,0 +1,20 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'contacts'
+	- var pageName = 'Контакты'
+
+block page 
+	// Page Header
+	include ../sections/_header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'centr-sdelok/main-top1.jpg'
+	})
+
+	include ../sections/_section-contacts
+
+	// Page Footer
+	include ../sections/_footer-classic

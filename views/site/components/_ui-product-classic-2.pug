@@ -1,0 +1,41 @@
+mixin product-classic-2(obj)
+  - var bathrooms = '1 Bathroom'
+  if(typeof obj.bathrooms !== 'undefined' && obj.bathrooms > 1)
+    -bathrooms = obj.bathrooms + ' Bathrooms'
+
+  - var bedrooms = '1 Bedroom'
+  if(typeof obj.bedrooms !== 'undefined' && obj.bedrooms > 1)
+    -bedrooms = obj.bedrooms + ' Bedrooms'
+
+  - var garages = '1 Garage'
+  if(typeof obj.garage !== 'undefined' && obj.garage > 1)
+    -garages = obj.garage + ' Garages'
+
+  // Product classic 2
+  article.product-classic.product-classic-2&attributes(attributes)
+    h4.product-classic-title: a(href='single-property.html')= obj.title ? obj.title : '401 Biscayne Boulevard, Miami'
+    .product-classic-media
+      .owl-carousel(
+      data-items='1'
+      data-nav='true'
+      data-stage-padding='0'
+      data-loop='true'
+      data-margin='0'
+      data-mouse-drag='false')
+        each image in obj.images
+          +jpg(image)
+      .product-classic-price: span= obj.price ? obj.price : '$5000\\mo'
+
+    ul.product-classic-list
+      li
+        span.icon.hotel-icon-10
+        span= bathrooms
+      li
+        span.icon.hotel-icon-05
+        span= bedrooms
+      li
+        span.icon.mdi.mdi-vector-square
+        span= obj.sq ? obj.sq + ' Sq Ft' : '480' + ' Sq Ft'
+      li
+        span.icon.hotel-icon-26
+        span= garages

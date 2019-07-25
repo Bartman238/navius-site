@@ -1,0 +1,129 @@
+-
+	function getImageSize(name) {
+		try { return name.match('[0-9]+(x)[0-9]+')[0].split('x'); }
+		catch ( error ) {
+			throw new Error('Error in function getImageSize:\n' + error);
+		}
+	}
+
+	//- Get menu branch by category name
+	function getMenuCategory(category) {
+		for (var i = 0; i < menu.length; i++) {
+			if (menu[i].category === category) {
+				return menu[i];
+			}
+		}
+		return undefined;
+	}
+
+	//- Any page title to *.html link
+	function nameToLink(name) {
+		try { return name.trim().replace(/\s/g, '-').replace(/[\(\)]/g, '').toLowerCase() + '.html'; }
+		catch ( error ) {
+			throw new Error('Error in function nameToLink:\n' + error);
+		}
+	}
+
+
+//- Img image
+mixin img(name, className)
+	//- - var size = getImageSize(name);
+	- var ext = name.split('.')[1];
+	//- img(src='images/' + name alt='' width=size[0] height=size[1] class=className)&attributes(attributes)
+	img(src='/images/' + name alt='' class=className)&attributes(attributes)
+
+
+//- Jpg image
+mixin jpg(name, className)
+	//- - var size = getImageSize(name);
+	//- img(src='images/' + name + '.jpg' alt='' width=size[0] height=size[1] class=className)&attributes(attributes)
+	img(src='/images/' + name + '.jpg' alt='' class=className)&attributes(attributes)
+
+
+//- Png image
+mixin png(name, className)
+	//- - var size = getImageSize(name);
+	//- img(src='images/' + name + '.png' alt='' width=size[0] height=size[1] class=className)&attributes(attributes)
+	img(src='/images/' + name + '.png' alt='' class=className)&attributes(attributes)
+
+
+//- Loop without indexing mixin
+mixin loop(count)
+	- for (var i = 0; i < count; i++)
+		block
+
+
+//- Parallax Section
+mixin parallax(obj)
+	section.section.parallax-container(data-parallax-img=obj.img)
+		.parallax-content&attributes(attributes)
+			block
+
+
+//- Breadcrumbs 
+mixin breadcrumbs(obj)
+	- var activeItemName= obj.path.pop();
+	- var category = getMenuCategory(obj.category);
+
+	// Breadcrumbs
+	section.breadcrumbs-custom.bg-image.context-dark(data-opacity= obj.data style=obj.bgImage ? ('background-image: url(/images/' + obj.bgImage + ');') : '')&attributes(attributes)
+		.container
+			h2.breadcrumbs-custom-title!= obj.pageName ? obj.pageName : pageName
+	section.section-xs.bg-white
+		.container
+			ul.breadcrumbs-custom-path
+				li: a(href='/') Главная
+				if (typeof(category) !== 'undefined' && (category.title !== activeItemName))
+					li: a(href=category.link ? category.link : nameToLink(category.title))=category.title
+					-for( var i = 0; i < obj.path.length; i++)
+						li: a(href=obj.path[i].link ? obj.path[i].link : nameToLink(obj.path[i].title))=obj.path[i].title
+				li.active=activeItemName
+	.divider-section
+
+
+
+//- Logo
+mixin logo
+	a.brand(href='/')&attributes(attributes)
+		+png(brand.default.normal)(srcset='/images/' + brand.default.retina + '.png 2x').brand-logo-dark
+		+png(brand.inverse.normal)(srcset='/images/' + brand.inverse.retina + '.png 2x').brand-logo-light
+		p(style="margin: 0;") 
+			a(href='tel:' + siteVars.global.tel) #{siteVars.global.tel}
+
+//- Copyright
+mixin rights
+	// Rights
+	p.rights&attributes(attributes)
+		span(style='font-size: 12px;') &lt;/&gt; with ♡ by 
+			a(href='mailto:goo.kambl4@gmail.com' style='text-decoration: none;') Tarasenko_PS
+		br
+		span= brand.name
+		=" "
+		span &copy;&nbsp;
+		span.copyright-year
+		span &nbsp;
+
+mixin quote-mark()
+	svg(
+	xmlns='http://www.w3.org/2000/svg'
+	xmlns:xlink='http://www.w3.org/1999/xlink'
+	viewbox='0 0 61 53'
+	width='61'
+	height='53')&attributes(attributes)
+		defs
+			path(d='M0 0h61v53H0z')
+		clippath
+			use(overflow='visible')
+		path(d='M11.7 0C5.2 0 0 5.4 0 12s5.2 12 11.7 12C23.3 24 15.6 47.2 0 47.2v5.6C27.8 52.8 38.6 0 11.7 0zm33.6 0c-6.4 0-11.7 5.4-11.7 12s5.2 12 11.7 12c11.7 0 3.9 23.2-11.7 23.2v5.6C61.4 52.8 72.2 0 45.3 0zm0 0')
+
+mixin tag-inline
+	span.tag-inline&attributes(attributes)
+		svg(
+		version='1.1'
+		xmlns='http://www.w3.org/2000/svg'
+		x='0px'
+		y='0px'
+		viewbox='0 0 25 23' 
+		preserveAspectRatio='none')
+			polygon(points='0,0 0,23 17.9,23 25,11.5 17.9,0 ')
+		block

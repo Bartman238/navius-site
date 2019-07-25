@@ -1,0 +1,88 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-box-modern
+	
+block variables
+	- var activeCategory = 'info'
+	- var pageName = 'О компании'
+
+block page
+	include ../sections/_header-classic
+		
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'centr-sdelok/main-top1.jpg',
+		data: '59'
+	})
+
+	// Shortly About Us
+	section.section.section-md.bg-default
+		.container
+			// Box Info
+			article.box-info.box-info-1
+				.box-info-aside
+					//- .image-block-1(style='background-image: url(images/about-us-1-599x535.jpg);')
+					iframe(width="100%" height="auto" src="https://www.youtube.com/embed/Ev3fZ78GPdE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
+				.box-info-main.context-dark: .box-info-main-inner
+					h2.f1 Центр сделок с недвижимостью
+					.divider-small
+					// Bootstrap tabs
+					#tabs-1.tabs-custom.tabs-horizontal.tabs-line
+						// Nav tabs
+						ul.nav.nav-tabs
+							li.nav-item(role='presentation'): a.nav-link.active(href='#tabs-1-1' data-toggle='tab') О нас
+							//- li.nav-item(role='presentation'): a.nav-link(href='#tabs-1-2' data-toggle='tab') Наша миссия
+
+						// Tab panes
+						.tab-content
+							div#tabs-1-1.tab-pane.fade.show.active
+								p Принцип «одного профиля» позволил нам собрать команду высококлассных профессионалов, которые успешно решают юридические, налоговые, ипотечные, финансовые вопросы клиентов Центра.
+								p Принцип «одного кресла» — участники сделки с комфортом размещаются в персональном офисе, а все необходимые специалисты сами приходят к ним с готовыми договорами.
+
+							//- div#tabs-1-2.tab-pane.fade
+								p Real Estate is a full-service, luxury real estate brokerage company representing clients worldwide.
+								ul.list-marked-1.cols-2
+									li More Listings
+									li Property for Rent and Sale
+									li Top Rated Agents
+									li Home Estimates
+
+					a.button.button-sm.button-secondary(href='/contacts') Будем на связи!
+			
+	// Features
+	section.section.section-lg.bg-default
+		.container
+			.row.row-flex.row-30.justify-content-center
+				.col-md-6.col-lg-4
+					+box-modern({
+						icon: 'fl-bigmug-line-big104',
+						title: 'Престижная локация',
+						text: 'Персональные офисы на 10, 20 и 30 человек оборудованны бесплатным Wi-Fi, счетчиками банкнот. Удаленная подготовка пакета документов и проверка чистоты сделки. Удобная площадка для агентских встреч. Никаких очередей'
+					})
+				.col-md-6.col-lg-4
+					+box-modern({
+						icon: 'fl-bigmug-line-wallet26',
+						title: 'Безопасные взаиморасчеты',
+						text: 'Вашим услугам депозитарий с несколькими уровнями верификации, эксперт-сейфинг, коллективный сейфинг, открытие аккредитива, эскроу-счет.'
+					})
+				.col-md-6.col-lg-4
+					+box-modern({
+						icon: 'fl-bigmug-line-search74',
+						title: 'Независимые специалисты',
+						text: 'Мы не принимаем ничью сторону. Наши эксперты проводят независимую оценку сделки и экспертизу документов. 100% договоров с первого раза проходят регистрацию в Росреестре.'
+					})
+
+	// Agents
+	section.section.section-md.bg-gray-12
+		.container
+			h2.heading-decoration-1: span.heading-inner Отзывы агентов
+			include ../includes/_row-agents
+			
+	//- include ../sections/_section-newsletter
+
+	include ../sections/_section-partners
+
+
+	include ../sections/_footer-classic

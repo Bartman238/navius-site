@@ -1,0 +1,228 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-header-classic
+include ../components/_ui-product-classic-horizontal
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Search Results 2'
+
+block page 
+	section.section.section-single: .section-single-inner
+		+header-classic.section-single-header
+
+		.section-single-main.bg-gray-12
+			.range
+				.cell-xl-6.height-fill
+					.google-map-container.google-map-container_product-light(
+					data-center='9870 St Vincent Place, Glasgow, DC 45 Fr 45.'
+					data-icon='images/gmap_marker_mini.png'
+					data-icon-active='images/gmap_marker_mini_active.png'
+					data-styles='[{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}]'
+					data-zoom='14')
+						.google-map.google-map-4
+						ul.google-map-markers
+							li(data-location='9870 St Vincent Place, Glasgow')
+								article.product-light
+									.product-light-media(style='background-image: url(images/featured-properties-32-480x287.jpg);')
+									.product-light-main
+										p.product-light-title: a(href='single-property.html') 35 Pond St, New York
+										p.product-light-price $2500\mo
+									
+							li(data-location='Buchanan galleries 220 Buchanan St Glasgow G1 2FF')
+								article.product-light
+									.product-light-media(style='background-image: url(images/featured-properties-12-480x287.jpg);')
+									.product-light-main
+										p.product-light-title: a(href='single-property.html') 923 Folsom St, San Francisco
+										p.product-light-price $2000\mo
+				.cell-xl-6.cell-type-1: .cell-inner.block-1
+					h2.tag-inline-caption
+						span(style='letter-spacing: .05em;') Search Results
+						span.tag-inline.tag-inline-left.heading-7
+							svg(version='1.1', xmlns='http://www.w3.org/2000/svg', x='0px', y='0px', viewbox='0 0 25 23')
+								polygon(points='7.1,0 0,11.5 7.1,23 25,23 25,0 ')
+							span 4
+
+					.form-wrap-group-2.panel-2
+						.form-wrap
+							select.form-input.select-filter(
+							data-style='modern'
+							data-placeholder='Price Low to High'
+							data-minimum-results-for-search='Infinity'
+							data-constraints='@Required')
+								option(label='placeholder')
+								option(value='1') Price Low to High
+								option(value='2') Price High to Low
+								option(value='3') Most Popular
+								option(value='4') Top Rated
+								option(value='5') Best Sellers
+
+						.form-wrap
+							select.form-input.select-filter(
+							data-style='modern'
+							data-placeholder='Publication Date'
+							data-minimum-results-for-search='Infinity'
+							data-constraints='@Required')
+								option(label='placeholder')
+								option(value='2') Monday
+								option(value='3') Tuesday
+								option(value='4') Wednesday
+								option(value='5') Thursday
+								option(value='6') Friday
+								option(value='7') Saturday
+								option(value='8') Sunday
+						.form-wrap-toggle
+							button.button.button-secondary.panel-2-toggle(data-multitoggle='#parameters' data-scope='#parameters' data-isolate='#parameters-close')
+								span.icon.fl-bigmug-line-equalization3
+							.panel-2-content#parameters
+								button#parameters-close.button.button-secondary.panel-2-close
+									span.icon.mdi.mdi-close
+								.panel-2-content-inner
+									.form-wrap.form-wrap-validation
+										select.form-input.select-filter(
+										data-style='modern'
+										data-placeholder='Choose Location'
+										data-minimum-results-for-search='Infinity'
+										data-constraints='@Required')
+											option(label='placeholder')
+											option(value='2') Alaska
+											option(value='3') Arizona
+											option(value='4') Arkansas
+											option(value='5') California
+											option(value='6') Colorado
+											option(value='7') Connecticut
+											option(value='8') Delaware
+											option(value='9') Florida
+										span.select-arrow
+									.form-wrap.form-wrap-validation
+										select.form-input.select-filter(
+										data-style='modern'
+										data-placeholder='Property Status'
+										data-minimum-results-for-search='Infinity'
+										data-constraints='@Required')
+											option(label='placeholder')
+											option(value='2') Low
+											option(value='3') Middle
+											option(value='4') Primary
+										span.select-arrow
+									.form-wrap.form-wrap-validation
+										select.form-input.select-filter(
+										data-style='modern'
+										data-placeholder='Property Type'
+										data-minimum-results-for-search='Infinity'
+										data-constraints='@Required')
+											option(label='placeholder')
+											option(value='2') Low
+											option(value='3') Middle
+											option(value='4') Primary
+										span.select-arrow
+
+									.rd-range-outer
+										p.rd-range-caption Price Range ($)
+										// RD Range
+										.rd-range(
+										data-min='50' data-max='10000'
+										data-start='[50, 10000]'
+										data-step='10'
+										data-tooltip='true'
+										data-min-diff='100')
+
+									.rd-range-outer
+										p.rd-range-caption Area (Sq Ft)
+										// RD Range
+										.rd-range(
+										data-min='70' data-max='20000'
+										data-start='[70, 20000]'
+										data-step='10'
+										data-tooltip='true'
+										data-min-diff='100')
+
+									hr
+									ul.list-inline.list-inline-sm
+										li
+											label.checkbox-inline
+												input(name='checkbox-1' value='checkbox-1' type='checkbox')
+												| Central Heating
+										li
+											label.checkbox-inline
+												input(name='checkbox-2' value='checkbox-2' type='checkbox')
+												| Home Theater
+										li
+											label.checkbox-inline
+												input(name='checkbox-3' value='checkbox-3' type='checkbox')
+												| Lawn
+										li
+											label.checkbox-inline
+												input(name='checkbox-4' value='checkbox-4' type='checkbox')
+												| Wi-Fi
+										li
+											label.checkbox-inline
+												input(name='checkbox-5' value='checkbox-5' type='checkbox')
+												| Gym
+									a.button.button-secondary(href='#' style='min-width: 200px;') Search
+
+					.product-classic-group.scroll-wrap
+						+product-classic-horizontal({
+							images: [
+								'featured-properties-13-480x287',
+								'featured-properties-14-480x287',
+								'featured-properties-15-480x287',
+								'featured-properties-16-480x287'
+							],
+							price: '$5000\\mo',
+							title: '401 Biscayne Boulevard, Miami',
+							sq: '480',
+							bathrooms: '2',
+							bedrooms: '2',
+							garage: '1'
+						}).product-classic-sm
+							p Choose this property if you are looking for a modern house near the ocean shore.
+
+						+product-classic-horizontal({
+							images: [
+								'featured-properties-33-480x287',
+								'featured-properties-06-480x287',
+								'featured-properties-07-480x287',
+								'featured-properties-08-480x287'
+							],
+							price: '$2500\\mo',
+							title: '15 Apartments Of Type B',
+							sq: '430',
+							bathrooms: '2',
+							bedrooms: '2',
+							garage: '1'
+						}).product-classic-sm
+							p A renovated apartment for rent by owner.2 bedroom, 2 full bath living and dining room
+
+						+product-classic-horizontal({
+							images: [
+								'featured-properties-34-480x287',
+								'featured-properties-02-480x287',
+								'featured-properties-03-480x287',
+								'featured-properties-04-480x287'
+							],
+							price: '$9340\\mo',
+							title: '225 Maywood Dr, San Francisco',
+							sq: '435',
+							bathrooms: '1',
+							bedrooms: '1',
+							garage: '1'
+						}).product-classic-sm
+							p A renovated apartment for rent by owner.2 bedroom, 2 full bath living and dining room
+
+						+product-classic-horizontal({
+							images: [
+								'featured-properties-09-480x287',
+								'featured-properties-10-480x287',
+								'featured-properties-11-480x287',
+								'featured-properties-12-480x287'
+							],
+							price: '$2500\\mo',
+							title: '3895 NW 107th Ave, Doral',
+							sq: '430',
+							bathrooms: '2',
+							bedrooms: '2',
+							garage: '1'
+						}).product-classic-sm
+							p A renovated apartment for rent by owner.2 bedroom, 2 full bath living and dining room

@@ -1,0 +1,616 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-product-classic-2
+include ../components/_ui-card
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Real Estate 2'
+
+block page
+	// Page Header
+	include ../sections/_header-modern
+
+	// FScreen
+	section.section.jumbotron-1.panel-4-outer.bg-accent
+		.container: .jumbotron-1-inner
+			.jumbotron-1-divider(role='presentation')
+				.jumbotron-1-divider-icon
+				.jumbotron-1-divider-icon
+
+			.layout-3
+				h2 Find Your Property
+				.layout-3-item
+					ul.list-inline-bordered.heading-7
+						li
+							label
+								input(name='input-group-radio' value='radio-1' type='radio' checked)
+								span For Rent
+						li
+							label
+								input(name='input-group-radio' value='radio-2' type='radio')
+								span For sale
+
+			form.rd-form
+				.form-wrap.form-wrap_2.form-wrap-validation
+					select.form-input.select-filter(
+					name='search-property-location'
+					data-style='modern'
+					data-class='select-dropdown-context-dark'
+					data-placeholder='Choose Location'
+					data-minimum-results-for-search='Infinity'
+					data-constraints='@Required')
+						option(label='placeholder')
+						option(value='2') Alaska
+						option(value='3') Arizona
+						option(value='4') Arkansas
+						option(value='5') California
+						option(value='6') Colorado
+						option(value='7') Connecticut
+						option(value='8') Delaware
+						option(value='9') Florida
+					span.select-arrow
+				.form-wrap.form-wrap_2.form-wrap-validation
+					select.form-input.select-filter(
+					name='search-property-type'
+					data-style='modern'
+					data-class='select-dropdown-context-dark'
+					data-placeholder='Property Type'
+					data-minimum-results-for-search='Infinity'
+					data-constraints='@Required')
+						option(label='placeholder')
+						option(value='2') Apartment
+						option(value='3') House
+						option(value='4') Lot
+					span.select-arrow
+				.form-wrap.form-wrap-validation
+					select.form-input.select-filter(
+					name='search-property-bedrooms'
+					data-style='modern'
+					data-class='select-dropdown-context-dark'
+					data-placeholder='Min Beds'
+					data-minimum-results-for-search='Infinity'
+					data-constraints='@Required')
+						option(label='placeholder')
+						option(value='1') 1
+						option(value='2') 2
+						option(value='3') 3
+						option(value='4') 4
+						option(value='5') 5
+						option(value='6') 6
+						option(value='7') 7
+						option(value='8') 8
+						option(value='9') 9
+					span.select-arrow
+
+				.form-wrap.form-wrap-validation
+					select.form-input.select-filter(
+					name='search-property-bathrooms'
+					data-style='modern'
+					data-class='select-dropdown-context-dark'
+					data-placeholder='Min Baths'
+					data-minimum-results-for-search='Infinity'
+					data-constraints='@Required')
+						option(label='placeholder')
+						option(value='1') 1
+						option(value='2') 2
+						option(value='3') 3
+						option(value='4') 4
+						option(value='5') 5
+						option(value='6') 6
+						option(value='7') 7
+						option(value='8') 8
+						option(value='9') 9
+					span.select-arrow
+
+				.form-wrap.form-wrap-validation
+					select.form-input.select-filter(
+					name='search-property-minprice'
+					data-style='modern'
+					data-class='select-dropdown-context-dark'
+					data-placeholder='Min Price, $'
+					data-minimum-results-for-search='Infinity'
+					data-constraints='@Required')
+						option(label='placeholder')
+						option(value='1') 70
+						option(value='2') 80
+						option(value='3') 90
+						option(value='4') 100
+						option(value='5') 110
+						option(value='6') 120
+						option(value='7') 150
+						option(value='8') 200
+						option(value='9') 300
+					span.select-arrow
+
+				.form-wrap.form-wrap-validation
+					select.form-input.select-filter(
+					name='search-property-maxprice'
+					data-style='modern'
+					data-class='select-dropdown-context-dark'
+					data-placeholder='Max Price, $'
+					data-minimum-results-for-search='Infinity'
+					data-constraints='@Required')
+						option(label='placeholder')
+						option(value='1') 500
+						option(value='2') 1000
+						option(value='3') 1500
+						option(value='4') 2000
+						option(value='5') 2500
+						option(value='6') 3000
+						option(value='7') 3500
+						option(value='8') 4000
+						option(value='9') 4500
+					span.select-arrow
+
+				.form-wrap.form-wrap-validation
+					select.form-input.select-filter(
+					name='search-property-minarea'
+					data-style='modern'
+					data-class='select-dropdown-context-dark'
+					data-placeholder='Min Area, Sq Ft'
+					data-minimum-results-for-search='Infinity'
+					data-constraints='@Required')
+						option(label='placeholder')
+						option(value='1') 20
+						option(value='2') 30
+						option(value='3') 50
+						option(value='4') 70
+						option(value='5') 100
+						option(value='6') 150
+						option(value='7') 200
+						option(value='8') 400
+						option(value='9') 600
+					span.select-arrow
+
+				.form-wrap.form-wrap-validation
+					select.form-input.select-filter(
+					name='search-property-maxarea'
+					data-style='modern'
+					data-class='select-dropdown-context-dark'
+					data-placeholder='Max Area, Sq Ft'
+					data-minimum-results-for-search='Infinity'
+					data-constraints='@Required')
+						option(label='placeholder')
+						option(value='1') 30
+						option(value='2') 40
+						option(value='3') 50
+						option(value='4') 100
+						option(value='5') 150
+						option(value='6') 300
+						option(value='7') 400
+						option(value='8') 500
+						option(value='9') 800
+					span.select-arrow
+
+				.form-wrap: a.button.button-block.button-secondary(href='search-results-2.html') Search
+
+			.jumbotron-1-divider(role='presentation')
+				.jumbotron-1-divider-icon
+				.jumbotron-1-divider-icon
+
+			.jumbotron-1-aside.text-center
+				button.panel-4-toggle(data-multitoggle='#panel-4' data-gmap-trigger='#gmap-1')
+					span.icon.mdi.mdi-map-marker
+					| Properties on map
+		figure.jumbotron-1-figure.jumbotron-1-figure-left: img.jumbotron-1-image(src='images/bg-shape-1.svg' alt='')
+		figure.jumbotron-1-figure.jumbotron-1-figure-right: img.jumbotron-1-image(src='images/bg-shape-1.svg' alt='')
+		.panel-4#panel-4
+			button.panel-4-close(data-multitoggle='#panel-4')
+				span.mdi.mdi-close
+			article#gmap-1.google-map-container.google-map-container--triggerable.google-map-container_product-classic-2(
+			data-center='9870 St Vincent Place, Glasgow, DC 45 Fr 45.'
+			data-icon='images/gmap_marker_mini.png'
+			data-icon-active='images/gmap_marker_mini_active.png'
+			data-styles='[{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}]'
+			data-zoom='14')
+				.google-map.google-map-2
+				ul.google-map-markers
+					li(data-location='9870 St Vincent Place, Glasgow')
+						article.product-classic.product-classic-2
+							h4.product-classic-title: a(href='single-property.html') 35 Pond St, New York
+							.product-classic-media
+								+jpg('featured-properties-32-480x287').product-classic-image
+								.product-classic-price: span $2500\mo
+
+							ul.product-classic-list
+								li
+									span.icon.mdi.mdi-vector-square
+									span 430 Sq Ft
+								li
+									span.icon.hotel-icon-10
+									span 2 Bathrooms
+								li
+									span.icon.hotel-icon-05
+									span 3 Bedrooms
+								li
+									span.icon.hotel-icon-26
+									span 1 Garage
+
+					li(data-location='Buchanan galleries 220 Buchanan St Glasgow G1 2FF')
+						article.product-classic.product-classic-2
+							h4.product-classic-title: a(href='single-property.html') 401 Biscayne Boulevard, Miami
+							.product-classic-media
+								+jpg('featured-properties-05-480x287').product-classic-image
+								.product-classic-price: span $2500\mo
+
+							ul.product-classic-list
+								li
+									span.icon.mdi.mdi-vector-square
+									span 560 Sq Ft
+								li
+									span.icon.hotel-icon-10
+									span 1 Bathroom
+								li
+									span.icon.hotel-icon-05
+									span 2 Bedrooms
+								li
+									span.icon.hotel-icon-26
+									span 1 Garage
+
+
+	// Featured Properties
+	section.section.section-lg.bg-gray-12.text-center
+		.container
+			.heading-decoration-2: h2.heading-inner Featured Properties
+			.row.row-50.mt-lg-80
+				.col-md-6.col-lg-4
+					+product-classic-2({
+						images: [
+							'featured-properties-01-480x287',
+							'featured-properties-02-480x287',
+							'featured-properties-03-480x287',
+							'featured-properties-04-480x287'
+						],
+						price: '$5000\\mo',
+						title: '401 Biscayne Boulevard, Miami',
+						sq: '480',
+						bathrooms: '2',
+						bedrooms: '2',
+						garage: '1'
+					})
+				.col-md-6.col-lg-4
+					+product-classic-2({
+						images: [
+							'featured-properties-05-480x287',
+							'featured-properties-06-480x287',
+							'featured-properties-07-480x287',
+							'featured-properties-08-480x287'
+						],
+						price: '$2500\\mo',
+						title: '923 Folsom St, San Francisco',
+						sq: '535',
+						bathrooms: '2',
+						bedrooms: '3',
+						garage: '1'
+					})
+				.col-md-6.col-lg-4
+					+product-classic-2({
+						images: [
+							'featured-properties-09-480x287',
+							'featured-properties-10-480x287',
+							'featured-properties-11-480x287',
+							'featured-properties-12-480x287'
+						],
+						price: '$5000\\mo',
+						title: '623 Willow Rd, Dallas',
+						sq: '530',
+						bathrooms: '2',
+						bedrooms: '2',
+						garage: '2'
+					})
+				.col-md-6.col-lg-4
+					+product-classic-2({
+						images: [
+							'featured-properties-13-480x287',
+							'featured-properties-14-480x287',
+							'featured-properties-15-480x287',
+							'featured-properties-16-480x287'
+						],
+						price: '$9340\\mo',
+						title: '225 Maywood Dr, San Francisco',
+						sq: '430',
+						bathrooms: '1',
+						bedrooms: '1',
+						garage: '1'
+					})
+				.col-md-6.col-lg-4
+					+product-classic-2({
+						images: [
+							'featured-properties-17-480x287',
+							'featured-properties-18-480x287',
+							'featured-properties-19-480x287',
+							'featured-properties-20-480x287'
+						],
+						price: '$5000\\mo',
+						title: '2888 Bush St, San Francisco',
+						sq: '570',
+						bathrooms: '3',
+						bedrooms: '2',
+						garage: '1'
+					})
+				.col-md-6.col-lg-4
+					+product-classic-2({
+						images: [
+							'featured-properties-21-480x287',
+							'featured-properties-22-480x287',
+							'featured-properties-23-480x287',
+							'featured-properties-24-480x287'
+						],
+						price: '$4563\\mo',
+						title: '275 Lake Ave, Chicago',
+						sq: '630',
+						bathrooms: '2',
+						bedrooms: '3',
+						garage: '2'
+					})
+				.col-sm-12
+					a.button.button-primary(href='properties-grid-2.html') view all properties
+
+	// Amazing Features
+	section.section.section-lg.bg-default.text-center
+		.container
+			.heading-decoration-2: h2.heading-inner Amazing Features
+			.row.row-30.justify-content-center.justify-content-lg-between.mt-lg-80
+				.col-md-10.col-lg-6
+					.image-block-2(style='background-image: url(images/real-estate-2-1-571x426.jpg);')
+				.col-md-10.col-lg-6: .pdl-lg-20.pdl-xl-70
+					// Bootstrap collapse
+					#accordion1.card-group-custom.card-group-corporate(role='tablist' aria-multiselectable='false')
+						+card({
+							show: true,
+							parentId: 'accordion1',
+							number: '1',
+							header: 'Various Locations',
+							headerIcon: 'fl-bigmug-line-big104'
+						}).card-corporate
+							p We have lots of properties in various locations available for purchase to all of our clients.
+
+						+card({
+							parentId: 'accordion1',
+							number: '2',
+							header: 'No Commission',
+							headerIcon: 'fl-bigmug-line-wallet26'
+						}).card-corporate
+							p Opportunity to acquire a quality apartment for rent without having to pay any commission.
+
+						+card({
+							parentId: 'accordion1',
+							number: '3',
+							header: 'Privacy and Security',
+							headerIcon: 'fl-bigmug-line-lock64'
+						}).card-corporate
+							p We guarantee full privacy and security from the moment you call us to choose a property for rent or purchase.
+
+						+card({
+							parentId: 'accordion1',
+							number: '4',
+							header: 'View Apartments',
+							headerIcon: 'fl-bigmug-line-search74'
+						}).card-corporate
+							p View apartment listings with photos, HD videos, virtual tours, 3D floor plans etc.
+
+	// Categories
+	section.section.section-lg.bg-default.text-center
+		.container
+			.heading-decoration-2: h2.heading-inner Categories
+		.container.container-fluid: .pdlr-15
+			// Owl Carousel
+			.owl-carousel.owl-nav-1(
+			data-items='1'
+			data-sm-items='2'
+			data-lg-items='3'
+			data-xxl-items='4'
+			data-dots='false'
+			data-nav='true'
+			data-stage-padding='0'
+			data-loop='true'
+			data-margin='30'
+			data-autoplay='true'
+			data-autoplay-speed='3000'
+			data-mouse-drag='false')
+				a.box-category-2.context-dark(href='search-results.html'): .box-category-2-inner
+					.box-category-2-image-outer(style='background-image: url(images/real-estate-2-2-441x367.jpg);')
+					.box-category-2-caption
+						h3.box-category-2-title Studio Apartments
+						+tag-inline
+							span 8 Properties
+
+				a.box-category-2.context-dark(href='search-results.html'): .box-category-2-inner
+					.box-category-2-image-outer(style='background-image: url(images/real-estate-2-3-441x367.jpg);')
+					.box-category-2-caption
+						h3.box-category-2-title Swimming Pool
+						+tag-inline
+							span 4 Properties
+
+				a.box-category-2.context-dark(href='search-results.html'): .box-category-2-inner
+					.box-category-2-image-outer(style='background-image: url(images/real-estate-2-4-441x367.jpg);')
+					.box-category-2-caption
+						h3.box-category-2-title Luxury Houses
+						+tag-inline
+							span 8 Properties
+
+				a.box-category-2.context-dark(href='search-results.html'): .box-category-2-inner
+					.box-category-2-image-outer(style='background-image: url(images/real-estate-2-5-441x367.jpg);')
+					.box-category-2-caption
+						h3.box-category-2-title Extra Bedroom
+						+tag-inline
+							span 8 Properties
+
+				a.box-category-2.context-dark(href='search-results.html'): .box-category-2-inner
+					.box-category-2-image-outer(style='background-image: url(images/real-estate-2-6-441x367.jpg);')
+					.box-category-2-caption
+						h3.box-category-2-title Cozy Houses
+						+tag-inline
+							span 8 Properties
+
+	// Testimonials
+	section.section.section-lg.bg-gray-12.text-center
+		.container
+			.heading-decoration-2: h2.heading-inner Testimonials
+			// Owl Carousel
+			.owl-carousel.owl-carousel-spacing.mt-35.mt-lg-60(
+			data-items='1'
+			data-md-items='2'
+			data-lg-items='3'
+			data-dots='true'
+			data-nav='false'
+			data-stage-padding='0'
+			data-loop='false'
+			data-margin='30'
+			data-autoplay='true'
+			data-autoplay-speed='3000'
+			data-mouse-drag='false')
+				blockquote.quote-light
+					+quote-mark.quote-light-mark
+					.quote-light-header
+						+jpg('testimonials-1-57x57').quote-light-avatar
+						.quote-light-meta
+							h4.quote-light-cite Karen Sanders
+							p.quote-light-position Pharmacist
+					.quote-light-main
+						p Your property managers have been active in their response to repairs and always patient with our frustrations. You have always found us wonderful tenants.
+
+				blockquote.quote-light
+					+quote-mark.quote-light-mark
+					.quote-light-header
+						+jpg('testimonials-2-57x57').quote-light-avatar
+						.quote-light-meta
+							h4.quote-light-cite Walter Williams
+							p.quote-light-position Lifeguard
+					.quote-light-main
+						p We recently rented an apartment through your site, and have been looked after by James Thompson. He provided us with utmost support on every property issue.
+
+				blockquote.quote-light
+					+quote-mark.quote-light-mark
+					.quote-light-header
+						+jpg('testimonials-3-57x57').quote-light-avatar
+						.quote-light-meta
+							h4.quote-light-cite Kate Anderson
+							p.quote-light-position Decorator
+					.quote-light-main
+						p I have always found your team to be extremely prompt and professional with all dealings I have had with them. You always keep me updated on the progress.
+
+				blockquote.quote-light
+					+quote-mark.quote-light-mark
+					.quote-light-header
+						+jpg('testimonials-4-57x57').quote-light-avatar
+						.quote-light-meta
+							h4.quote-light-cite Peter Smith
+							p.quote-light-position Historian
+					.quote-light-main
+						p Your advice and support from our initial meeting through liaising with current tenants and a polished marketing program all contributed to a great sale process.
+
+				blockquote.quote-light
+					+quote-mark.quote-light-mark
+					.quote-light-header
+						+jpg('testimonials-5-57x57').quote-light-avatar
+						.quote-light-meta
+							h4.quote-light-cite Alice Lewis
+							p.quote-light-position Office Manager
+					.quote-light-main
+						p You were quick to understand my needs and steer me in the right direction. The professionalism and warmth of your team made the process less stressful.
+
+				blockquote.quote-light
+					+quote-mark.quote-light-mark
+					.quote-light-header
+						+jpg('testimonials-6-57x57').quote-light-avatar
+						.quote-light-meta
+							h4.quote-light-cite Dennis Brooks
+							p.quote-light-position Entrepreneur
+					.quote-light-main
+						p Working with your team is a great experience. Expert guidance; great customer care; awesome marketing! Thank you for the great team effort!
+
+	// Our Agents
+	section.section.section-lg.bg-default.text-center
+		.container
+			.heading-decoration-2: h2.heading-inner Our Agents
+			.row.row-30.mt-lg-60
+				.col-sm-6.col-lg-4.col-xl-3
+					// Profile Classic
+					article.profile-classic.context-dark: .profile-classic-inner
+						figure.profile-classic-figure(style='background-image: url(images/real-estate-2-7-270x325.jpg);')
+						.profile-classic-caption
+							h3.profile-classic-title: a(href='agent-single-page.html') Michael Rutter
+							p Certified Real Estate Broker
+							a.profile-classic-link(href='tel:#')
+								span.icon.mdi.mdi-phone
+								span 1-800-1234-567
+				.col-sm-6.col-lg-4.col-xl-3
+					// Profile Classic
+					article.profile-classic.context-dark: .profile-classic-inner
+						figure.profile-classic-figure(style='background-image: url(images/real-estate-2-8-270x325.jpg);')
+						.profile-classic-caption
+							h3.profile-classic-title: a(href='agent-single-page.html') Janet Richmond
+							p Residential Real Estate Broker
+							a.profile-classic-link(href='tel:#')
+								span.icon.mdi.mdi-phone
+								span 1-800-1234-567
+				.col-sm-6.col-lg-4.col-xl-3
+					// Profile Classic
+					article.profile-classic.context-dark: .profile-classic-inner
+						figure.profile-classic-figure(style='background-image: url(images/real-estate-2-9-270x325.jpg);')
+						.profile-classic-caption
+							h3.profile-classic-title: a(href='agent-single-page.html') Sam Wilson
+							p Real Estate Broker
+							a.profile-classic-link(href='tel:#')
+								span.icon.mdi.mdi-phone
+								span 1-800-1234-567
+				.col-sm-6.col-lg-12.col-xl-3.height-fill
+					article.box-info-custom-1: .box-info-custom-1-inner.bg-accent
+						.box-info-custom-1-main
+							h3.box-info-custom-1-title Get a Free Consultation
+							p Contact one of our brokers to quickly settle any real estate issue you may have.
+						.box-info-custom-1-aside
+							a.button.button-secondary(href='contact-us.html') Contact us
+
+
+	// Latest Blog Posts
+	section.section.section-lg.bg-gray-12.text-center
+		.container
+			.heading-decoration-2: h2.heading-inner Latest Blog Posts
+			.row.row-50.mt-lg-60
+				.col-sm-6
+					// Post Light
+					article.post-light
+						a.post-light-media(href=links.post): .post-light-image-outer(style='background-image: url(images/real-estate-2-10-569x309.jpg);')
+						a.post-light-caption(href=links.post)
+							p.post-light-time March 15, 2018
+							.post-light-divider
+							h4.post-light-title Special Unveiling of 568 N. Tigertail Road
+				.col-sm-6
+					// Post Light
+					article.post-light
+						a.post-light-media(href=links.post): .post-light-image-outer(style='background-image: url(images/real-estate-2-11-569x309.jpg);')
+						a.post-light-caption(href=links.post)
+							p.post-light-time March 15, 2018
+							.post-light-divider
+							h4.post-light-title How We Build a Better LA for a Fifth Year in a Row
+
+	include ../sections/_section-newsletter
+
+	// Partners
+	section.section.section-lg.bg-default
+		.container
+			// Owl Carousel
+			.owl-carousel.owl-carousel-stretch.owl-style-1(
+			data-items='1'
+			data-sm-items='2'
+			data-md-items='4'
+			data-dots='true'
+			data-nav='false'
+			data-stage-padding='0'
+			data-loop='false'
+			data-margin='30'
+			data-autoplay='true'
+			data-autoplay-speed='3000'
+			data-mouse-drag='false')
+				a.owl-link(href='#'): +png('brand-1-183x44')
+				a.owl-link(href='#'): +png('brand-2-118x82')
+				a.owl-link(href='#'): +png('brand-3-137x39')
+				a.owl-link(href='#'): +png('brand-4-133x77')
+				a.owl-link(href='#'): +png('brand-5-145x35')
+
+	// Page Footer
+	include ../sections/_footer-modern

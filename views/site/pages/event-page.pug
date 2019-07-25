@@ -1,0 +1,163 @@
+extends  ../_skeleton
+
+//- Includes
+
+block variables
+	- var activeCategory = 'events'
+	- var pageName = 'Семинар ' + moment(event.time).format('LLL')
+	- function isEventInPast(time) { return time < new Date(); }
+
+block page
+	// Page Header
+	include ../sections/_header-classic
+
+	+breadcrumbs({
+		pageName : event.title,
+		category: activeCategory,
+		path: [pageName],
+		bgImage: event.image ? event.image.path : 'centr-sdelok/main-top1.jpg'
+	})
+
+	// Blog post 
+	section.section.section-md.bg-default
+		.container
+			.row.justify-content-lg-center
+				.col-lg-8
+					article.blog-post-solo
+						//- +jpg('blog-post-01-770x440')
+						//- img(src=`images/${post.image.path}` alt='' class=className)&attributes(attributes)
+						//- h2(style='margin-bottom: 20px;') #{post.title}
+						.blog-post-solo-part(style='color: black;')
+							h3 #{moment(event.time).format('LLLL')}
+							h4 #{event.title}
+							br
+							h5 !{event.content}
+							br
+							if (isEventInPast(event.time))
+								|
+							else if (!event.free)
+								h5(style='color: #FDDD51;') Стоимость: #{event.price} ₽
+							else
+								h5(style='color: green;') Вход свободный
+						
+						// Post Share and Links
+						.blog-post-solo-footer
+							.blog-post-solo-footer-left
+								ul.blog-post-solo-footer-list
+									li
+										if (event.records.length)
+											span.icon.fas.fa-check &nbsp;
+											span Записалось #{event.records.length}
+										else
+											span.icon.fas.fa-times &nbsp;
+											span Никто не записался
+							.blog-post-solo-footer-right
+								ul.blog-post-solo-footer-list-1
+									li: span Поделиться
+									li: a.icon.icon-circle.icon-rounded.icon-4.fa-vk(href='#')
+									li: a.icon.icon-circle.icon-rounded.icon-6.fa-google-plus(href='#')
+									li: a.icon.icon-circle.icon-rounded.icon-5.fa-facebook(href='#')
+
+
+				// Event record SideBar
+				.col-lg-4
+					.pdl-xl-40
+						.row.row-60
+							.col-md-6.col-lg-12
+								article.box-info-custom-1: .box-info-custom-1-inner.bg-accent
+									.box-info-custom-1-main
+										h3.box-info-custom-1-title Запись на семинар
+									.box-info-custom-1-aside
+										if (!event.isActive)
+											h3(style='color: red;') Запись закрыта
+										else if (!isEventInPast(event.time))
+											form.rd-form.rd-form-inline#event-form(
+												data-form-output='form-output-global')
+													.form-wrap
+														input.form-input(id='event-form-name' type='name' name='name' data-constraints='@Required')
+														label.form-label(for='event-form-name') Имя
+													.form-wrap
+														input.form-input(id='event-form-lname' type='name' name='lname' data-constraints='@Required')
+														label.form-label(for='event-form-lname') Фамилия
+													.form-wrap
+														input.form-input(id='event-form-email' type='email' name='email' data-constraints='@Email @Required')
+														label.form-label(for='event-form-email') Email
+													.form-wrap
+														input.form-input(id='event-form-tel' type='tel' name='tel' data-constraints='@Required')
+														label.form-label(for='event-form-tel') 8 (___) ___-__-__
+													.form-wrap
+														.recaptcha#recaptcha-event(data-sitekey='6Lc8t30UAAAAAL4ngQMStrVcGhqDWjkp5X3ZuBh8' data-widget-id='recaptcha-event')
+													.form-button
+														button.button.button-secondary(onclick='recMe()') Записаться
+										else
+											h3(style='color: red;') Семинар прошел
+												
+							//- .col-md-6.col-lg-12
+							//- 	.block-info-2
+							//- 		.block-info-2-title
+							//- 			h3 23
+							//- 		a.post-minimal-1(href='#')
+							//- 			.post-minimal-1-left
+							//- 				+jpg('post-agent-01-212x208')
+							//- 			.post-minimal-1-body
+							//- 				.post-minimal-1-title: span Перепланировка без нарушений: как соблюсти закон и свои права
+							//- 				.post-minimal-1-text: span $5000\mo
+							//- 		a.post-minimal-1(href='#')
+							//- 			.post-minimal-1-left
+							//- 				+jpg('post-agent-02-212x208')
+							//- 			.post-minimal-1-body
+							//- 				.post-minimal-1-title: span 35 Pond St, New York
+							//- 				.post-minimal-1-text: span $5550\mo
+							//- 		a.post-minimal-1(href='#')
+							//- 			.post-minimal-1-left
+							//- 				+jpg('post-agent-03-212x208')
+							//- 			.post-minimal-1-body
+							//- 				.post-minimal-1-title: span 182 3rd St, Seattle
+							//- 				.post-minimal-1-text: span $2520\mo
+
+	// Page Footer
+	include ../sections/_footer-classic
+
+	script.
+		"use strict";
+		let recMe = () => {
+			let form = $("#event-form")
+					,data = { 'g-recaptcha-response': grecaptcha.getResponse($("#recaptcha-event").attr('data-widget-id')) }
+					,email = $('#event-form-email').val()
+					,tel = $('#event-form-tel').val()
+					,name = $('#event-form-name').val()
+					,lname = $('#event-form-lname').val()
+					,isAllValid = grecaptcha.getResponse($("#recaptcha-event").attr('data-widget-id')) && email && tel.length === 17 && name && lname;
+
+			if (isAllValid) {
+				$.ajax({
+					type: 'POST',
+					url: '/api/check-recaptcha',
+					data,
+					complete (res) {
+						if (res.success) {
+							$.ajax({
+								type: 'POST',
+								url: '/api/create-record',
+								data: { name, lname, tel, email, id: "#{event._id}" },
+								complete (res) {
+									if (res.responseJSON && res.responseJSON.success) {
+										showSnack('success', 'Спасибо! Вы записаны!');
+										form[0].reset();
+										grecaptcha.reset();
+									} else if (res.responseJSON && res.responseJSON.double) showSnack('error', 'Вы уже записаны!');
+									else showSnack('error', 'Что-то пошло не так');
+								}
+							});
+						} else showSnack('error', 'Проверка не пройдена');
+					}
+				});
+			} else showSnack('error', 'Все поля обязательны');
+		};
+		$(document).ready(() => { 
+			let form = $("#event-form");
+			form.on('submit', (e) => {
+				e.preventDefault();
+			});
+			$("#event-form-tel").mask("8 (000) 000-00-00");
+		});

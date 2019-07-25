@@ -1,0 +1,27 @@
+mixin post-default(obj)
+	article.post-default
+		a(href=`blog-post?id=${obj.id}`).post-default-image
+			//- +jpg(obj.image ? obj.image : 'blog-01-736x540')
+			img(src=`/images/${obj.image}` alt='')&attributes(attributes)
+
+		.post-default-body
+			.post-default-title: h4: a(href=`blog-post?id=${obj.id}`)= obj.title ? obj.title : 'Special Unveiling of 568 N. Tigertail Road'
+			.post-default-divider
+			.post-default-text: p= obj.text ? obj.text : 'Our Principal and Partner, Samuel McMillan, recently celebrated the unveiling of 568 N. Tigertail Road, a newly-constructed estate'
+			.post-default-time
+				span.icon.mdi.mdi-clock
+				span= obj.time ? obj.time : 'March 15, 2018'
+
+mixin post-modern(obj)
+	a.post-modern(href='blog-post.html')
+		.post-modern-title: span.heading-3= obj.title ? obj.title : 'Sales Manager'
+		ul.post-modern-list
+			li
+				span.icon.mdi.mdi-map-marker
+				span= obj.location ? obj.location : 'Seattle'
+			li
+				span.icon.material-icons-av_timer
+				span= obj.time ? obj.time : 'Full Time'
+			li
+				span.icon.mdi.mdi-clock
+				span= obj.clock ? obj.clock : '6 hours ago'

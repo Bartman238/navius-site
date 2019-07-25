@@ -1,0 +1,58 @@
+mixin box-events(obj)
+	-function isEventInPast(time) { return time < new Date(); }
+	// Box Events
+	article.box-minimal(style='height: 300px;')
+		h3.box-minimal-title=moment(obj.time).format('LLL')
+		.box-minimal-divider
+		h4=obj.title
+		br
+		if (isEventInPast(obj.time))
+			p(style='color: red;') Семинар прошел
+		else if (!obj.free)
+			p(style='color: #FDDD51;') #{obj.price ? `Стоимость: ${obj.price} ₽` : 'Вход платный'}
+			div.event-more-link
+				a.open-event-modal(href='#open-event-modal' data-id=`${obj.timepadId}` data-time=obj.time data-title=`${obj.title}` data-content=`${obj.content}`) Подробнее...
+		else
+			p(style='color: green;') Вход свободный
+			div.event-more-link
+				a.open-event-modal(href='#open-event-modal' data-id=`${obj.timepadId}` data-title=`${obj.title}` data-content=`${obj.content}`) Подробнее...
+
+
+	// Event content modal
+	div#open-event-modal.mfp-hide.event-popup
+		h3#title(style='color: white;')
+		hr(style='margin: 10px 0 10px 0;')
+		h4.font-weight-thin#content(style='color: white;')
+		hr(style='margin: 10px 0 10px 0;')
+		center
+			h3
+				a.button.button-outline#rec-event-btn(onclick='$.magnificPopup.close()' href='' target='_blank' style='color: white;') Записаться
+		//- +subscribe-event-form('123')
+		//- form.rd-form.rd-form-inline#event-form(
+		//- 	data-form-output='form-output-global'
+		//- 	data-form-type='event')
+		//- 		.form-wrap
+		//- 			input.form-input(id='event-form-tel' type='tel' name='tel' data-constraints='@Required')
+		//- 			label.form-label(for='event-form-tel') 8 (___) ___-__-__
+		//- 		.form-button
+		//- 			span.button.button-outline#rec-event-btn2(onclick='') Записаться
+	
+	script.
+		"use strict";
+		$(document).ready(() => {
+			let id = '';
+			//- $('#event-form-tel').mask('8 (000) 000-00-00');
+			$('.open-event-modal').click(function() {
+				id = $(this).data('id');
+				$('#rec-event-btn').attr('href', function() {
+					return 'https://centr-sdelok.timepad.ru/event/' + id + '/';
+				});
+				$('#title').html($(this).data('title'));
+				$('#content').html($(this).data('content'));
+			});
+
+			$('.open-event-modal').magnificPopup({
+				type:'inline',
+				midClick: true
+			});
+		})

@@ -1,0 +1,23 @@
+extends  ../_skeleton
+
+//- Includes
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'FAQ'
+
+block page
+	include ../sections/_header-classic
+		
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'breadcrumbs-bg-08-1920x420',
+		data: '54'
+	})
+
+	section.section.section-md.bg-default
+		.container
+			include ../includes/_box-info
+
+	include ../sections/_footer-classic

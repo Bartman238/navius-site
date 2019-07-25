@@ -1,0 +1,85 @@
+mixin call-me-popup(obj)
+  // Call me popup
+  article.box-info.box-info-2.mfp-hide#call-me-popup
+    .box-info-main.context-dark(style='border-radius: 5px;'): .box-info-main-inner
+      center
+        h2 Обратный звонок
+        h4 Оставьте свои контактные данные и мы сами вам перезвоним!
+      form.rd-form#call-me-form(
+      data-form-output='form-output-global'
+      data-form-type='call-me-form')
+        .row.row-20
+          .col-12
+            .form-wrap
+              input#call-me-hidden(hidden)
+              input#call-me-name.form-input(type='text' name='name' data-constraints='@Required' autocomplete='off')
+              label.form-label(for='call-me-name') Ваше имя
+          .col-12
+            .form-wrap
+              input#call-me-tel.form-input(type='tel' name='tel' data-constraints='@Required' autocomplete='off')
+              label.form-label(for='call-me-tel') 8 (___) ___-__-__
+          .col-12
+            .form-wrap
+              center
+                .recaptcha#recaptcha-call-me(data-sitekey='6Lc8t30UAAAAAL4ngQMStrVcGhqDWjkp5X3ZuBh8' data-widget-id='recaptcha-call-me')
+          .col-12
+            center
+              button.button.button-secondary(onclick='sendCallMe()') Перезвоните мне
+
+  // Javascript              
+  script.
+    /**
+    * Call me popup with form
+    */
+    let sendCallMe = () => {
+      let redata = { 'g-recaptcha-response': grecaptcha.getResponse($("#recaptcha-call-me").attr('data-widget-id')) }
+        ,form = $("#call-me-form")
+        ,data = { 
+          name: $('#call-me-name').val(), 
+          tel: $('#call-me-tel').val()
+        }
+        ,isAllValid = grecaptcha.getResponse($("#recaptcha-call-me").attr('data-widget-id')) && data.name && data.tel.length === 17;
+
+      if (isAllValid) {
+        $.ajax({
+          type: 'POST',
+          url: '/api/check-recaptcha',
+          data: redata,
+          complete (res) {
+            if (res.success) {
+              $.ajax({
+                type: 'POST',
+                url: '/api/call-me-back',
+                data,
+                complete (res) {
+                  if (res.responseJSON && res.responseJSON.success) {
+                    form[0].reset();
+                    grecaptcha.reset()
+                    $.magnificPopup.close();
+                    showSnack('success', 'Спасибо! Мы перезвоним вам.');
+                  } else showSnack('error', 'Что-то пошло не так');
+                }
+              });
+            } else showSnack('error', 'Проверка не пройдена');
+          }
+        });
+      } else showSnack('error', 'Все поля обязательны');
+    };
+    $(document).ready(() => {
+      let form = $("#call-me-form");
+      form.on('submit', (e) => {
+        e.preventDefault();
+      });
+      $('#call-me-tel').mask('8 (000) 000-00-00');
+      $('.call-me-popup').magnificPopup({
+        type: 'inline',
+        preloader: false,
+        focus: '#call-me-hidden',
+        callbacks: {
+          beforeOpen () {
+            if ($(window).width() < 700) this.st.focus = false;
+            else this.st.focus = '#call-me-hidden';
+          }
+        }
+      });
+    });

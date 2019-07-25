@@ -1,0 +1,29 @@
+extends  ../_skeleton
+
+//- Includes
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = '503'
+
+block page
+	include ../sections/_header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'breadcrumbs-bg-03-1922x291',
+		data: '48'
+	})
+
+	// Section 404
+	section.section.section-md.bg-default.text-center
+		.container
+			h2.text-spacing-20 Service is Temporarily Unavailable
+			p.heading-5.mw-650.block-center.text-default Sorry, we're offline right now to make our site even better. Please, come back later and check what we've been up to.
+			a.button.button-primary(href='index.html') Go to Homepage
+
+
+
+	// Page Footer
+	include ../sections/_footer-classic

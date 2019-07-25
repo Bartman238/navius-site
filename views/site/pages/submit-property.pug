@@ -1,0 +1,236 @@
+extends  ../_skeleton
+
+//- Includes
+
+block variables
+	- var activeCategory = 'properties'
+	- var pageName = 'Submit Property'
+
+block page
+	include ../sections/_header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'breadcrumbs-bg-07-1920x420',
+		data: '28'
+	})
+
+	section.section.section-md.bg-gray-12
+		.container
+			// RD Mailform
+			form.rd-form.rd-mailform(
+			data-form-output='form-output-global'
+			data-form-type='contact'
+			method='post'
+			action='bat/rd-mailform.php')
+				.row.row-20
+					.col-12: .section-1.section-1-start
+						h3 Basic Information
+						.row.row-20.mt-20
+							.col-12
+								.form-wrap
+									input#property-title.form-input(type='text' name='title' data-constraints='@Required')
+									label.form-label(for='property-title') Property Title
+							.col-md-4
+								.form-wrap.form-wrap-validation
+									select.form-input.select-filter(
+									name='property-type'
+									data-style='modern'
+									data-placeholder='Type'
+									data-minimum-results-for-search='Infinity'
+									data-constraints='@Required')
+										option(label='placeholder')
+										option(value='2') Apartment
+										option(value='3') House
+										option(value='4') Lot
+									span.select-arrow
+							.col-md-4
+								.form-wrap.form-wrap-validation
+									select.form-input.select-filter(
+									name='property-status'
+									data-style='modern'
+									data-placeholder='Status'
+									data-minimum-results-for-search='Infinity'
+									data-constraints='@Required')
+										option(label='placeholder')
+										option(value='2') For Sale
+										option(value='3') For Rent
+									span.select-arrow
+							.col-md-4
+								.form-wrap
+									input#property-price.form-input(type='text' name='price' data-constraints='@Required @Numeric')
+									label.form-label(for='property-price') Price (USD)
+
+					.col-12: .section-1
+						h3 Location
+						.row.row-20.mt-20
+							.col-md-4
+								.form-wrap.form-wrap-validation
+									select.form-input.select-filter(
+									name='state-country'
+									data-style='modern'
+									data-placeholder='State/Country'
+									data-minimum-results-for-search='Infinity'
+									data-constraints='@Required')
+										option(label='placeholder')
+										option(value='2') Alaska
+										option(value='3') Arizona
+										option(value='4') Arkansas
+										option(value='5') California
+										option(value='6') Colorado
+										option(value='7') Connecticut
+										option(value='8') Delaware
+										option(value='9') Florida
+									span.select-arrow
+							.col-md-4
+								.form-wrap.form-wrap-validation
+									select.form-input.select-filter(
+									name='city'
+									data-style='modern'
+									data-placeholder='City'
+									data-minimum-results-for-search='Infinity'
+									data-constraints='@Required')
+										option(label='placeholder')
+										option(value='2') New York
+										option(value='3') Los Angles
+										option(value='4') Manhattan
+										option(value='5') Chicago
+									span.select-arrow
+							.col-md-4
+								.form-wrap.form-wrap-validation
+									select.form-input.select-filter(
+									name='area'
+									data-style='modern'
+									data-placeholder='Area'
+									data-minimum-results-for-search='Infinity'
+									data-constraints='@Required')
+										option(label='placeholder')
+										option(value='2') Lake Worth
+										option(value='3') Fanning Springs
+										option(value='4') Bellevue
+										option(value='5') Capitol Hill
+									span.select-arrow
+							.col-md-8
+								.form-wrap
+									input#property-address.form-input(type='text' name='address' data-constraints='@Required')
+									label.form-label(for='property-address') Address
+							.col-md-4
+								.form-wrap
+									input#property-zip.form-input(type='text' name='zip' data-constraints='@Required')
+									label.form-label(for='property-zip') Zip
+
+					.col-12: .section-1
+						h3 Gallery
+						.rd-file-drop.rd-file-drop-1(data-drop-zone='rd-file-drop-1' data-button='rd-file-drop-btn-1' data-field-element='rd-file-drop-meta-1')
+							input(name='gallery[]' data-multiple-caption='{count} files selected' type='file' multiple='')
+							.rd-file-drop-wrap
+								span.rd-file-drop-btn.rd-file-drop-btn-1
+									svg(xmlns='http://www.w3.org/2000/svg' width='20' height='17' viewbox='0 0 20 17')
+										path(d='M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z')
+									span.rd-file-drop-text Choose a file
+								p  or drag it here
+							.rd-file-drop-meta.rd-file-drop-meta-1
+
+					.col-12: .section-1
+						h3 Contact details
+						.row.row-20.mt-20
+							.col-lg-4
+								.form-wrap
+									input#form-name.form-input(type='text' name='name' data-constraints='@Required')
+									label.form-label(for='form-name') Your Name
+							.col-lg-4
+								.form-wrap
+									input#form-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+									label.form-label(for='form-email') E-mail
+							.col-lg-4
+								.form-wrap
+									input#form-phone.form-input(type='text' name='phone' data-constraints='@PhoneNumber')
+									label.form-label(for='form-phone') Phone
+
+					.col-12: .section-1
+						h3 Detailed Information
+						.row.row-20.mt-20
+							.col-sm-6.col-lg-3
+								.form-wrap.form-wrap-validation
+									select.form-input.select-filter(
+									name='property-bathrooms'
+									data-style='modern'
+									data-placeholder='Bathrooms'
+									data-minimum-results-for-search='Infinity'
+									data-constraints='@Required')
+										option(label='placeholder')
+										option(value='1') 1
+										option(value='2') 2
+										option(value='3') 3
+										option(value='4') 4
+										option(value='5') 5
+										option(value='6') 6
+										option(value='7') 7
+										option(value='8') 8
+										option(value='9') 9
+							.col-sm-6.col-lg-3
+								.form-wrap.form-wrap-validation
+									select.form-input.select-filter(
+									name='property-bedrooms'
+									data-style='modern'
+									data-placeholder='Bedrooms'
+									data-minimum-results-for-search='Infinity'
+									data-constraints='@Required')
+										option(label='placeholder')
+										option(value='1') 1
+										option(value='2') 2
+										option(value='3') 3
+										option(value='4') 4
+										option(value='5') 5
+										option(value='6') 6
+										option(value='7') 7
+										option(value='8') 8
+										option(value='9') 9
+							.col-sm-6.col-lg-3
+								.form-wrap.form-wrap-validation
+									select.form-input.select-filter(
+									name='property-garages'
+									data-style='modern'
+									data-placeholder='Garages'
+									data-minimum-results-for-search='Infinity'
+									data-constraints='@Required')
+										option(label='placeholder')
+										option(value='1') 1
+										option(value='2') 2
+										option(value='3') 3
+										option(value='4') 4
+										option(value='5') 5
+										option(value='6') 6
+										option(value='7') 7
+										option(value='8') 8
+										option(value='9') 9
+
+							.col-sm-6.col-lg-3
+								.form-wrap
+									input#property-area.form-input(type='text' name='property-area' data-constraints='@Numeric')
+									label.form-label(for='property-area') Area, Sq Ft
+							.col-12
+								include ../includes/_row-features
+
+					.col-12: .section-1.section-1-end
+						h3 Floor Plan
+						.rd-file-drop.rd-file-drop-2(data-drop-zone='rd-file-drop-2' data-button='rd-file-drop-btn-2' data-field-element='rd-file-drop-meta-2')
+							input(name='gallery[]' data-multiple-caption='{count} files selected' type='file' multiple='')
+							.rd-file-drop-wrap
+								span.rd-file-drop-btn.rd-file-drop-btn-2
+									svg(xmlns='http://www.w3.org/2000/svg' width='20' height='17' viewbox='0 0 20 17')
+										path(d='M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z')
+									span.rd-file-drop-text Choose a file
+								p  or drag it here
+							.rd-file-drop-meta.rd-file-drop-meta-2
+
+					.col-12
+						.form-wrap
+							label.form-label(for='form-comment') Comment (optional)
+							textarea#form-comment.form-input(name='comment')
+
+					.col-12
+						button.button.button-sm.button-secondary(type='submit') Submit Property
+
+	include ../sections/_footer-classic

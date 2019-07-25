@@ -1,0 +1,146 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-product-classic-2
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Search Results'
+
+block page 
+	// Page Header
+	include ../sections/_header-classic
+
+	// Search results
+	section.section.section-layout-1-top
+		include ../includes/_google-map-search-results
+
+	section.section.section-layout-1-bottom.bg-gray-12
+		.container
+			.section-layout-1-form
+				include ../includes/_block-property
+
+	section.section.section-md.bg-gray-12
+		.container
+			.layout-3
+				p.tag-inline-caption.heading-7
+					+tag-inline
+						span 9
+					span Search results
+				.layout-3-item
+					.unit.align-items-center
+						.unit-left
+							p.heading-7 Sort By:
+						.unit-body
+							select.form-input.select-filter(
+							data-style='modern'
+							data-placeholder='Price Low to High'
+							data-minimum-results-for-search='Infinity'
+							data-constraints='@Required')
+								option(label='placeholder')
+								option(value='1') Price Low to High
+								option(value='2') Price High to Low
+								option(value='3') Most Popular
+								option(value='4') Top Rated
+								option(value='5') Best Sellers
+
+			.row.row-50.mt-30
+				.col-md-6.col-lg-4
+					+product-classic-2({
+						images: [
+							'featured-properties-04-480x287',
+							'featured-properties-01-480x287',
+							'featured-properties-02-480x287',
+							'featured-properties-03-480x287'
+						],
+						price: '$5000\\mo',
+						title: '401 Biscayne Boulevard, Miami',
+						sq: '480',
+						bathrooms: '2',
+						bedrooms: '2',
+						garage: '1'
+					})
+				.col-md-6.col-lg-4
+					+product-classic-2({
+						images: [
+							'featured-properties-33-480x287',
+							'featured-properties-06-480x287',
+							'featured-properties-07-480x287',
+							'featured-properties-08-480x287'
+						],
+						price: '$2500\\mo',
+						title: '35 Pond St, New York',
+						sq: '535',
+						bathrooms: '2',
+						bedrooms: '3',
+						garage: '1'
+					})
+				.col-md-6.col-lg-4
+					+product-classic-2({
+						images: [
+							'featured-properties-15-480x287',
+							'featured-properties-18-480x287',
+							'featured-properties-19-480x287',
+							'featured-properties-20-480x287'
+						],
+						price: '$5000\\mo',
+						title: '2888 Bush St, San Francisco',
+						sq: '570',
+						bathrooms: '3',
+						bedrooms: '2',
+						garage: '1'
+					})
+				.col-md-6.col-lg-4
+					+product-classic-2({
+						images: [
+							'featured-properties-09-480x287',
+							'featured-properties-10-480x287',
+							'featured-properties-11-480x287',
+							'featured-properties-12-480x287'
+						],
+						price: '$5000\\mo',
+						title: '623 Willow Rd, Dallas',
+						sq: '530',
+						bathrooms: '2',
+						bedrooms: '2',
+						garage: '2'
+					})
+				.col-md-6.col-lg-4
+					+product-classic-2({
+						images: [
+							'featured-properties-13-480x287',
+							'featured-properties-14-480x287',
+							'featured-properties-17-480x287',
+							'featured-properties-16-480x287'
+						],
+						price: '$9340\\mo',
+						title: '225 Maywood Dr, San Francisco',
+						sq: '430',
+						bathrooms: '1',
+						bedrooms: '1',
+						garage: '1'
+					})
+
+				.col-md-6.col-lg-4
+					+product-classic-2({
+						images: [
+							'featured-properties-34-480x287',
+							'featured-properties-22-480x287',
+							'featured-properties-23-480x287',
+							'featured-properties-24-480x287'
+						],
+						price: '$4563\\mo',
+						title: '275 Lake Ave, Chicago',
+						sq: '630',
+						bathrooms: '2',
+						bedrooms: '3',
+						garage: '2'
+					})
+
+				.col-sm-12
+					ul.pagination-custom
+						li: a.active(href='#') 1
+						li: a(href='#') 2
+
+	// Page Footer
+	include ../sections/_footer-classic

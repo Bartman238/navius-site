@@ -1,0 +1,42 @@
+extends  ../_skeleton
+
+include ../components/_ui-posts
+
+//- Includes
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Maintenance'
+
+block page
+	section.section.one-page.one-page-animate.context-dark(style='background-image: url(images/bg-one-page-02-2380x950.jpg)')
+		.one-page-header
+			+logo
+			
+		.one-page-main
+			.container
+				.row.justify-content-center
+					.col-xl-9
+						h4.text-spacing-50 We are currently working on
+						h2.text-spacing-50 This page will appear in
+						.DateCountdown(
+						data-type='until'
+						data-date='2019-12-31 00:00:00'
+						data-format='wdhms' 
+						data-color=colors.secondary 
+						data-bg='rgba(245, 245, 245, 1)' 
+						data-width='0.01')
+						h4 Stay tuned and subscribe to our newsletter
+						.mw-675.block-center
+							form.rd-form.rd-mailform.rd-form-inline(
+							data-form-output='form-output-global'
+							data-form-type='subscribe'
+							method='post'
+							action='bat/rd-mailform.php')
+								.form-wrap
+									input.form-input(id='subscribe-form-email' type='email' name='email' data-constraints='@Email @Required')
+									label.form-label(for='subscribe-form-email') info@demolink.org
+								.form-button
+									button.button.button-secondary(type='submit') Subscribe
+									
+		.one-page-footer
+			+rights

@@ -1,0 +1,64 @@
+footer.footer-modern.section.bg-gray-31.context-dark
+	.container
+		.row.row-40.justify-content-md-between
+			.col-md-6.col-lg-4.col-xl-3
+				a.brand(href='#')
+					+png(brand.default.normal)(srcset='images/' + brand.default.retina + '.png 2x').brand-logo-dark
+					+png(brand.inverse2.normal)(srcset='images/' + brand.inverse2.retina + '.png 2x').brand-logo-light
+				p.footer-txt We are a dedicated team of truly passionate, property professionals who understand our clients’ needs.
+				.link-with-icon.heading-4.text-spacing-150.font-sec(data-item='.icon')
+					span.icon.icon-1.icon-secondary.mdi.mdi-phone
+					a(href='tel:#') 1-800-700-6200
+				.link-with-icon.text-spacing-100(data-item='.icon')
+					span.icon.icon-2.icon-secondary.mdi.mdi-email-outline
+					a(href='mailto:#') info@demolink.org
+				ul.list-inline-1
+					li: a(href='#').icon.fa-facebook
+					li: a(href='#').icon.fa-twitter
+					li: a(href='#').icon.fa-google-plus
+					li: a(href='#').icon.fa-pinterest-p
+			.col-md-6.col-lg-4.col-xl-3
+				h3 Popular Locations
+				ul.list-1
+					li
+						span.icon.mdi.mdi-map-marker
+						a(href='#') Bayonne, New Jersey
+					li
+						span.icon.mdi.mdi-map-marker
+						a(href='#') Greenville, New Jersey
+					li
+						span.icon.mdi.mdi-map-marker
+						a(href='#') The Heights, New Jersey
+					li
+						span.icon.mdi.mdi-map-marker
+						a(href='#') West Side, New York
+					li
+						span.icon.mdi.mdi-map-marker
+						a(href='#') Upper East Side, New York
+					li
+						span.icon.mdi.mdi-map-marker
+						a(href='#') West Side, New York
+			.col-md-6.col-lg-4
+				h3 Get in Touch
+				form.rd-form.rd-mailform(
+				data-form-output='form-output-global'
+				data-form-type='contact'
+				method='post'
+				action='bat/rd-mailform.php')
+					.row.row-20
+						.col-12
+							.form-wrap
+								input#footer-contact-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+								label.form-label(for='footer-contact-email') E-mail
+						.col-12
+							.form-wrap
+								label.form-label(for='footer-contact-message') Message
+								textarea#footer-contact-message.form-input(name='message' data-constraints='@Required' style='height: 101px')
+						.col-12
+							button.button.button-secondary(type='submit') Send message
+		hr
+		.row.row-10.justify-content-sm-between
+			.col-sm-6
+				+rights
+			.col-sm-6.text-sm-right
+				a.lefts(href='#') Пользовательское соглашение

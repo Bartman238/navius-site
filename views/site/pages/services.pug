@@ -1,0 +1,429 @@
+extends  ../_skeleton
+
+
+block variables
+	- var activeCategory = 'services'
+	- var pageName = 'Услуги'
+
+block page
+	include ../sections/_header-classic
+	include ../components/_ui-card
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'centr-sdelok/main-top1.jpg'
+	})
+
+	.divider-section.bg-gray-16
+
+	//- section.section.section-sm.bg-gray-12.text-center
+		.container.wow.fadeIn(data-wow-delay='.05s')
+			p#count-down(style="font-size: 24px; font-weight: bold; color: red;") Указанные тарифы вступят в силу 15 апреля 2019 года!
+			
+	section.section.section-xs.bg-gray-12.text-center
+		.container
+			.row
+				.col-sm-6
+					a.button.button-lg.button-icon.button-icon-left.button-default-outline(href=links.price target='_blank')
+						span.icon.mdi.mdi-cloud-download
+						| &nbsp;Скачать прайс-лист
+				.col-sm-6
+					a.button.button-lg.button-icon.button-icon-left.button-default-outline(href=links.priceNotary target='_blank')
+						span.icon.mdi.mdi-cloud-download
+						| &nbsp;Тарифы нотариуса
+
+	section.section.section-md.bg-gray-12.text-center
+		.container.wow.fadeIn(data-wow-delay='.05s')
+			#tabs-1.tabs-custom.tabs-horizontal.tabs-corporate
+				// Nav tabs
+				ul.nav.nav-tabs(style='margin-bottom: 30px;')
+					li.nav-item(role='presentation'): a.nav-link(href='#tabs-1-1' data-toggle='tab') Пакетные решения
+					li.nav-item(role='presentation'): a.nav-link.active(href='#tabs-1-2' data-toggle='tab') Наличные расчеты
+					li.nav-item(role='presentation'): a.nav-link(href='#tabs-1-3' data-toggle='tab') Безналичные расчеты
+					li.nav-item(role='presentation'): a.nav-link(href='#tabs-1-4' data-toggle='tab') Юридическое сопровождение
+					li.nav-item(role='presentation'): a.nav-link(href='#tabs-1-5' data-toggle='tab') Регистрация недвижимости
+					li.nav-item(role='presentation'): a.nav-link(href='#tabs-1-6' data-toggle='tab') Аренда переговорных
+					li.nav-item(role='presentation'): a.nav-link(href='#tabs-1-7' data-toggle='tab') Перевод и легализация
+
+				.divider-section.bg-gray-20
+
+				// Tab panes
+				.tab-content
+					div#tabs-1-1.tab-pane.fade.text-center
+						//- a.button-lg.button-primary(href=links.packs target='_blank') Пакетные решения (откроется в новом окне)
+						.table-custom-responsive.wow.fadeIn
+							table.table-custom.table-custom-primary(style='text-align: center;')
+								thead
+									tr
+										th Пакетное предложение
+										th Стоимость
+										th Услуги входящие в пакетное предложение
+
+								tbody
+									tr
+										td(style='text-align: left;') Переуступка
+										td 8 000 ₽ 
+										td 
+											ul.list-2
+												li Аренда ячейки 75 мм на 30 дней с услугой «Эксперт-сейфинг»
+												li Предоставление переговорной комнаты и счетчика банкнот
+												li Персональный менеджер
+
+					div#tabs-1-2.tab-pane.fade.show.active
+						#accordion1.card-group-custom.card-group-corporate(role='tablist' aria-multiselectable='false')
+							+card({
+								parentId: 'accordion1',
+								number: '1',
+								header: 'Сколько стоит сейфовая ячейка?'
+							}).card-corporate
+								div(style='color: black; text-align: justify; text-justify: inter-word;')
+									p Стоимость услуг по аренде индивидуальной сейфовой ячейки состоит из стоимости, в соответствии с тарифами «Центра сделок с недвижимостью»:
+									ul.list-3(style="max-width: 100%;")
+										li оформления договора аренды сейфовой ячейки;
+										li аренды сейфовой ячейки исходя из срока пользования (минимальный срок аренды сейфовой ячейки 10 календарных дней), и размеров арендуемой ячейки;
+										li аренды переговорной комнаты (при заключении договора индивидуального или коллективного одновременного доступа аренда переговорной комнаты по желанию клиента, в остальных случаях аренда переговорной комнаты является обязательным условием).
+										li повышающего коэффициента: 
+											ul.list-3(style="max-width: 100%;")
+												li количество арендаторов свыше 10 человек – коэфффициент 1,5
+												li закладка в ячейку после 20 часов 30 минут – коэффициент 1,5.
+									p Пакеты для закладки на хранение денежных средств предоставляются бесплатно.
+
+						//- h3.text-center Аренда сейфовой ячейки
+						.table-custom-responsive.wow.fadeIn
+							table.table-custom.table-custom-primary(style='text-align: center;')
+								thead
+									tr
+										th Высота сейфа
+										th Стоимость
+
+								tbody
+									tr
+										td(style='text-align: left;') 50 мм
+										td 50 ₽ 
+									tr
+										td(style='text-align: left;') 75 мм
+										td 60 ₽
+									tr
+										td(style='text-align: left;') 100 мм
+										td 70 ₽
+									tr
+										td(style='text-align: left;') 125 мм
+										td 80 ₽
+									tr
+										td(style='text-align: left;') 175 мм
+										td 90 ₽
+									tr
+										td(style='text-align: left;') 300 мм
+										td 100 ₽
+						.table-custom-responsive.wow.fadeIn
+							table.table-custom.table-custom-primary(style='text-align: center;')
+								thead
+									tr
+										th Наименование договора аренды сейфовой ячейки
+										th Тариф
+
+								tbody
+									tr
+										td(style='text-align: left;') Договор аренды индивидуального пользования
+										td 500 ₽ 
+									tr
+										td(style='text-align: left;') Договор аренды коллективного одновременного доступа не более трёх человек
+										td 1 500 ₽
+									tr
+										td(style='text-align: left;') Договор аренды сейфовой ячейки коллективного пользования с выбытием 1-3 Арендаторов
+										td 3 000 ₽
+									tr
+										td(style='text-align: left;') Договор аренды сейфовой ячейки коллективного пользования с выбытием 4-6 Арендаторов
+										td 4 000 ₽
+									tr
+										td(style='text-align: left;') Договор аренды сейфовой ячейки коллективного пользования с выбытием более 6 Арендаторов
+										td 4 500 ₽
+									tr
+										td(style='text-align: left;') Договор аренды сейфовой ячейки коллективного пользования (с услугой «Эксперт-сейфинг») 1 объект недвижимости
+										td 3 500 ₽
+									tr
+										td(style='text-align: left;') Договор аренды сейфовой ячейки коллективного пользования (с услугой «Эксперт-сейфинг») 2-3 объекта недвижимости
+										td 4 500 ₽
+									tr
+										td(style='text-align: left;') Договор аренды сейфовой ячейки коллективного пользования (с услугой «Эксперт-сейфинг») 4-6 объектов недвижимости
+										td 6 000 ₽
+									tr
+										td(style='text-align: left;') Договор аренды сейфовой ячейки коллективного пользования (с услугой «Эксперт-сейфинг») более 6 объектов недвижимости
+										td 8 000 ₽
+									tr
+										td(style='text-align: left; background-color: #FDDD51;') Договор аренды сейфовой ячейки коллективного пользования для юр. лиц (с услугой «Эксперт-капитал») по сделкам купли-продажи акций обществ, долей в уставном капитале, иных ценных бумаг. Оформляется по предварительной записи.
+										td(style="background-color: #FDDD51;;") 15 000 ₽
+									tr
+										td(style='text-align: left; background-color: #FDDD51;') Договор аренды сейфовой ячейки для физ. лиц коллективного пользования (с услугой «Эксперт-Элит») по сделкам, где предметом взаиморасчетов не является  Объект недвижимости. Оформляется по предварительной записи.
+										td(style="background-color: #FDDD51;") 12 000 ₽
+									tr
+										td(style='text-align: left;') Аренда переговорной комнаты для проведения сделки + услуги менеджера сделки + подготовка документов для проведения сделки (на сделке используется комбинированные способы взаиморасчетов, или несколько договоров одного типа)
+										td 3 000 ₽
+						br
+						span(style="background-color: #FDDD51; margin-left: 20px;") &nbsp;&nbsp;&nbsp;&nbsp;
+						span &nbsp;-&nbsp;Скоро!
+						
+						.table-custom-responsive.wow.fadeIn
+							table.table-custom.table-custom-primary(style='text-align: center;')
+								thead
+									tr
+										th Дополнительные услуги при наличных взаиморасчетах
+										th Тариф
+
+								tbody
+									tr
+										td(style='text-align: left;') Изменение условий доступа к индивидуальному сейфу по Договору аренды сейфа (за каждое добавление, удаление, замену условия доступа)
+										td 1 000 ₽ 
+									tr
+										td(style='text-align: left;') Включение и/или изменение условий доступа к индивидуальному сейфу по Договору аренды сейфа по индивидуальному условию (за каждое добавление, удаление, замену условия  доступа согласно Договору)
+										td 2 000 ₽
+									tr
+										td(style='text-align: left;') Предоставление Арендатору персонального электронного ключа при его утере или повреждении
+										td 1 000 ₽
+									tr
+										td(style='text-align: left;') Смена ПИН-кода
+										td 500 ₽
+									tr
+										td(style='text-align: left;') Предоставление персонального электронного ключа представителю Арендатора по договору индивидуального доступа (за каждый ключ)
+										td 700 ₽
+									tr
+										td(style='text-align: left;') Оформление доверенности по форме «Центра сделок с недвижимостью» от Арендатора на одно доверенное лицо
+										td 700 ₽
+									tr
+										td(style='text-align: left;') Внесение в доверенность дополнительного доверенного лица
+										td 300 ₽
+									tr
+										td(style='text-align: left;') Аренда машинки для проверки и пересчета денежных средств
+										td 500 ₽ за каждый миллион, но не более 2 500 ₽
+									tr
+										td(style='text-align: left;') Проверка подлинности и пересчет с сертифицированным специалистом 
+										td 0,05% от суммы пересчета, минимум 1 000 ₽, но не более 50 000 ₽
+									tr
+										td(style='text-align: left;') Хранение и выдача имущества со дня помещения содержимого на ответственное хранение в течение 181 дня (оплачивается дополнительно к количеству дней со дня окончания договора)
+										td 5 000 ₽
+
+					div#tabs-1-3.tab-pane.fade
+						h3.text-center Эскроу-счет
+						h4.text-center Ваши средства застрахованы государственной корпорацией «Агентство по страхованию вкладов» на сумму до 10 млн.рублей (ПАО «Банк «Санкт-Петербург», №331 в реестре «Агентства по страхованию вкладов»)
+						.table-custom-responsive
+							table.table-custom.table-custom-primary(style='text-align: center;')
+								thead
+									tr
+										th Для клиентов нашего Центра действуют специальные условия от ПАО «Банк «Санкт-Петербург»
+										th Стоимость
+
+								tbody
+									tr
+										td(style='text-align: left;') Предоставление специально оборудованной переговорной комнаты и услуги менеджера по сопровождению сделки по тарифам «Центра сделок с недвижимостью» для осуществления процедуры открытия и сопровождения банковского Эскроу счета по тарифам ПАО «Банк «Санкт-Петербург»
+										td 2 500 ₽
+									tr
+										td(style='text-align: left;') Внесение изменений в договор специального банковского счета эскроу
+										td Бесплатно
+						br
+						h3.text-center Аккредитив
+						h4.text-center Традиционная система взаиморасчетов для 2-х сторон сделки
+						.table-custom-responsive
+							table.table-custom.table-custom-primary(style='text-align: center;')
+								thead
+									tr
+										th Наименование услуги
+										th Тариф
+
+								tbody
+									tr
+										td(style='text-align: left;') Открытие аккредитива в пользу юридических и физических лиц, когда исполняющим банком является «ПАО «Банк Санкт-Петербург», а аккредитив используется для расчетов по сделкам приобретения недвижимости
+										td 0.15% от суммы аккредитива, но не менее 1 000 ₽ и не более 3 000 ₽
+									tr
+										td(style='text-align: left;') Внесение изменений в условия аккредитива в части увеличения срока аккредитива
+										td Бесплатно
+									tr
+										td(style='text-align: left;') Внесение изменений в условия аккредитива в части изменений иных условий
+										td 1 000 ₽
+									tr
+										td(style='text-align: left;') Авизование аккредитива и изменений к нему (извещение клиента о поступлении аккредитива/изменений условий аккредитива)
+										td Бесплатно
+									tr
+										td(style='text-align: left;') Аннулирование аккредитива для клиентов, привлеченных агентом банка ООО «Навиус»
+										td 1 000 ₽
+									tr
+										td(style='text-align: left;') Проверка документов по аккредитиву (ПАО «Банк Санкт-Петербург» - исполняющий банк)
+										td Бесплатно
+									
+
+					div#tabs-1-4.tab-pane.fade
+						.table-custom-responsive
+							table.table-custom.table-custom-primary(style='text-align: center;')
+								thead
+									tr
+										th Услуга
+										th Стандартный тариф/час
+
+								tbody
+									tr
+										td(style='text-align: left;') Юридическая консультация по вопросам недвижимости
+										td от 1 000 до 3 000 ₽
+									tr
+										td(style='text-align: left;') Юридическая консультация по вопросам недвижимости, включая возможную экспертизу документов
+										td от 1 000 до 6 000 ₽
+									tr
+										td(style='text-align: left;') Структурирование сделки (Юридическое сопровождение, разработка схемы безопасных взаиморасчетов и др., исходя из поставленной задачи и сложности сделки)
+										td от 5 000 до 50 000 ₽
+									tr
+										td(style='text-align: left;') Подготовка договора об уступке прав требования (цессии)
+										td 5 000 ₽
+									tr
+										td(style='text-align: left;') Подготовка агентского договора
+										td от 2 000 до 4 000 ₽
+									tr
+										td(style='text-align: left;') Оформление соглашения об обеспечительном платеже (минимальный срок хранения 30 дней)
+										td 2 000 ₽
+									tr
+										td(style='text-align: left;') Подготовка дополнительного соглашения к различным договорам
+										td от 1 000 до 3 000 ₽
+									tr
+										td(style='text-align: left;') Юридическая экспертиза "чистоты" объекта недвижимости и участников сделки по предоставленным документам (Выдается письменное заключение. В этом случае сотрудники "Центра сделок с недвижимостью" проверяют только те документы, которые предоставлены участниками сделки или риэлтором)
+										td 4 000 ₽
+									tr
+										td(style='text-align: left;') Юридическая экспертиза "чистоты" объекта недвижимости и участников сделки по предоставленным документам (Выдается письменное заключение. В этом случае сотрудники "Центра сделок с недвижимостью" проверяют документы и информацию, полученную от участников сделки или риэлтора, дополнительно сотрудником Центра запрашивается архивная справка по объекту недвижимости)
+										td 6 000 ₽
+									tr
+										td(style='text-align: left;') Правовая экспертиза договора, с выдачей заключения
+										td от 1 000 до 3 000 ₽
+									tr
+										td(style='text-align: left;') Подготовка проекта предварительного договора отчуждения по типовому шаблону
+										td 3 000 ₽
+									tr
+										td(style='text-align: left;') Подготовка проекта предварительного договора отчуждения с индивидуальными условиями (использование материнского капитала, ипотечных денежных средств, социальных выплат и др.)
+										td от 4 000 до 7 000 ₽
+									tr
+										td(style='text-align: left;') Подготовка проекта договора отчуждения по типовому шаблону
+										td 3 000 ₽
+									tr
+										td(style='text-align: left;') Подготовка проекта договора отчуждения с индивидуальными условиями (использование материнского капитала, ипотечных денежных средств, социальных выплат и др.)
+										td от 4 000 до 7 000 ₽
+									tr
+										td(style='text-align: left;') Подготовка проектов прочих договоров (дарения, аренды, займа и др.) по типовому шаблону
+										td от 3 000 до 5 000 ₽
+									tr
+										td(style='text-align: left;') Подготовка проекта соглашения о задатке
+										td от 2 000 до 4 000 ₽
+									tr
+										td(style='text-align: left;') Заказ Выписки из ЕГРН, полученной из Росреестра в установленном законом порядке в электронной форме
+										td 150 ₽
+									tr
+										td(style='text-align: left;') Заказ Выписки из ЕГРН, полученной из Росреестра в установленном законом порядке в электронной форме, изготовленной на бумажном носителе,  заверенной ООО «Навиус» путем проставления на ней подписи сотрудника ООО «Навиус», печати ООО «Навиус», для доступа в сейфовую ячейку
+										td 300 ₽
+
+					div#tabs-1-5.tab-pane.fade
+						h3.text-center Услуга "Мобильный регистратор"
+						h4.text-center Это онлайн подача документов на электронную регистрацию права собственности объектов недвижимости ПО ВСЕЙ РОССИИ.
+						h4.text-center(style="color: red; font-weight: bold;") Предоставление услуги временно приостановлено
+						.table-custom-responsive
+							table.table-custom.table-custom-primary(style='text-align: center;')
+								thead
+									tr
+										th Услуга
+										th Стоимость
+
+								tbody
+									tr
+										td(style='text-align: left;') Электронная регистрация права собственности на недвижимость по сделке между двумя физическими лицами
+										td 6 600 ₽
+									tr
+										td(style='text-align: left;') Электронная регистрация права собственности на недвижимость по сделке между физическим и юридическим лицом
+										td 8 450 ₽
+									tr
+										td(style='text-align: left;') Электронная регистрация права собственности на недвижимость по сделке между двумя юридическими лицами
+										td 10 300 ₽
+									tr
+										td(style='text-align: left;') Приобретение защищенного носителя электронной цифровой подписи документов Rutoken lite 16 Гб (для хранения электронной ключа)
+										td 1 250 ₽
+									tr
+										td(style='text-align: left;') Приобретение защищенного носителя электронной цифровой подписи документов Rutoken lite 64ГБ (для хранения электронной ключа)
+										td 1 300 ₽
+									tr
+										td(style='text-align: left;') Дополнительная выдача ключа электронной цифровой подписи физическому лицу
+										td 1 350 ₽
+					div#tabs-1-6.tab-pane.fade
+						h3.text-center Для сделок, семинаров, мастер-классов, коворкинга
+						.table-custom-responsive
+							table.table-custom.table-custom-primary(style='text-align: center;')
+								thead
+									tr
+										th Услуга
+										th Стандартный тариф
+
+								tbody
+									tr
+										td(style='text-align: left;') Аренда переговорной комнаты 30 минут, для проведения переговоров
+										td 750 ₽
+									tr
+										td(style='text-align: left;') Аренда переговорной комнаты 1 час, для проведения переговоров
+										td 1 500 ₽
+									tr
+										td(style='text-align: left;') Дополнительное время аренды переговорной комнаты за каждые последующие 10 мин
+										td 250 ₽
+									tr
+										td(style='text-align: left;') Аренда переговорной комнаты, оборудованной проектором на 1 час
+										td 3 000 ₽
+									tr
+										td(style='text-align: left;') Аренда переговорной с проектором на 3 часа
+										td 6 000 ₽
+									tr
+										td(style='text-align: left;') Аренда оборудованной переговорной комнаты для проведения сделки + услуги менеджера сделки, за 1 час(примерное время сделки определяет менеджер исходя из количества и сложности предоставляемых услуг)
+										td 500 ₽
+
+					div#tabs-1-7.tab-pane.fade
+						h3.text-center Для жизни и бизнеса
+						.table-custom-responsive
+							table.table-custom.table-custom-primary(style='text-align: center;')
+								thead
+									tr
+										th Услуга
+										th Стоимость
+
+								tbody
+									tr
+										td(style='text-align: left;') Перевод иностранного паспорта с нотариальным заверением за 1 рабочий день
+										td от 980 ₽
+									tr
+										td(style='text-align: left;') Перевод свидетельства ЗАГСа (о рождении, браке, смерти, разводе, усыновлении и другие) за 1 рабочий день
+										td от 230 ₽
+									tr
+										td(style='text-align: left;') Перевод диплома и приложения за 1-2 рабочих дня
+										td от 1 244 ₽
+									tr
+										td(style='text-align: left;') Перевод аттестата за 1 рабочий день
+										td от 505 ₽
+									tr
+										td(style='text-align: left;') Перевод справок (банковские, об обучении, о несудимости и другие) за 1 рабочий день
+										td от 345 ₽
+									tr
+										td(style='text-align: left;') Апостиль за 5 рабочих дней
+										td от 4 000 ₽
+									tr
+										td(style='text-align: left;') Легализация/Консульская легализация (МинЮст, МИД, Посольство) за 3 недели(консульская), за 3 рабочих дня (в ТПП)
+										td от 3 500 ₽
+
+	//- .divider-section.bg-gray-20
+
+	// Page Footer
+	include ../sections/_footer-classic
+
+	//- script.
+		let countDownDate = new Date("Feb 4, 2019 00:00:00").getTime();
+		let x = setInterval(() => {
+			let now = new Date();
+			let dist = countDownDate - now;
+			let days = Math.floor(dist / (1000 * 60 * 60 * 24));
+			let hours = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			let minutes = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
+			let seconds = Math.floor((dist % (1000 * 60)) / 1000);
+
+			$("#count-down").text(`Указанные тарифы вступят в силу через ${days} дней ${hours} часов ${minutes} минут ${seconds} секунд`);
+			if (distance < 0) {
+				clearInterval(x);
+				$("#count-down").hide();
+			}
+		}, 1000);

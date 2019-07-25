@@ -1,0 +1,16 @@
+extends layouts/_layout.pug
+
+block variables
+	- var activePage = '503'
+	- var activeGroup = 'none'
+
+block title
+	title Ошибка 503 - Админка ЦСН
+
+block content
+	.page-error.tile
+		h1
+			i.fa.fa-exclamation-circle
+			|  503: Сервис недоступен
+		p Что-то пошло не так :(
+		p: a.btn.btn-primary(href="javascript:window.history.back();") Назад

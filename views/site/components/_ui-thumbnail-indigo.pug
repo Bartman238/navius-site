@@ -1,0 +1,8 @@
+mixin thumbnail-indigo(obj)
+	- var filename = obj.title.toLowerCase().replace(/\s/g, '-')
+	- var link = obj.link ? obj.link : obj.title.toLowerCase().replace(/\s/g, '-') + '.html'
+		
+	a.thumbnail-indigo(href=link style='background-image: url(/images/landing/' + filename + '.jpg);')&attributes(attributes)
+		.thumbnail-indigo-caption
+			h4.thumbnail-indigo-title=obj.title
+			

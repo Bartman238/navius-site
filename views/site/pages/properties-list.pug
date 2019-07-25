@@ -1,0 +1,160 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-block-agent-horizontal
+include ../components/_ui-product-classic-horizontal
+	
+block variables
+	- var activeCategory = 'properties'
+	- var pageName = 'Properties List'
+
+block page
+	include ../sections/_header-classic
+
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'breadcrumbs-bg-06-1922x427',
+		data: '37'
+	})
+	
+	// Properties List
+	section.section.section-md.bg-gray-12
+		.container
+			.row.row-50
+				.col-lg-7.col-xl-8
+					.row.row-30
+						.col-sm-12
+							ul.block-info-1
+								li
+									.form-wrap-group-1
+										.form-wrap
+											select.form-input.select-filter(
+											data-style='modern' 
+											data-placeholder='Publication Date'
+											data-minimum-results-for-search='Infinity'
+											data-constraints='@Required')
+												option(label='placeholder')
+												option(value='2') Monday
+												option(value='3') Tuesday
+												option(value='4') Wednesday
+												option(value='5') Thursday
+												option(value='6') Friday
+												option(value='7') Saturday
+												option(value='8') Sunday
+										.form-wrap
+											select.form-input.select-filter(
+											data-style='modern'
+											data-placeholder='Price Low to High'
+											data-minimum-results-for-search='Infinity'
+											data-constraints='@Required')
+												option(label='placeholder')
+												option(value='1') Price Low to High
+												option(value='2') Price High to Low
+												option(value='3') Most Popular
+												option(value='4') Top Rated
+												option(value='5') Best Sellers
+								li
+									ul.list-layout
+										li: a.icon.icon-2.fa-reorder.active(href='#')
+										li: a.icon.icon-2.mdi.mdi-view-grid(href='properties-grid.html')
+						.col-sm-12
+							.row.row-50.row-lg-70
+								.col-12
+									+product-classic-horizontal({
+										images: [
+											'featured-properties-13-480x287',
+											'featured-properties-14-480x287',
+											'featured-properties-15-480x287',
+											'featured-properties-16-480x287'
+										],
+										price: '$5000\\mo',
+										title: '401 Biscayne Boulevard, Miami',
+										sq: '480',
+										bathrooms: '2',
+										bedrooms: '2',
+										garage: '1'
+									})
+										p Choose this property if you are looking for a modern house near the ocean shore. With 2 bathrooms and 2 bedrooms as well as a single garage, it is a perfect option for a small family.
+
+								.col-12
+									+product-classic-horizontal({
+										images: [
+											'featured-properties-34-480x287',
+											'featured-properties-02-480x287',
+											'featured-properties-03-480x287',
+											'featured-properties-04-480x287'
+										],
+										price: '$9340\\mo',
+										title: '225 Maywood Dr, San Francisco',
+										sq: '435',
+										bathrooms: '1',
+										bedrooms: '1',
+										garage: '1'
+									})
+										p We are glad to introduce our newest property in California that has everything for a sunny state newcomer. The property includes the main house, guest house, play house, and a large swimming pool.
+
+								.col-12
+									+product-classic-horizontal({
+										images: [
+											'featured-properties-01-480x287',
+											'featured-properties-06-480x287', 
+											'featured-properties-07-480x287', 
+											'featured-properties-08-480x287'
+										],
+										price: '$2500\\mo',
+										title: '35 Pond St, New York',
+										sq: '430',
+										bathrooms: '2',
+										bedrooms: '3',
+										garage: '1'
+									})
+										p This property is a perfect choice for a young family who are looking for an affordable apartment. With 8 rooms, 2 bedrooms and bathrooms, and a garage, this property offers a lot for a small price.
+								.col-12
+									+product-classic-horizontal({
+										images: [
+											'featured-properties-05-480x287',
+											'featured-properties-10-480x287', 
+											'featured-properties-11-480x287', 
+											'featured-properties-12-480x287'
+										],
+										price: '$5000\\mo',
+										title: '623 Willow Rd, Dallas',
+										sq: '530',
+										bathrooms: '2',
+										bedrooms: '2',
+										garage: '2'
+									})
+										p Brand new house not far from the donwtown offering a great place for family and friends. The house has spectacular outdoor area, which makes it great for summer picnics.
+								.col-12
+									+product-classic-horizontal({
+										images: [
+											'featured-properties-17-480x287',
+											'featured-properties-18-480x287',
+											'featured-properties-19-480x287', 
+											'featured-properties-20-480x287'
+										],
+										price: '$5000\\mo',
+										title: '2888 Bush St, San Francisco',
+										sq: '570',
+										bathrooms: '3',
+										bedrooms: '2',
+										garage: '1'
+									})
+										p This mid-sized property is definitely worth your attention  as it is one of our most innovative apartments built this year. Apart from comfortable bedrooms, this property has a modern security system.
+									
+						.col-sm-12
+							ul.pagination-custom
+								li: a.active(href='#') 1
+								li: a(href='#') 2
+				.col-lg-5.col-xl-4
+					.row.row-50
+						.col-md-6.col-lg-12
+							include ../includes/_sidebar-block-1
+						.col-md-6.col-lg-12
+							include ../includes/_sidebar-block-2
+						.col-md-6.col-lg-12
+							include ../includes/_sidebar-block-3
+
+	include ../sections/_footer-classic

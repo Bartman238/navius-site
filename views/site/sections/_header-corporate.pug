@@ -1,0 +1,114 @@
+header.section.page-header
+	// RD Navbar
+	.rd-navbar-wrap
+		nav.rd-navbar.rd-navbar-corporate(
+		data-layout=                'rd-navbar-fixed'
+		data-sm-layout=             'rd-navbar-fixed'
+		data-md-layout=             'rd-navbar-fixed'
+		data-md-device-layout=      'rd-navbar-fixed'
+		data-lg-layout=             'rd-navbar-static'
+		data-lg-device-layout=      'rd-navbar-fixed'
+		data-xl-layout=             'rd-navbar-static'
+		data-xl-device-layout=      'rd-navbar-static'
+		data-lg-stick-up-offset=    '195px'
+		data-xl-stick-up-offset=    '195px'
+		data-xxl-stick-up-offset=   '195px'
+		data-lg-stick-up=           'true'
+		data-xl-stick-up=           'true'
+		data-xxl-stick-up=          'true')
+			.rd-navbar-group-outer.context-dark
+				.rd-navbar-group
+					p.rd-navbar-slogan Professional realtors work for you
+					.rd-navbar-group-item
+						.block-inline: button.unit.unit-spacing-xs.align-items-center(data-rd-navbar-toggle='#navbar-login-register')
+							span.unit-left: span.icon.text-middle.mdi.mdi-login
+							span.unit-body: span Login/Register
+						article.rd-navbar-popup(id='navbar-login-register')
+							// Bootstrap tabs
+							#navbar-tabs.tabs-custom.tabs-horizontal.tabs-line
+								// Nav tabs
+								ul.nav.nav-tabs
+									li.nav-item(role='presentation'): a.nav-link.active(href='#navbar-tabs-1' data-toggle='tab') Login
+									li.nav-item(role='presentation'): a.nav-link(href='#navbar-tabs-2' data-toggle='tab') Register
+
+								// Tab panes
+								.tab-content
+									div#navbar-tabs-1.tab-pane.fade.show.active
+										form.rd-form.form-1
+											.form-wrap
+												input.form-input(id='login-email' type='email' name='email' data-constraints='@Email @Required')
+												label.form-label(for='login-email') E-mail
+
+											.form-wrap
+												input.form-input(id='login-password' type='password' name='password' data-constraints='@Required')
+												label.form-label(for='login-password') Password
+
+											.form-wrap
+												button.button.button-sm.button-primary.button-block(type='submit') Sign in
+
+									div#navbar-tabs-2.tab-pane.fade
+										form.rd-form.form-1
+											.form-wrap
+												input.form-input(id='register-name' type='text' name='username' data-constraints='@Required')
+												label.form-label(for='register-name') Username
+
+											.form-wrap
+												input.form-input(id='register-email' type='email' name='email' data-constraints='@Email @Required')
+												label.form-label(for='register-email') E-mail
+
+											.form-wrap
+												input.form-input(id='register-password' type='password' name='password' data-constraints='@Required')
+												label.form-label(for='register-password') Password
+
+											.form-wrap
+												input.form-input(id='register-password-confirm' type='password' name='password' data-constraints='@Required')
+												label.form-label(for='register-password-confirm') Confirm Password
+
+											.form-wrap
+												button.button.button-sm.button-primary.button-block(type='submit') Create an Account
+
+											.form-wrap
+												.text-decoration-lines
+													span.text-decoration-lines-content or enter with
+
+											.form-wrap
+												.button-group
+													a.button.button-facebook.button-icon.button-icon-only(href='#' aria-label='Facebook'): span.icon.mdi.mdi.mdi-facebook
+													a.button.button-twitter.button-icon.button-icon-only(href='#' aria-label='Twitter'): span.icon.mdi.mdi-twitter
+													a.button.button-google.button-icon.button-icon-only(href='#' aria-label='Google+'): span.icon.mdi.mdi-google
+
+			.rd-navbar-aside-outer
+				.rd-navbar-aside
+					// RD Navbar Panel
+					.rd-navbar-panel
+						button.rd-navbar-toggle(data-rd-navbar-toggle='.rd-navbar-nav-wrap'): span
+						.rd-navbar-brand
+							+logo
+
+					.rd-navbar-block
+						.rd-navbar-collapse-toggle.rd-navbar-fixed-element-1(data-rd-navbar-toggle='.rd-navbar-collapse'): span
+						.rd-navbar-collapse
+							ul.rd-navbar-aside-list
+								li: dl
+									dt Client Support:
+									dd: .link-with-icon.heading-4.text-spacing-100(data-item='.icon')
+										span.icon.icon-7.icon-secondary.mdi.mdi-phone
+										a(href='tel:#') 1-800-700-6200
+								li: dl
+									dt E-mail:
+									dd: .link-with-icon.heading-5.text-spacing-100(data-item='.icon')
+										span.icon.icon-7.icon-secondary.mdi.mdi-email-outline
+										a(href='mailto:#') info@demolink.org
+								li: dl
+									dt Follow Us
+									dd: ul.list-inline-1
+										li: a.icon.fa-facebook(href='#')
+										li: a.icon.fa-twitter(href='#')
+										li: a.icon.fa-google-plus(href='#')
+										li: a.icon.fa-pinterest-p(href='#')
+
+			.rd-navbar-main-outer
+				.rd-navbar-main.rd-navbar-nav-wrap
+					include ../includes/_navigation
+					.rd-navbar-main-item
+						a.button.button-sm.button-primary(href='submit-property.html') Submit property

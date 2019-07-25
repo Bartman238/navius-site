@@ -1,0 +1,88 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-posts
+include ../components/_ui-resume-popup
+
+block variables
+	- var activeCategory = 'info'
+	- var pageName = 'Вакансии'
+
+block page
+	include ../sections/_header-classic
+	
+	// Resume popup
+	+resume-popup()
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'centr-sdelok/main-top1.jpg',
+		data: '48'
+	}).breadcrumbs-bg-1
+
+	// Your career starts here!
+	section.section.section-md.bg-gray-12
+		.container
+			.row.row-40.align-items-lg-center
+				.col-lg-6
+					.mr-lg-minus-30
+						//- +jpg('centr-sdelok/career-01-1196x768')
+						img(src=`images/centr-sdelok/csn0.jpg` alt='')
+				.col-lg-6
+					.pdl-lg-70.pdr-lg-20
+						h3 Ваша карьера в «Центре сделок с недвижимостью»!
+						p Мы — высокотехнологичная современная организация. Наши клиенты — агенты по недвижимости, физические и юридические лица, проводящие сделки купли-продажи недвижимости.
+						p От наших сотрудников мы ждем:
+						ul.list-3
+							li ответственности
+							li коммуникабельности
+							li стрессоустойчивости
+							li легкой обучаемости
+						a.button-default-outline.button.text-spacing-50.resume-popup(href='#resume-popup') Отправить резюме
+
+
+	// Available Vacancies
+	section.section.section-lg.bg-default
+		.container
+			h2.heading-decoration-1: span.heading-inner Открытых вакансий нет
+			//- .row
+				.col-xl-11
+					// Bootstrap tabs
+					#tabs-2.tabs-custom.tabs-vertical.tabs-corporate
+						// Nav tabs
+						ul.nav.nav-tabs
+							li.nav-item(role='presentation'): a.nav-link.active(href='#tabs-2-1' data-toggle='tab') Ассистент менеджера <br>по сопровождению сделки <br>от 30 000 ₽
+							//- li.nav-item(role='presentation'): a.nav-link(href='#tabs-2-2' data-toggle='tab') Ассистент менеджера <br>по сопровождению сделки <br>от 30 000 ₽
+
+						// Tab panes
+						.tab-content
+							div#tabs-2-1.tab-pane.fade.show.active(style='color: black;')
+								p Вам предстоит выполнять следующие обязанности:
+								ul.list-marked
+									li консультировать клиентов по сделкам с недвижимостью;
+									li записывать клиентов на сделку и/или консультацию;
+									li готовить документы для проведения сделок с недвижимостью.
+								p Мы обеспечим Вам следующие условия:
+								ul.list-marked
+									li оформление трудовых отношений в полном соответствии с ТК РФ (оплачиваемые отпуска, больничные);
+									li конкурентный уровень заработной платы (вся заработная плата "белая", выплачивается вовремя);
+									li удобный график работы (2/2, воскресенье – всегда выходной);
+									li постоянная поддержка и помощь внимательного и опытного руководителя;
+									li программы поощрения;
+									li достойная рекламная ротация компании (а, следовательно, и гарантированные клиенты);
+									li комфортабельное рабочее место в современном офисе, расположенном в самом центре Санкт-Петербурга.
+								p Эта работа откроет перед Вами такие возможности, как:
+								ul.list-marked
+									li профессиональный и карьерный рост;
+									li качественное обучение, способствующее Вашему развитию и повышению профессиональных навыков;
+									li обучение техникам продаж, ведению переговоров, проведению презентаций;
+									li обучение технологии проведения сделок с недвижимостью различной сложности;
+									li обучение от ведущих бизнес-тренеров СПб;
+									li стабильный доход позволит реализовывать в жизнь намеченные цели и планы.
+								p Отправляйте резюме, и наш дружный коллектив единомышленников и профессионалов, в сочетании с методиками по введению в должность, откроют перед Вами бесценные перспективы!
+							//- div#tabs-2-2.tab-pane.fade(style='color: black;')
+							//- 	p Вам предстоит выполнять следующие обязанности:
+
+
+	include ../sections/_footer-classic

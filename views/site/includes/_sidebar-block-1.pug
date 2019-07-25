@@ -1,0 +1,115 @@
+.block-info
+	h3 Find Your Property
+	form.rd-mailform.form-select(data-form-output='form-output-global'
+	data-form-type='contact'
+	method='post'
+	action='bat/rd-mailform.php')
+		.form-wrap.form-wrap-validation
+			select.form-input.select-filter(
+			data-style='modern'
+			data-placeholder='Choose Location'
+			data-minimum-results-for-search='Infinity'
+			data-constraints='@Required')
+				option(label='placeholder')
+				option(value='2') Alaska
+				option(value='3') Arizona
+				option(value='4') Arkansas
+				option(value='5') California
+				option(value='6') Colorado
+				option(value='7') Connecticut
+				option(value='8') Delaware
+				option(value='9') Florida
+			span.select-arrow
+		.form-wrap.form-wrap-validation
+			select.form-input.select-filter(
+			data-style='modern'
+			data-placeholder='Property Status'
+			data-minimum-results-for-search='Infinity'
+			data-constraints='@Required')
+				option(label='placeholder')
+				option(value='2') Low
+				option(value='3') Middle
+				option(value='4') Primary
+			span.select-arrow
+		.form-wrap.form-wrap-validation
+			select.form-input.select-filter(
+			data-style='modern'
+			data-placeholder='Property Type'
+			data-minimum-results-for-search='Infinity'
+			data-constraints='@Required')
+				option(label='placeholder')
+				option(value='2') Low
+				option(value='3') Middle
+				option(value='4') Primary
+			span.select-arrow
+		.form-wrap-group
+			.form-wrap.form-wrap-validation
+				select.form-input.select-filter(
+				data-style='modern'
+				data-placeholder='Min Price, $'
+				data-minimum-results-for-search='Infinity'
+				data-constraints='@Required')
+					option(label='placeholder')
+					option(value='2') 100
+					option(value='3') 200
+					option(value='4') 300
+				span.select-arrow
+			.form-wrap.form-wrap-validation
+				select.form-input.select-filter(
+				data-style='modern'
+				data-placeholder='Max Price, $'
+				data-minimum-results-for-search='Infinity'
+				data-constraints='@Required')
+					option(label='placeholder')
+					option(value='2') 1000
+					option(value='3') 2000
+					option(value='4') 3000
+				span.select-arrow
+		.form-wrap-group
+			.form-wrap.form-wrap-validation
+				select.form-input.select-filter(
+				data-style='modern'
+				data-placeholder='Min Area, Sq Ft'
+				data-minimum-results-for-search='Infinity'
+				data-constraints='@Required')
+					option(label='placeholder')
+					option(value='2') 100
+					option(value='3') 200
+					option(value='4') 300
+				span.select-arrow
+			.form-wrap.form-wrap-validation
+				select.form-input.select-filter(
+				data-style='modern'
+				data-placeholder='Max Area, Sq Ft'
+				data-minimum-results-for-search='Infinity'
+				data-constraints='@Required')
+					option(label='placeholder')
+					option(value='2') 1000
+					option(value='3') 2000
+					option(value='4') 3000
+				span.select-arrow
+		.form-wrap-group
+			.form-wrap.form-wrap-validation
+				select.form-input.select-filter(
+				data-style='modern'
+				data-placeholder='Min Resint'
+				data-minimum-results-for-search='Infinity'
+				data-constraints='@Required')
+					option(label='placeholder')
+					option(value='2') 100
+					option(value='3') 200
+					option(value='4') 300
+				span.select-arrow
+			.form-wrap.form-wrap-validation
+				select.form-input.select-filter(
+				data-style='modern'
+				data-placeholder='Max Resint'
+				data-minimum-results-for-search='Infinity'
+				data-constraints='@Required')
+					option(label='placeholder')
+					option(value='2') 1000
+					option(value='3') 2000
+					option(value='4') 3000
+				span.select-arrow
+		.form-button
+			button.button.button-block.button-secondary(type='submit') Search

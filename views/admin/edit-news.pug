@@ -1,0 +1,133 @@
+extends layouts/_layout.pug
+
+block variables
+	- var activePage = 'news'
+	- var activeGroup = 'news'
+
+block title
+	title Редактирование новости - Админка ЦСН
+
+block content
+	input#upload(type="file" hidden)
+	.app-title
+		div
+			h1
+				i.fa.fa-pencil-alt
+				|  Редактировать новость
+
+		ul.app-breadcrumb.breadcrumb
+			li.breadcrumb-item
+				i.fa.fa-home.fa-lg
+			li.breadcrumb-item
+				a(href='/wtf/news') Новости
+			li.breadcrumb-item
+				a(href='#') Редактировать новость
+	#app
+		.row.text-right
+			.col-lg-12
+				button.btn.btn-primary.icon-btn.pull-right(@click="showEdit = true" :hidden="showEdit")
+					i.fa.fa-edit
+					| Редактировать
+				button.btn.btn-success.icon-btn(@click="modifyNews" :hidden="!showEdit" v-if="!loading") 
+					i.fa.fa-check
+					| Сохранить
+				button.btn.btn-success.icon-btn(disabled v-else) 
+					i.fa.fa-circle-notch.fa-spin
+					| Сохраняю...
+				button.btn.btn-danger.icon-btn.pull-right(@click="deleteNews" :hidden="!showEdit" style="margin-left: 5px;")
+					i.fa.fa-trash
+					| УДАЛИТЬ
+		
+		.row(:hidden="showEdit" style='margin-top: 20px;')
+			.col-lg-4
+				.tile
+					.tile-title
+						h4.title Информация
+						hr
+					.tile-content
+						h6 Заголовок статьи
+						p {{ title }}
+						br
+						h6 Краткое описание
+						p {{ description }}
+						br
+						h6 Обложка
+						img(
+							:src='"/" + image.path' 
+							width='100%' 
+							height='150' 
+							style='border-radius: 5px; object-fit: cover;'
+							v-if="image.path")
+			.col-lg-8
+				.tile
+					.tile-title
+						h4.title Содержание
+						hr
+					.tile-content
+						p(v-html="content")
+
+		.row(:hidden="!showEdit" style='margin-top: 20px;')
+			.col-lg-4
+				.tile
+					.tile-title
+						h4.title Информация
+						hr
+					.tile-content
+						h6 Заголовок статьи
+						.input-group.input-group-sm
+							input.form-control#title(type='text' v-model="title" maxlength="100")
+						br
+						h6 Краткое описание
+						.input-group.input-group-sm
+							textarea.form-control#desc(
+								type='text' 
+								v-model="description" 
+								rows='3')
+
+						br
+						h6 Обложка
+						.bs-component(v-if="showProgress")
+							.progress.mb-2
+								.progress-bar.progress-bar-striped.progress-bar-animated(
+									role='progressbar', 
+									:aria-valuenow="uploadProgress", 
+									aria-valuemin='0', 
+									aria-valuemax='100', 
+									:style='"width: " + uploadProgress + "%"')
+						.input-group
+							input.form-control-file(type='file' @change="processImage" v-if="!image.path && !showProgress")
+						br
+						div
+							.post-img-container(v-if="image.path")
+								img(
+									:src='"/" + image.path' 
+									width='100%' 
+									height='150' 
+									style='border-radius: 5px; object-fit: cover;')
+								.post-img-middle(@click="image = {}")
+									.post-img-text
+										i.fa.fa-times.fa-2x(style='color: white;')
+
+			.col-lg-8
+				.tile
+					.tile-title
+						h4.title Содержание
+						hr
+					.tile-content
+						vue-tinymce.form-control(v-model="content" :options="tinymceOptions")
+
+block specific-js
+	script(src='https://unpkg.com/axios/dist/axios.min.js')
+	script(src='/js/admin-js/plugins/tinymce/tinymce.min.js')
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-maxlength/1.7.0/bootstrap-maxlength.min.js')
+	script(src='/js/admin-js/plugins/sweetalert.min.js')
+	script(src='/js/admin-js/vue/edit-news.js')
+	script.
+		$(document).ready(() => {
+			$('#title').maxlength({
+				alwaysShow: false,
+				threshold: 90,
+				separator: '/',
+				validate: true
+			});
+		});

@@ -1,0 +1,63 @@
+extends  ../_skeleton
+include ../components/_ui-card
+
+block variables
+	- var activeCategory = 'info'
+	- var pageName = 'Акции и скидки'
+
+block page 
+	// Page Header
+	include ../sections/_header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'centr-sdelok/main-top1.jpg'
+	})
+
+	#app
+		section.section.section-md.bg-default
+			.container
+				.row(v-for="(promo, i) in promos")
+					.col-lg-5
+						img.promo-img(:src="promo.image")
+					.col-lg-7
+						h3 {{ promo.title }}
+						hr(style='margin: 10px 0 10px 0;')
+						div(style='text-align: justify; color: black;')
+							p(v-html="promo.description")
+							p(style='color: red;' v-if="promo.toDate") Акция действует до: {{ promo.toDate }}
+						hr(style='margin-top: 10px;')
+						div.card-group-custom.card-group-corporate(
+							:id="'accordion' + i"
+							role='tablist' 
+							aria-multiselectable='false' 
+							style='margin-top: 20px;'
+						)
+							article.card.card-custom.card-corporate
+								.card-header(:id="'accordion' + i + '-heading-1'" role='tab')
+									.card-title
+										a.card-link(
+										role='button'
+										data-toggle='collapse'
+										:href="'#accordion' + i + '-collapse-1'"
+										:aria-controls="'accordion' + i + '-collapse-1'"
+										class="collapsed")
+											span Условия акции
+											.card-arrow
+
+								.collapse(
+								:id="'accordion' + i + '-collapse-1'"
+								role='tabpanel'
+								:aria-labelledby="'accordion' + i + '-heading-1'"
+								:data-parent="'#accordion' + i")
+									.card-body
+										p(v-html="promo.conditions")
+
+	// Page Footer
+	include ../sections/_footer-classic
+	
+	script(src='js/plugins/nprogress.js')
+	script(src='js/plugins/moment-with-locales.js')
+	script(src="https://unpkg.com/axios/dist/axios.min.js")
+	script(src='/js/vue/promo.js')

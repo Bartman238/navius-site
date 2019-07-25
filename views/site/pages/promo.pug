@@ -1,0 +1,49 @@
+extends  ../_skeleton
+include ../components/_ui-card
+
+block variables
+	- var activeCategory = 'promo'
+	- var pageName = 'Акции'
+
+block page 
+	// Page Header
+	include ../sections/_header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'centr-sdelok/main-top1.jpg'
+	})
+
+	#app
+		section.section.section-md.bg-default
+			.container
+				each promo, i in promos
+					if (!promo.archive)
+						.row
+							.col-lg-5
+								img.promo-img(src=promo.image.path)
+							.col-lg-7
+								h3= promo.title
+								hr(style='margin: 10px 0 10px 0;')
+								div(style='text-align: justify; color: black;')
+									| !{promo.description}
+									if (promo.toDate)
+										br
+										p(style='color: green;') Акция действует до #{moment(promo.toDate).format('LL')}
+								hr(style='margin-top: 10px;')
+								div.card-group-custom.card-group-corporate(
+									id="accordion1"
+									role='tablist' 
+									aria-multiselectable='false' 
+									style='margin-top: 20px;'
+								)
+									+card({
+										parentId: 'accordion1',
+										number: i + 1,
+										header: 'Условия акции'
+									}).card-corporate
+										| !{promo.conditions}
+
+	// Page Footer
+	include ../sections/_footer-classic

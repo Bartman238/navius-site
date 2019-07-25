@@ -1,0 +1,52 @@
+doctype html
+html
+	head
+		include includes/_head.pug
+		title Авторизация - Админка ЦСН
+
+	body
+		#app
+			section.material-half-bg
+				.cover
+
+			section.login-content
+				.logo: h1 Navius
+
+				.login-box
+					form.login-form
+						h3.login-head
+							i.fa.fa-lg.fa-fw.fa-user
+							| АДМИНКА
+						.form-group
+							label.control-label Логин
+							input.form-control(type="text" v-model='login' placeholder="Смелее" autofocus)
+
+						.form-group
+							label.control-label Пароль
+							input.form-control(type="password" v-model='password' placeholder="Ты все знаешь :)")
+
+						.form-group.btn-container
+							span.btn.btn-primary.btn-block(@click='signIn()')
+								i.fa.fa-sign-in-alt.fa-lg.fa-fw
+								| Войти
+
+
+		include includes/_javascript.pug
+		script(src="https://unpkg.com/axios/dist/axios.min.js")
+		script.
+			const app = new Vue({
+				el: "#app",
+				data () {
+					return {
+						login: '',
+						password: ''
+					}
+				},
+				methods: {
+					signIn () {
+						axios.post('/api/auth', { login: this.login, password: this.password })
+						.then(res => { location.reload(); })
+						.catch(err => { showSnack('danger', 'Что-то не так... Ты кто вообще?'); })
+					}
+				}
+			});

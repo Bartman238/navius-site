@@ -1,0 +1,68 @@
+mixin header-classic(obj)
+	// RD Navbar
+	.rd-navbar-wrap
+		nav.rd-navbar.rd-navbar-classic(
+		data-layout=                'rd-navbar-fixed'
+		data-sm-layout=             'rd-navbar-fixed'
+		data-md-layout=             'rd-navbar-fixed'
+		data-md-device-layout=      'rd-navbar-fixed'
+		data-lg-layout=             'rd-navbar-static'
+		data-lg-device-layout=      'rd-navbar-fixed'
+		data-xl-layout=             'rd-navbar-static'
+		data-xl-device-layout=      'rd-navbar-static'
+		data-lg-stick-up-offset=    '46px'
+		data-xl-stick-up-offset=    '46px'
+		data-xxl-stick-up-offset=   '46px'
+		data-lg-stick-up=           'true'
+		data-xl-stick-up=           'true'
+		data-xxl-stick-up=          'true')&attributes(attributes)
+			.rd-navbar-aside-outer
+				.rd-navbar-aside
+					.rd-navbar-collapse-toggle.rd-navbar-fixed-element-1(data-rd-navbar-toggle='.rd-navbar-collapse'): span
+					ul.rd-navbar-aside-list.rd-navbar-collapse
+						li: .block-inline.unit.unit-spacing-xs.align-items-center
+							.unit-left: span.icon.text-middle.mdi.mdi-phone
+							.unit-body: a(href='tel:' + siteVars.global.tel) #{siteVars.global.tel}
+
+						li: .block-inline.unit.unit-spacing-xs.align-items-center
+							.unit-left: span.icon.text-middle.mdi.mdi-home
+							.unit-body: span(style='color: black; margin-top: 2px;') #{siteVars.global.shortAddress}
+						
+						li: .block-inline.unit.unit-spacing-xs.align-items-center
+							.unit-left: span.icon.text-middle.mdi.mdi-clock
+							.unit-body(style='color: black; font-size: 9pt;')
+								div Центр: #{siteVars.global.workHours}
+								div(style="padding-top: 5px;") Сейфинг: #{siteVars.global.safingWorkHours}
+						
+						li: .block-inline.unit.unit-spacing-xs.align-items-center
+							.unit-left: span.icon.text-middle.mdi.mdi-wifi
+							.unit-body: span(style='color: black;') Бесплатный Wi-Fi
+
+					.rd-navbar-aside-item
+						//- a(href='http://app.centr-sdelok.ru' target='_blank')
+						a(href='/lk' target='_blank')
+							.block-inline: button.unit.unit-spacing-xs.align-items-center
+								span.unit-left: span.icon.text-middle.mdi.mdi-login
+								span.unit-body: span Личный кабинет
+
+						
+
+			.rd-navbar-main-outer
+				.rd-navbar-main
+					// RD Navbar Panel
+					.rd-navbar-panel
+						// RD Navbar Toggle
+						button.rd-navbar-toggle(data-rd-navbar-toggle='.rd-navbar-nav-wrap'): span
+
+						// RD Navbar Brand
+						.rd-navbar-brand
+							center
+								+logo
+
+					.rd-navbar-nav-wrap
+						include ../includes/_navigation
+						.rd-navbar-main-item
+							if(typeof obj !== 'undefined' && obj.customButton)
+								block
+							else
+								a.button.button-sm.button-primary.call-me-popup(href='#call-me-popup') Обратный звонок
