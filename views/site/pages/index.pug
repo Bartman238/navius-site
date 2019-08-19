@@ -28,13 +28,13 @@ block page
       span Спасибо за понимание и сотрудничество.
       //- img(src="/images/centr-sdelok/new-enter.jpeg" style="border-radius: 5px;")
   //- ВАЖНАЯ ИНФОРМАЦИЯ!!!
-  section.section-sm.text-center(style="padding: 10px; color: red;") 
-    strong Уважаемые клиенты!
-    br
-    strong Мы перехали. Вход в Центр сделок осуществляется с Итальянской улицы (вход в БЦ "Офисный дом на Итальянской, 2")
-    br
-    strong Нотариальная контора работает на прежнем месте, на этаже выше (бывший офис АН "Мой Город")
-    br
+  //- section.section-sm.text-center(style="padding: 10px; color: red;") 
+  //-   strong Уважаемые клиенты!
+  //-   br
+  //-   strong Мы перехали. Вход в Центр сделок осуществляется с Итальянской улицы (вход в БЦ "Офисный дом на Итальянской, 2")
+  //-   br
+  //-   strong Нотариальная контора работает на прежнем месте, на этаже выше (бывший офис АН "Мой Город")
+  //-   br
   // FScreen
   section.section.jumbotron-2.bg-accent.bg-primary-lighten
     .container
@@ -74,8 +74,8 @@ block page
           data-animation-in='fadeIn'
           data-animation-out='fadeOut'
           data-mouse-drag='false')
-            span.jumbotron-2-slider-link(style='background-image: url(images/centr-sdelok/main-top5.jpg);')
-            span.jumbotron-2-slider-link(style='background-image: url(images/centr-sdelok/main-top2.jpg);')
+            span.jumbotron-2-slider-link(style='background-image: url(images/centr-sdelok/slider/entry.jpg);')
+            span.jumbotron-2-slider-link(style='background-image: url(images/centr-sdelok/slider/2-2.jpg);')
             //- a.jumbotron-2-slider-link(style='background-image: url(images/centr-sdelok/main-top4.jpg);')
 
   // Shortly About Us
@@ -95,7 +95,7 @@ block page
               +box-minimal({
                 icon: 'fl-bigmug-line-wallet26',
                 title: 'Универсальный',
-                text: 'Все виды расчетов в наличной и безналичной форме, в партнерстве с ПАО «Банк «Санкт-Петербург»'
+                text: 'Договор аренды сейфовой ячейки для индивидуального пользования; Договор аренды сейфовой ячейки с услугой "Эксперт-сейфинг"; Договор аренды сейфовой ячейки для коллективного пользования ( с выбытием и без выбытия).'
               })
             .col-sm-6.wow.fadeIn
               +box-minimal({
@@ -112,12 +112,12 @@ block page
         .box-info-main.context-dark.bg-primary-lighten: .box-info-main-inner
           h2.wow.fadeIn(data-wow-delay='.05s') Мы НЕ агентство недвижимости
           .divider-small.wow.fadeIn(data-wow-delay='.1s')
-          p.wow.fadeIn(data-wow-delay='.15s') Мы  - площадка для проведения взаиморасчетов, как в наличной (аренда ячейки в сейфинге с электронным доступом, собственная продуктовая линейка), так и в безналичной (аккредитив, эскроу-счет в партнерстве с ПАО «Банк «Санкт-Петербург», генеральная лицензия Банка России  №436 от 31.12.2014) формах.
+          p.wow.fadeIn(data-wow-delay='.15s') Мы  - площадка для проведения взаиморасчетов в наличной форме (аренда ячейки в сейфинге с электронным доступом, собственная продуктовая линейка).
           ul.list-marked-1.cols-2
             li.wow.fadeIn(data-wow-delay='.2s') Просторные переговорные комнаты
             li.wow.fadeIn(data-wow-delay='.25s') Персональный менеджер
             li.wow.fadeIn(data-wow-delay='.3s') Сейфовое хранилище
-            li.wow.fadeIn(data-wow-delay='.35s') Безналичные взаиморасчеты
+            //- li.wow.fadeIn(data-wow-delay='.35s') Безналичные взаиморасчеты
             li.wow.fadeIn(data-wow-delay='.4s') Пересчет и проверка подлинности банкнот
             li.wow.fadeIn(data-wow-delay='.45s') Удаленная подготовка документов
           center 
@@ -183,50 +183,52 @@ block page
         .col-sm-6.col-md-4.isotope-item
           span.product-modern
             .product-modern-media
-              figure.product-modern-figure: img(src='images/centr-sdelok/slider/1.jpg').product-modern-image
+              figure.product-modern-figure: img(src='images/centr-sdelok/slider/2-6.jpg').product-modern-image
               .product-modern-overlay
             //- .product-modern-caption
               h5.product-modern-title 401 Biscayne Boulevard, Miami
         .col-sm-6.col-md-4.isotope-item
           span.product-modern
             .product-modern-media
-              figure.product-modern-figure: img(src='images/centr-sdelok/slider/2.jpg').product-modern-image
+              figure.product-modern-figure: img(src='images/centr-sdelok/slider/2-5.jpg').product-modern-image
               .product-modern-overlay
             //- .product-modern-caption
               h5.product-modern-title 401 Biscayne Boulevard, Miami
         .col-sm-6.col-md-4.isotope-item
           span.product-modern
             .product-modern-media
-              figure.product-modern-figure: img(src='images/centr-sdelok/slider/3.jpg').product-modern-image
+              figure.product-modern-figure: img(src='images/centr-sdelok/slider/2-4.jpg').product-modern-image
               .product-modern-overlay
             //- .product-modern-caption
               h5.product-modern-title 401 Biscayne Boulevard, Miami
-        .col-sm-6.col-md-4.isotope-item
-          span.product-modern
-            .product-modern-media
-              figure.product-modern-figure: img(src='images/centr-sdelok/slider/4.jpg').product-modern-image
-              .product-modern-overlay
-            //- .product-modern-caption
-              h5.product-modern-title 401 Biscayne Boulevard, Miami
+        
+        
         //- .col-sm-6.col-md-4.isotope-item
-          span.product-modern
-            .product-modern-media
-              figure.product-modern-figure: img(src='images/centr-sdelok/slider/4.jpg').product-modern-image
-              .product-modern-overlay
-            //- .product-modern-caption
-              h5.product-modern-title 401 Biscayne Boulevard, Miami
-        .col-sm-6.col-md-4.isotope-item
-          span.product-modern
-            .product-modern-media
-              figure.product-modern-figure: img(src='images/centr-sdelok/slider/5.jpg').product-modern-image
-              .product-modern-overlay
-            //- .product-modern-caption
-              h5.product-modern-title 401 Biscayne Boulevard, Miami
+        //-   span.product-modern
+        //-     .product-modern-media
+        //-       figure.product-modern-figure: img(src='images/centr-sdelok/slider/2-4.jpg').product-modern-image
+        //-       .product-modern-overlay
+        //-     //- .product-modern-caption
+        //-       h5.product-modern-title 401 Biscayne Boulevard, Miami
+        //- //- .col-sm-6.col-md-4.isotope-item
+        //-   span.product-modern
+        //-     .product-modern-media
+        //-       figure.product-modern-figure: img(src='images/centr-sdelok/slider/4.jpg').product-modern-image
+        //-       .product-modern-overlay
+        //-     //- .product-modern-caption
+        //-       h5.product-modern-title 401 Biscayne Boulevard, Miami
         //- .col-sm-6.col-md-4.isotope-item
-          span.product-modern
-            .product-modern-media
-              figure.product-modern-figure: img(src='images/centr-sdelok/slider/1-6.jpg').product-modern-image
-              .product-modern-overlay
+        //-   span.product-modern
+        //-     .product-modern-media
+        //-       figure.product-modern-figure: img(src='images/centr-sdelok/slider/2-5.jpg').product-modern-image
+        //-       .product-modern-overlay
+        //-     //- .product-modern-caption
+        //-       h5.product-modern-title 401 Biscayne Boulevard, Miami
+        //- .col-sm-6.col-md-4.isotope-item
+        //-   span.product-modern
+        //-     .product-modern-media
+        //-       figure.product-modern-figure: img(src='images/centr-sdelok/slider/2-6.jpg').product-modern-image
+        //-       .product-modern-overlay
             //- .product-modern-caption
               h5.product-modern-title 401 Biscayne Boulevard, Miami
 
