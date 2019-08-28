@@ -14,10 +14,16 @@
   background: #4B9EF1;
   padding: 20px;
   width: auto;
-  max-width: 500px;
+  max-width: 800px; /* Было 500, надо потом исправить */
   margin: 20px auto;
   border-radius: 5px;
   color: white;
+}
+
+#popup-img {
+  max-width: 400px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .mfp-fade.mfp-bg {
