@@ -34,7 +34,6 @@ block page
         span С уважением, Наталья Коханенко, Руководитель Центра
         br
         br
-        img#popup-img(src="/images/centr-sdelok/popup2808.png")
 
       //- img(src="/images/centr-sdelok/new-enter.jpeg" style="border-radius: 5px;")
   //- ВАЖНАЯ ИНФОРМАЦИЯ!!!
@@ -248,12 +247,12 @@ block page
   include ../sections/_footer-classic
   //- include ../sections/_footer-modern
 
-  script.
-    document.addEventListener('DOMContentLoaded', () => {
-      $.magnificPopup.open({
-        items: {
-          src: $("#news-popup"),
-          type: 'inline'
-        }
+    script.
+      document.addEventListener('DOMContentLoaded', () => {
+        $.magnificPopup.open({
+          items: {
+            src: $("#news-popup"),
+            type: 'inline'
+          }
+        });
       });
-    });
